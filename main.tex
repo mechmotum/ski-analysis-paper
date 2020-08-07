@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref,hyperref}
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+
+% useful for consistent display and control of units of measurement
+\usepackage{siunitx}
+
+\title{Equivalent Fall Height of Ski and Snowboard Jumps}
+\author{Bryn Cloud, Mont Hubbard, Jason Moore, Christopher Brown}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Outline}
+%
+\begin{itemize}
+  \item Intro
+  \begin{itemize}
+	\item history
+	\item moral imperative - engineers obligation to the public
+	\item summary of paper
+  \end{itemize}
+  \item EFH meaning and importance
+  \begin{itemize}
+	\item Safe slope equation: EFH-y(x) equivalence
+	\item design - find y(x) for given EFH
+	\item analysis: find EFH given y(x)
+  \end{itemize}
+  \item Online access of skijumpdesign.info
+  \begin{itemize}
+	\item does both design and analysis
+	\item free and easy
+	\item open source
+	\item interleaves with ASTM measurements of jump shapes (Excel files etc.)
+  \end{itemize}
+  \item Measurement of jump shape  
+  \begin{itemize}
+	\item using DGPS
+	\item 1 cm accuracy
+	\item as remote as 1 Km
+	\item rover receiver on skier allow versatility 
+  \end{itemize}
+  \item Actual examples of design and analysis and measurement
+  \begin{itemize}
+	\item Salvini
+	\item Sierra-Tahoe??
+	\item Knoernschild
+  \end{itemize}
+  \item Conclusions and recommendations
+\end{itemize}
+
+\begin{abstract}
+    TODO
+\end{abstract}
+
+\section{Introduction}
+%
+The equivalent fall height of ski and snowboard jumps can be calculated if the Cartesian coordinates of the cross-sectional profile at the jump center line and takeoff angle are available. The equivalent fall height is a surrogate measure of ground impact velocity that correlates to injury severity.
+
+The previous numerical implementation by M. Hubbard (cite old article?) used a proprietary software and computing environment, MATLAB. This paper discusses the improvement of this software to an open source Python computing environment, housed in a web application and available to all users with a desktop, tablet, or mobile device.
+
+\subsection{Moral Imperative}
+%
+Reducing the risk of injuries on manufactured jumps motivates this work. Intelligent, engineering design based on classical mechanics shapes features to limit EFH. This complies with the first canon of engineering ethics ``Hold paramount the safety, health and welfare of the pubi''. In the context of snow sport safety, the first canon compels engineers to direct their technical expertise to protecting snow sport participants from injuries. 
+
+People unfamiliar with the legal and insurance systems in the United States might fail to appreciate that technical literature is corrupted in the defense of unsafe practices and corporate profits. Peer-reviewed, technical literature provides support for testimony in U.S. lawsuits. Plaintiffs and defendants both hire their own experts to testify. Authors of technical papers can make money by testifying. When it is for the defense, this testimony can result in denying compensation to injuries, and serves to prolong unsafe practices in snowsports. Rarely do experts report any conflicts of interest in their papers and presentations, or when they organize and chair meetings or edit publications. Financial support for publications used by expert witnesses can be routed through consulting companies to pretend some deniability of conflicts in their papers.  
+
+Designing jumps to limit EFH and reduce the risk of injuries is based on well-known and well-established laws of mechanics. The concept that designing jumps to limit EFH and control energy dissipation rates can reduce the risk is irrefutable. It is basic physics. To counter this solid, fundamental, scientific concept for defense experts, confounding factors are introduced. These serve to cloud and confuse the basic issues. Consider three examples of papers co-authored by well-known defense experts who testify for the ski industry in ski injury cases. Shealy et al. (2010) conducted a study of the influence of take-off speeds on landing locations with a series of jumpers who appeared to use the feature and show that the people who jumped while they were measuring land within a narrow region. Shealy et al. (2015) total serious injury rates appear not to have changed while of terrain parks increased. In an article on landing positions Scher et al. (2015) show that body orientation at impact is important. The first two studies do a poor job of isolating variables, and were not intended to, and the third suffers from restriction of range. None of these papers are intended to reduce injury rates. No ways are suggested in which their findings could be used to promote the safety, health and welfare of the public.
+
+Testifying for an injured plaintiff, or to defend corporations, in injury cases, are not equivalent actions ethically, neither is authoring apparently all kinds of conflicting papers on injuries. The former attempts to address in problems that cause injuries, holding paramount the safety health and welfare of the public. The latter attempts to defend the practices that might have contributed to the injury to limit financial losses of insurance companies. Proverbial two sides to every question do not exist in science and engineering. Experiments in snowsports, no matter how expensive and sophisticated the instrumentation, are not going to disprove the fundamental laws of classical mechanics. If some statics or experimental results do not seem to support work based on classical mechanics, then there is a problem with the statistical or experimental design or their interpretation, and not with classical mechanics. Defending practices that lead to injuries at the service of industry can prolong these practices, which can lead to further injuries, clearly violating the first canon of engineering ethics.
+
+\section{Equivalent Fall Height}
+%
+In the simplest terms, the equivalent fall height, $h$ of an object is defined as
+\begin{align}
+  h = v^2/2g
+  \label{eq:efh_general}
+\end{align}
+where $v$ is the velocity of an object and $g$ is gravity. This is commonly used to measure impact severity by OSHA, FAA, and others. To calculate the equivalent fall height on a slope, the equation becomes
+\begin{align}
+  h = v_{\perp}^2/2g
+  \label{eq:efh_slope}
+\end{align}
+where $v_{\perp}$ is the velocity perpendicular to the landing surface. For the equivalent fall height of a ski slope, we have defined the xy coordinate system to have an origin at the takeoff point. For something to have a soft landing, and thus small EFH, there must only be a small misalignment between the takeoff angle, $\theta$, and the slope angle, $\phi$. 
+\begin{align}
+    v_{\perp} = \sqrt{2gh} = v\sin(\theta - \phi)
+\end{align}
+If we assume no aerodynammic forces, the projectile equations show that x, y system is linear and quadratic in time. Inverting the parabola gives the initial velocity, $v_o$ required to reach a given (x,y):
+\begin{align}
+    v_o = \sqrt{\frac{x^2g}{2(x \tan \theta_o -y)\cos^{2}\theta}}
+\end{align}
+Using the above equations, the equivalent fall height h is a function of only 4 variables: takeoff angle $\theta$, landing coordinates (x,y), and the slope of the landing surface $\frac{dy}{dx}$ also written as $\tan\phi$. Given a takeoff angle, one can either solve for the slope $\frac{dy}{dx}$ given equivalent fall height (design) or the equivalent fall height given the slope (analysis).
+
+\subsection{Design}
+
+\begin{align}
+    \frac{dy}{dx} = \tan[\tan^{-1}(\frac{2y(x)}{x}- \tan\theta)+ \sin^{-1}\sqrt{\frac{h}{\frac{x^2}{4(x\tan\theta-y(x))\cos^{2}\theta}-y(x)}]}
+\end{align}
+
+\subsection{Analysis}
+
+\begin{align}
+    h = [\frac{x^2}{4(x\tan\theta-y)\cos^{2}\theta}-y]\sin^{2}[\tan^{-1}(\frac{2y}{x}- \tan\theta)- \tan^{-1}\frac{dy}{dx}]
+\end{align}
+
+\section{Online Access}
+%
+Software for designing ski jumps with a constant equivalent fall height \cite{Moore2018} 
+The software comprises of a general purpose, extensible, object oriented software library with tools for 2D skiing simulation. Using the library code, the web application performs two tasks -- equivalent fall height design and analysis. The web application is designed for a non-technical end user and usable on a desktop, tablet or mobile device. 
+  
+The software is written in Python and uses popular packages including NumPy, SciPy, SymPy, and Pandas.
+The software is open source, which means anyone can download, modify and redistribute the source code. It is licensed under the MIT redistribution license with source code available on Gitlab and PyPi. Users can submit bugs, feature requests, code improvements and additions.  The software is documented at \href{https://skijumpdesign.readthedocs.io}{https://skijumpdesign.readthedocs.io}. 
+
+\section{Jump Shape Measurement}
+%
+The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and the slope at each coordinate to compute the equivalent fall height. Direct measurements of the coordinates can be done with surveying equipment or accurate GPS tools and indirect measurements can be done less expensively, but more laboriously.
+\subsection{Defining the Center Line}
+\subsection{Parent Slope Angle}
+\subsection{Takeoff point and Takeoff Angle}
+\subsection{Tape Measure and Level}
+%
+A flexible tape measure is laid parallel to the center line along the surface of the jump. A series of distance measurements can be recorded along with the slope at that location. The absolute slope can be measured with a digital level. With the distance along the curve and the slope at each distance measurement, the Cartesian coordinates can be calculated with TODO.
+
+\subsection{Surveying}
+%
+Analog and digital theodolites can be used to measure the relative angles from the device to points in the distance. The Carteisan coordinates can be calculated from these measures.
+
+\subsection{Differential GPS}
+%
+Consumer grade differential GPS units can measure the Cartesian coordinates directly with 1~\SIunit{\centi\meter} accuracy up to 1~\SIunit{\kilo\meter} distances from the base station. For example, we have used the \$1500 Piksi differential GPS system (SwiftNav, San Francisco, USA) to record slope shapes from a roving skier with GPS antenaee mounted to the helmet.
+
+\subsection{Park Profiler}
+
+\section{Case Studies}
+
+\section{Conclusion}
+
+\end{document}
