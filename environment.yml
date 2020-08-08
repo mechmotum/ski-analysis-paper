@@ -1,0 +1,15 @@
+name: ski-analysis-paper
+channels:
+  - conda-forge
+dependencies:
+  - cython
+  - dash
+  - dash-table
+  - ipython
+  - matplotlib
+  - numpy >=0.13.0  # requires new options in gradient()
+  - pandas
+  - python >=3.8
+  - scipy >=1.0  # requires solve_ivp()
+  - sympy
+  - xlrd
