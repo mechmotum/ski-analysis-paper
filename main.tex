@@ -166,16 +166,16 @@ height (design) or the equivalent fall height given the slope (analysis).
 \subsection{Design}
 
 \begin{align}
-  \frac{dy}{dx} = \tan[\tan^{-1}(\frac{2y(x)}{x} - \tan\theta) +
+  \frac{dy}{dx} = \tan\left[\tan^{-1}(\frac{2y(x)}{x} - \tan\theta) +
     \sin^{-1}\sqrt{\frac{h}{\frac{x^2}{4(x\tan\theta -
-    y(x))\cos^{2}\theta} - y(x)}]}
+    y(x))\cos^{2}\theta} - y(x)}}\right]
 \end{align}
 
 \subsection{Analysis}
 
 \begin{align}
-  h = [\frac{x^2}{4(x\tan\theta - y)\cos^{2}\theta} -
-    y]\sin^{2}[\tan^{-1}(\frac{2y}{x}- \tan\theta)- \tan^{-1}\frac{dy}{dx}]
+  h = \left[\frac{x^2}{4(x\tan\theta - y)\cos^{2}\theta} -
+    y\right]\sin^{2}\left[\tan^{-1}(\frac{2y}{x}- \tan\theta)- \tan^{-1}\frac{dy}{dx}\right]
   \label{eq:efh}
 \end{align}
 
@@ -243,6 +243,8 @@ from a roving skier with GPS antenaee mounted to the helmet.
 \subsection{Park Profiler}
 
 \section{Case Studies}
+\subsection{Vine v Bear Valley}
+\subseciton{Salvini v Snoqualmie}
 
 \section{Conclusion}
 
