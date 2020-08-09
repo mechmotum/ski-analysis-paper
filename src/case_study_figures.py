@@ -116,9 +116,41 @@ skier = Skier()
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
                                                   takeoff_angle, skier)
+ylim = profile_ax.get_ylim()
+profile_ax.set_ylim((-20.0, ylim[1]))
 
 fig = profile_ax.figure
 
 fig.set_figwidth(5.25)
 
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'vine-v-bear-valley.pdf'))
+
+# Salvini v Snoqualmie
+
+landing_surface_data = np.loadtxt(os.path.join(PROJECT_ROOT, 'data',
+                                               'washington-2004-surface.csv'),
+                                  delimiter=',',  # comma separated
+                                  skiprows=1)  # skip the header row
+
+landing_surface = Surface(landing_surface_data[:, 0],  # x values in meters
+                          landing_surface_data[:, 1])  # y values in meters
+takeoff_angle = 25.0  # degrees
+takeoff_point = (0.0, 0.0)  # meters
+fall_height = 1.0  # meters
+slope_angle = -10.0  # degrees
+approach_length = 220.0  # meters
+
+skier = Skier()
+
+profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
+                                                  slope_angle, approach_length,
+                                                  takeoff_angle, skier)
+
+ylim = profile_ax.get_ylim()
+profile_ax.set_ylim((-30.0, ylim[1]))
+
+fig = profile_ax.figure
+
+fig.set_figwidth(5.25)
+
+fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'salvini-v-snoqualmie.pdf'))
