@@ -19,7 +19,10 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
         make_jump(parent_slope_angle, 0.0, approach_length, takeoff_angle,
                   equiv_fall_height)
 
-    measured_surface.shift_coordinates(takeoff.end[0], takeoff.end[1])
+    # move the designed jump takeoff point to 0, 0
+    delx, dely = -takeoff.end[0], -takeoff.end[1]
+    for surface in (slope, approach, takeoff, landing, landing_trans, flight):
+        surface.shift_coordinates(delx, dely)
 
     design_speed = flight.speed[0]
     low_speed = 1/2*design_speed
@@ -35,6 +38,8 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
 
     fig, (prof_ax, efh_ax) = plt.subplots(2, 1, sharex=True,
                                           constrained_layout=True)
+
+    prof_ax.set_aspect('equal')
 
     increment = 1.0
 
