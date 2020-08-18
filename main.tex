@@ -9,6 +9,8 @@
 \usepackage{siunitx}
 % figures!
 \usepackage{graphicx}
+% for including TODO notes
+\usepackage{todonotes}
 
 \title{Measurement and Analysis of Equivalent Fall Height of Ski and Snowboard Jumps with Explanation Through Case Studies}
 \author{Bryn Cloud, Mont Hubbard, Jason K. Moore, Christopher Brown}
@@ -62,16 +64,26 @@
 
 \section{Introduction}
 %
+Greater human-object impact velocity normal to the impact surface causes
+greater injuries\todo{We need strong citations for this claim.}.
+A common surrogate for measures impact velocity is ``equivalent fall height''.
+Equivalent fall height provides a conceptually simple interpretation of the
+danger from impact.
 The equivalent fall height of ski and snowboard jumps can be calculated if the
-Cartesian coordinates of the cross-sectional profile at the jump center line
-and takeoff angle are available. The equivalent fall height is a surrogate
-measure of ground impact velocity that correlates to injury severity.
+Cartesian coordinates of the cross-sectional profile at the jumper's path
+center line and takeoff angle are available.
+Reduction in the equivalent fall height is one of several design factors that
+can reduce injury.
 
-The previous numerical implementation by M. Hubbard (cite old article?) used a
-proprietary software and computing environment, MATLAB. This paper discusses
-the improvement of this software to an open source Python computing
-environment, housed in a web application and available to all users with a
-desktop, tablet, or mobile device.
+This paper 1) explains why equivalent fall height is important to assess in
+jump design, 2) explains how to measure the Cartesian coordinates of a jump, 3)
+shows how to calculate equivalent fall height, 3) details a user-friendly web
+application for calculating equivalent fall height, and 4) uses some cases
+studies to show how dangerous past constructed jumps can be.
+
+\subsection{History}
+%
+\todo[inline]{Mont should write this section.}
 
 \subsection{Moral Imperative}
 %
@@ -132,71 +144,98 @@ the first canon of engineering ethics.
 
 \section{Equivalent Fall Height}
 %
-In the simplest terms, the equivalent fall height, $h$ of an object is defined
-as
+The equivalent fall height $h$ of an object is defined as
+%
 \begin{align}
-  h = v^2/2g
+  h = \frac{v^2}{2g}
   \label{eq:efh_general}
 \end{align}
-where $v$ is the velocity of an object and $g$ is gravity. This is commonly
-used to measure impact severity by OSHA, FAA, and others. To calculate the
-equivalent fall height on a slope, the equation becomes
+%
+where $v$ is the impact velocity of an object and $g$ is the acceleration due
+to gravity. This definition results from equating the kinetic energy of an
+object moving at velocity $v$ with the potential energy of the same object at a
+height $h$ above the ground. Equivalent fall height is commonly used to measure
+impact severity by OSHA, FAA, and others~\cite{Hubbard2012}. To calculate the
+equivalent fall height when impact is at an angle from the impact surface, the
+equation becomes
+%
 \begin{align}
   h = v_{\perp}^2/2g
   \label{eq:efh_slope}
 \end{align}
-where $v_{\perp}$ is the velocity perpendicular to the landing surface. For the
-equivalent fall height of a ski slope, we have defined the xy coordinate system
-to have an origin at the takeoff point. For something to have a soft landing,
-and thus small EFH, there must only be a small misalignment between the takeoff
+%
+where $v_{\perp}$ is the velocity perpendicular to the impact surface. To
+calculate the equivalent fall height of a ski slope, we have defined the
+Cartesian coordinates of jump cross section in the jumper's path. We select the
+takeoff point to be the origin, as it is a common feature of all jumps.
+For the jumper to have a low impact velocity, and thus small equivalent fall
+height, there must only be a small misalignment between the takeoff\todo{Should
+this be landing angle? Or is this referring to the case of a flat surface?}
 angle, $\theta$, and the slope angle, $\phi$.
+%
 \begin{align}
   v_{\perp} = \sqrt{2gh} = v\sin(\theta - \phi)
 \end{align}
-If we assume no aerodynammic forces, the projectile equations show that x, y
-system is linear and quadratic in time. Inverting the parabola gives the
-initial velocity, $v_o$ required to reach a given (x,y):
+
+If no aerodynamic forces is assumed, the projectile equations show that x, y
+system is linear and quadratic in time.\todo{Not sure what this sentence is
+supposed to mean}.
+Inverting the parabola gives the initial velocity, $v_o$ required to reach a
+given location:
+%
 \begin{align}
   v_o = \sqrt{\frac{x^2g}{2(x \tan \theta_o -y)\cos^{2}\theta}}
 \end{align}
-Using the above equations, the equivalent fall height h is a function of only 4
-variables: takeoff angle $\theta$, landing coordinates (x,y), and the slope of
+
+Using the above equations, the equivalent fall height h is a function of only
+four variables: takeoff angle $\theta$, landing coordinates $(x, y)$, and the slope of
 the landing surface $\frac{dy}{dx}$ also written as $\tan\phi$. Given a takeoff
 angle, one can either solve for the slope $\frac{dy}{dx}$ given equivalent fall
-height (design) or the equivalent fall height given the slope (analysis).
-
-\subsection{Design}
-
+height $h$ or the equivalent fall height given the impact slope $\phi$. The
+following equations show the two forms where the first is useful in designing
+jumps with a specified equivalent fall height and the second is useful in
+evaluating an existing jump.
+%
 \begin{align}
-  \frac{dy}{dx} = \tan\left[\tan^{-1}(\frac{2y(x)}{x} - \tan\theta) +
+  \frac{dy}{dx} = \tan\left[\tan^{-1}\left(\frac{2y(x)}{x} - \tan\theta\right) +
     \sin^{-1}\sqrt{\frac{h}{\frac{x^2}{4(x\tan\theta -
-    y(x))\cos^{2}\theta} - y(x)}}\right]
-\end{align}
-
-\subsection{Analysis}
-
-\begin{align}
+    y(x))\cos^{2}\theta} - y(x)}}\right] \\
   h = \left[\frac{x^2}{4(x\tan\theta - y)\cos^{2}\theta} -
-    y\right]\sin^{2}\left[\tan^{-1}(\frac{2y}{x}- \tan\theta)- \tan^{-1}\frac{dy}{dx}\right]
+    y\right]\sin^{2}\left[\tan^{-1}\left(\frac{2y}{x}- \tan\theta\right)- \tan^{-1}\frac{dy}{dx}\right]
   \label{eq:efh}
 \end{align}
 
-\section{Online Access}
+Jumpers are subject to aerodynamic drag. If included there is no closed form
+solution for the equivalent fall height, but the equivalent fall height can be
+computed through simulation. The jumper's flight path is found by integrating
+the flight equations of motion at various takeoff velocities and computing the
+misalignment in jumper landing angle and the slope angle to then find the
+equivalent fall height.
+
+\section{Software and Online Access}
 %
-We developed software for designing ski jumps with a constant equivalent fall
-height in \cite{Moore2018}. The software comprises of a general purpose,
-extensible, object oriented software library with tools for 2D skiing
+Previously, we developed software for designing ski jumps with a constant
+equivalent fall height~\cite{Moore2018}. The software comprises of a general
+purpose, extensible, object oriented software library with tools for 2D skiing
 simulation. Using the library code, a web application was developed for
 interactive jump design. The web application is designed for a non-technical
-end user and usable on a desktop, tablet, or mobile device.
+end user and usable on a desktop, tablet, or mobile device; any device that
+supports a web browser.
 
 We have extended the capabilities of the software in version 0.1.4 for the
 purposes of the work described in this paper. New library features were added
 that automate the calculation of equivalent fall height for jump profiles
-described by a series of Cartesian coordinates.
+described by a series of Cartesian coordinates. Additionally, a new
+``analysis'' page was added to the web application which allows users to upload
+either a Microsoft Excel spreadsheet file or a comma separated value text file
+with the jump profile coordinates. The jump is then analyzed and the equivalent
+fall height is displayed graphically for interactive user manipulation and
+viewing.
+
+\todo[inline]{Add a figure that shows what the new web app page looks like.}
 
 The software is written in Python and uses popular packages including NumPy,
-SciPy, SymPy, and Pandas.  The software is open source, which means anyone can
+SciPy, SymPy, and Pandas. The software is open source, which means anyone can
 download, modify and redistribute the source code. It is licensed under the MIT
 redistribution license with source code available on Gitlab and PyPi. Users can
 submit bugs, feature requests, code improvements and additions.  The software
@@ -245,6 +284,11 @@ from a roving skier with GPS antenaee mounted to the helmet.
 \subsection{Park Profiler}
 
 \section{Case Studies}
+%
+Below we present two case studies derived from cases in the United States in
+which the jury ruled in favor of the plaintiffs, in that there was a neglect in
+the design and construction of the jumps and that contributed significantly to
+the injury severity of the jumpers.
 \subsection{Charlene Vine v Bear Valley Ski Company}
 %
 In 2000, Ms. Charlene Vine's spine was broken on a jump constructed at the Bear Valley
