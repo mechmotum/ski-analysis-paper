@@ -11,6 +11,8 @@
 \usepackage{graphicx}
 % for including TODO notes
 \usepackage{todonotes}
+% snyntax highlighting for code
+\usepackage{minted}
 
 \title{Measurement and Analysis of Equivalent Fall Height of Ski and Snowboard Jumps with Explanation Through Case Studies}
 \author{Bryn Cloud, Mont Hubbard, Christopher Brown, Jason K. Moore}
@@ -225,16 +227,75 @@ supports a web browser.
 We have extended the capabilities of the software in version 0.1.4 for the
 purposes of the work described in this paper. New library features were added
 that automate the calculation of equivalent fall height for jump profiles
-described by a series of Cartesian coordinates. Additionally, a new
+described by a series of Cartesian coordinates.
+Listing~\ref{lis:example-efh-calc} demonstrates creating a surface from some
+measured data points and then calculating the equivalent fall height at
+0.2\si{\meter} increaments.
+%
+\begin{listing*}
+  \begin{minted}{pycon}
+>>> import numpy as np
+>>> from skijumpdesign import Surface, Skier
+>>> takeoff_ang = 10  # degrees
+>>> takeoff_point = (0, 0)
+>>> x_ft = np.array([-232.3,-203.7,-175.0,-146.3,-117.0,-107.4,
+...    -97.7,-88.0,-78.2,-68.5,-58.8,-49.1,-39.4,-34.5,-29.7,
+...    -24.8,-19.8,-17.8,-15.8,-13.8,-11.8,-9.8,-7.8,-5.9,-3.9,
+...    -2.0,0.0,0.0,0.0, 2.0,3.9,5.9,7.9,9.9,11.9,13.9,15.9,
+...    17.9,19.9,21.9,23.9,25.8,27.8,29.7,31.5,33.4,35.2,37.0,
+...    38.8,43.3,47.8,52.3,56.8,61.5,66.2,70.9,75.7,80.6,85.5,
+...    88.4,88.4])
+...
+>>> y_ft = np.array([55.5,46.4,37.7,29.1,22.2,19.7,17.2,14.8,
+...    12.5,10.2,7.7,5.2,2.9,1.8,0.7,-0.2,-1.0,-1.2,-1.4,-1.6,
+...    -1.7,-1.6,-1.5,-1.3,-1.0,-0.4,0.0,0.0,0.0,-0.3,-0.8,
+...    -1.0,-1.4,-1.4,-1.5,-1.5,-1.5,-1.5,-1.6,-1.8,-2.0,-2.4,
+...    -2.9,-3.5,-4.2,-5.0,-5.8,-6.7,-7.5,-9.8,-12.0,-14.2,
+...    -16.2,-18.1,-19.8,-21.4,-22.9,-24.0,-25.0,-25.6,-25.6])
+...
+>>> x_mt = x_ft*0.3048 # convert to meters
+>>> y_mt = y_ft*0.3048 # convert to meters
+>>> # create a surface from the data
+>>> measured_surf = Surface(x_mt, y_mt)
+>>> # use the default skier for simulations
+>>> skier = Skier()
+>>> # calculate the equivalent fall height
+>>> dist, efh = measured_surf.calculate_efh(
+...     np.deg2rad(takeoff_ang), takeoff_point, skier, increment=0.2)
+...
+>>> dist
+array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
+        2.2,  2.4,  2.6,  2.8,  3. ,  3.2,  3.4,  3.6,  3.8,  4. ,  4.2,
+        4.4,  4.6,  4.8,  5. ,  5.2,  5.4,  5.6,  5.8,  6. ,  6.2,  6.4,
+       ...
+       22. , 22.2, 22.4, 22.6, 22.8, 23. , 23.2, 23.4, 23.6, 23.8, 24. ,
+       24.2, 24.4, 24.6, 24.8, 25. , 25.2, 25.4, 25.6, 25.8, 26. , 26.2,
+       26.4, 26.6, 26.8])
+>>> efh
+array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
+       0.09096091, 0.12358184, 0.13702364, 0.15202999, 0.17018343,
+       0.21215627, 0.25897831, 0.31081833, 0.34819418, 0.39161618,
+       ...
+       3.5068079 , 3.63031286, 3.75685189, 3.87041262, 3.90461937,
+       3.93910556, 3.97387212, 4.00891899, 4.04424779, 4.07984952,
+       4.11573359, 4.68049185, 5.53413479, 6.45253722, 7.42628019])
+  \end{minted}
+  \caption{Python interpreter session showing how one could compute the
+  equivlanten fall height of a measured jump.}
+  \label{lis:example-efh-calc}
+\end{listing*}
+
+Additionally, a new
 ``analysis'' page was added to the web application which allows users to upload
-either a Microsoft Excel spreadsheet file or a comma separated value text file
-with the jump profile coordinates. The jump is then analyzed and the equivalent
-fall height is displayed graphically for interactive user manipulation and
-viewing.
+either a comma separated value CSV text file or a Microsoft Excel spreadsheet
+file or with the jump profile coordinates. The jump is then analyzed and the
+equivalent fall height is displayed graphically for interactive user
+manipulation and viewing. Figure~\ref{fig:web-app-screenshot} shows the web
+application with one of the case study jumps loaded for analysis.
 %
 \begin{figure}
   \centering
-  \includegraphics[width=5.00in]{figures/web-app-screenshot.jpg}
+  \includegraphics[width=5.00in]{figures/web-app-screenshot.png}
   \caption{\textbf{Screenshot of the web app} The web app consists of the 1)
     menu, 2) interactive plot, 3) file upload widget, 4) file contents display,
     5) takeoff angle input, 4) compute button, and 5) results download button.}
@@ -242,14 +303,16 @@ viewing.
 \end{figure}
 
 The software is written in Python and uses popular packages including
-NumPy~\cite{Oliphant2006}, SciPy~\cite{Virtanen2020}, SymPy~\cite{Meurer2017},
-Cython~\cite{Behnel2011}, pycvodes, xlrd, matplotlib, Pandas, Plotly, and Dash.
-The software is open source, which means anyone can download, modify and
-redistribute the source code. It is licensed under the MIT redistribution
-license with source code available on Gitlab and PyPi. Users can submit bugs,
-feature requests, code improvements and additions.  The software is documented
-at
-\href{https://skijumpdesign.readthedocs.io}{https://skijumpdesign.readthedocs.io}.
+Cython~\cite{Behnel2011}, matplotlib~\cite{Hunter2007},
+NumPy~\cite{Oliphant2006}, pandas~\cite{team2020},
+Plotly/Dash~\cite{Inc.2015},pycvodes~\cite{Dalhgren2018},
+SciPy~\cite{Virtanen2020}, SymPy~\cite{Meurer2017}, and xlrd.
+The software is open source and licensed under the MIT redistribution license.
+The source code is available on Gitlab
+(\url{https://gitlab.com/moorepants/skijumpdesign}) and PyPi
+(\url{https://pypi.org/project/skijumpdesign/}. Users can submit bugs, feature
+requests, code improvements, and additions at the Gitlab repository.  The
+software is documented at \href{https://skijumpdesign.readthedocs.io}{skijumpdesign.readthedocs.io}.
 
 \section{Jump Shape Measurement}
 %
@@ -258,29 +321,31 @@ slope at each coordinate to compute the equivalent fall height. Direct
 measurements of the coordinates can be done with surveying equipment or
 accurate GPS tools and indirect measurements can be done less expensively, but
 more laboriously.
-
-\subsection{Defining the Center Line}
 %
+\begin{description}
+  \item[Mark the jump center line] Mark a line that defines the projection of
+    the jumper's path onto the landing surface. This indicates the cross
+    sectional profile that is to be measured.
+  \item[Takeoff point] Locate the jumper takeoff point and measure the vertical
+    and horizontal location relative to the start of the origin of the tape
+    measure.
+  \item [Takeoff angle] Measure the absolute slope at the takeoff point using a
+    digital level.
+  \item[Tape Measure and Level] A flexible tape measure is laid parallel to the
+    center line along the surface of the jump. A series of distance
+    measurements can be recorded along with the slope at that location. The
+    absolute slope can be measured with a digital level. With the distance
+    along the curve and the slope at each distance measurement, the Cartesian
+    coordinates can be calculated with\todo{describe these calculations or
+    reference Mont's ASTM standard}.
+\end{description}
 
-\subsection{Parent Slope Angle}
-%
-
-\subsection{Takeoff point and Takeoff Angle}
-%
-
-\subsection{Tape Measure and Level}
-%
-A flexible tape measure is laid parallel to the center line along the surface
-of the jump. A series of distance measurements can be recorded along with the
-slope at that location. The absolute slope can be measured with a digital
-level. With the distance along the curve and the slope at each distance
-measurement, the Cartesian coordinates can be calculated with TODO.
 
 \subsection{Surveying}
 %
 Analog and digital theodolites can be used to measure the relative angles from
-the device to points in the distance. The Carteisan coordinates can be
-calculated from these measures.
+the device to points in the distance using standard surveying techniques. The
+Carteisan coordinates can be calculated from these measures.
 
 \subsection{Differential GPS}
 %
@@ -291,6 +356,9 @@ differential GPS system (SwiftNav, San Francisco, USA) to record slope shapes
 from a roving skier with GPS antenaee mounted to the helmet.
 
 \subsection{Park Profiler}
+%
+\todo[inline]{Add short description of the park profiler and cite McNeil's
+work on it.}
 
 \section{Case Studies}
 %
@@ -324,7 +392,8 @@ stoery falls are estimated from data in \cite{Vish2005}.
   \label{fig:vine-v-bear-valley}
 \end{figure}
 
-\subsection{Salvini v Snoqualmie}
+\subsection{Kenny Salvini v Ski Lifts Inc.}
+%
 \begin{figure}
   \centering
   \includegraphics[width=5.25in]{figures/salvini-v-snoqualmie.pdf}
