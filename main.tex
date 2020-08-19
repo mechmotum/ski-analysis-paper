@@ -13,7 +13,7 @@
 \usepackage{todonotes}
 
 \title{Measurement and Analysis of Equivalent Fall Height of Ski and Snowboard Jumps with Explanation Through Case Studies}
-\author{Bryn Cloud, Mont Hubbard, Jason K. Moore, Christopher Brown}
+\author{Bryn Cloud, Mont Hubbard, Christopher Brown, Jason K. Moore}
 \date{\today}
 
 \begin{document}
@@ -231,15 +231,24 @@ either a Microsoft Excel spreadsheet file or a comma separated value text file
 with the jump profile coordinates. The jump is then analyzed and the equivalent
 fall height is displayed graphically for interactive user manipulation and
 viewing.
+%
+\begin{figure}
+  \centering
+  \includegraphics[width=5.00in]{figures/web-app-screenshot.jpg}
+  \caption{\textbf{Screenshot of the web app} The web app consists of the 1)
+    menu, 2) interactive plot, 3) file upload widget, 4) file contents display,
+    5) takeoff angle input, 4) compute button, and 5) results download button.}
+  \label{fig:web-app-screenshot}
+\end{figure}
 
-\todo[inline]{Add a figure that shows what the new web app page looks like.}
-
-The software is written in Python and uses popular packages including NumPy,
-SciPy, SymPy, and Pandas. The software is open source, which means anyone can
-download, modify and redistribute the source code. It is licensed under the MIT
-redistribution license with source code available on Gitlab and PyPi. Users can
-submit bugs, feature requests, code improvements and additions.  The software
-is documented at
+The software is written in Python and uses popular packages including
+NumPy~\cite{Oliphant2006}, SciPy~\cite{Virtanen2020}, SymPy~\cite{Meurer2017},
+Cython~\cite{Behnel2011}, pycvodes, xlrd, matplotlib, Pandas, Plotly, and Dash.
+The software is open source, which means anyone can download, modify and
+redistribute the source code. It is licensed under the MIT redistribution
+license with source code available on Gitlab and PyPi. Users can submit bugs,
+feature requests, code improvements and additions.  The software is documented
+at
 \href{https://skijumpdesign.readthedocs.io}{https://skijumpdesign.readthedocs.io}.
 
 \section{Jump Shape Measurement}
