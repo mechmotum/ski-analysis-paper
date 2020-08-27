@@ -13,8 +13,11 @@
 \usepackage{todonotes}
 % snyntax highlighting for code
 \usepackage{minted}
+% manually set margins
+\usepackage{geometry}[margins=1in]
 
-\title{Measurement and Analysis of Equivalent Fall Height of Terrain Park Jumps: Lessons from Case Studies}
+\title{Measurement and Analysis of Equivalent Fall Height of Terrain Park
+  Jumps: Lessons from Case Studies}
 \author{Bryn Cloud, Mont Hubbard, Christopher Brown, Jason K. Moore}
 \date{\today}
 
@@ -214,6 +217,10 @@ the flight equations of motion at various takeoff velocities and computing the
 misalignment in jumper landing angle and the slope angle to then find the
 equivalent fall height.
 
+\todo[inline]{Clearly articulate the assumptions made in our calculations. We
+  should also reiterate how some aspects are negligible, as Mont has described
+  in prior papers.}
+
 \section{Software and Online Access}
 %
 Previously, we developed software for designing ski jumps with a constant
@@ -237,7 +244,7 @@ measured data points and then calculating the equivalent fall height at
 >>> import numpy as np
 >>> from skijumpdesign import Surface, Skier
 >>> takeoff_ang = 10  # degrees
->>> takeoff_point = (0, 0)
+>>> takeoff_point = (0, 0)  # meters
 >>> x_ft = np.array([-232.3,-203.7,-175.0,-146.3,-117.0,-107.4,
 ...    -97.7,-88.0,-78.2,-68.5,-58.8,-49.1,-39.4,-34.5,-29.7,
 ...    -24.8,-19.8,-17.8,-15.8,-13.8,-11.8,-9.8,-7.8,-5.9,-3.9,
@@ -257,13 +264,13 @@ measured data points and then calculating the equivalent fall height at
 >>> y_mt = y_ft*0.3048 # convert to meters
 >>> # create a surface from the data
 >>> measured_surf = Surface(x_mt, y_mt)
->>> # use the default skier for simulations
+>>> # use the default skier properites for simulations
 >>> skier = Skier()
 >>> # calculate the equivalent fall height
->>> dist, efh = measured_surf.calculate_efh(
+>>> x, efh = measured_surf.calculate_efh(
 ...     np.deg2rad(takeoff_ang), takeoff_point, skier, increment=0.2)
 ...
->>> dist
+>>> x  # display the x coordinates
 array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
         2.2,  2.4,  2.6,  2.8,  3. ,  3.2,  3.4,  3.6,  3.8,  4. ,  4.2,
         4.4,  4.6,  4.8,  5. ,  5.2,  5.4,  5.6,  5.8,  6. ,  6.2,  6.4,
@@ -271,7 +278,7 @@ array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
        22. , 22.2, 22.4, 22.6, 22.8, 23. , 23.2, 23.4, 23.6, 23.8, 24. ,
        24.2, 24.4, 24.6, 24.8, 25. , 25.2, 25.4, 25.6, 25.8, 26. , 26.2,
        26.4, 26.6, 26.8])
->>> efh
+>>> efh  # display the equivlanent fall height for each x coordinate
 array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
        0.09096091, 0.12358184, 0.13702364, 0.15202999, 0.17018343,
        0.21215627, 0.25897831, 0.31081833, 0.34819418, 0.39161618,
@@ -362,35 +369,58 @@ work on it.}
 
 \section{Case Studies}
 %
-Below we present two case studies derived from cases in the United States in
-which the jury ruled in favor of the plaintiffs, in that there was a neglect in
-the design and construction of the jumps and that contributed significantly to
-the injury severity of the jumpers.
+Below we present two case studies derived from court proceedings in the United
+States in which the jury ruled in favor of the injured plaintiffs, in that
+there was a neglect in the design and construction of the jumps and that
+contributed significantly to the injury severity of the jumpers.
+
 \subsection{Charlene Vine v Bear Valley Ski Company}
 %
 In 2000, Ms. Charlene Vine's spine was broken on a jump constructed at the Bear Valley
 Ski Resort. The jump shape was that of a ``tabletop'' which is a common shape
 of ski and snowboarding jumps, but the jump's table, which is normally flat,
 was concave. It is the jump constructor's intent that jumpers fully clear the
-table when jumping, but Ms. Vine landed short of the end of the table.
+table when jumping, but Ms.~Vine landed short of the end of the table.
 Figure~\ref{fig:vine-v-bear-valley} shows a reasonable approximation of the
 jump at Bear Valley Ski Resort based on measurements taken of the jump for the
 trial.
 
 The lower panel plots the equivalent fall height for different landing
 locations. It is clear that short of the table end, that the equivalent fall
-height is its highest. Ms. Vine's fall was equivalent to a one to two storey
+height is its highest. Ms.~Vine's fall was equivalent to a one to two storey
 fall. The green jump profile in the upper panel shows a possible jump design of
 similar size with similar possible flight times that ensures a constant
 equivalent fall height of 1~\si{\meter}. The average fall heights for 1 and 2
-stoery falls are estimated from data in \cite{Vish2005}.
+storey falls are estimated from data in \cite{Vish2005}.
 %
 \begin{figure}
   \centering
   \includegraphics[width=5.25in]{figures/vine-v-bear-valley.pdf}
-  \caption{\textbf{Measured Bear Valley ski jump compared to a possible design}}
+  \caption{\textbf{Measured Bear Valley ski jump compared to a possible design}
+  The upper panel shows the cross section of the measured landing surface in as
+  a solid black line. Example flight paths are shown with dashed and dotted
+  black lines from the 30~\si{\degree} takeoff ramp. The
+13~\si{\meter\per\second} takeoff speed is used as the design speed for a jump
+designed with constant equivalent fall height in solid green for comparison.
+The lower panel shows the equivalent fall height for both jumps in
+corresponding
+colors at 1~\si{\meter} intervals. Orange lines indicate relatable fall
+heights.}
   \label{fig:vine-v-bear-valley}
 \end{figure}
+
+If a skier's landing position is less than 5~\si{\meter} or greater than
+18~\si{\meter} from the takeoff point the fall height is less than that which
+causes knee collapse~\cite{Minetti1998}, but in the range that jumpers are more
+likely to land the equivalent fall height can become qute dangerous. If a
+jumper lands in the area at the end of the concave tabletop, it is equivalent
+to falling out of a second storey window. This is, in fact, the area that
+Ms.~Vine was estimated to have landed. Her body had also rotated, such that she
+landed on her upper spine and was paralyzed as a result of the two storey fall
+on her neck. In contrast, a landing surface designed to have a constant
+equivalent fall height can be created with a similar amount of snow that would
+could reduce the fall height to 1~\si{\meter}, as shown. Landing on your neck
+from this fall height should surely lower the probability of severe injury.
 
 \subsection{Kenny Salvini v Ski Lifts Inc.}
 %
@@ -403,6 +433,16 @@ stoery falls are estimated from data in \cite{Vish2005}.
 
 \section{Conclusion}
 %
+There are, of course, more factors than jump landing surface shape that
+contribute to injuries on terrain park jumps but impact velocity can be easily
+controlled with a designed landing surface. There is no evidence to support
+that decreasing equivalent fall height increases injuries in falls, only
+evidence that suggests injuries can be decreased. Thus there is no reason not
+to adopt constant equivalent fall heights of low values for public use jump
+designs. Common sense is reall all that is needed to believe that falling from
+higher heights will increase injury to human bodies regardless of other
+factors.
+
 \bibliographystyle{plain}
 \bibliography{references}
 
