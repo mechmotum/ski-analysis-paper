@@ -224,6 +224,24 @@ equivalent fall height.
   should also reiterate how some aspects are negligible, as Mont has described
   in prior papers.}
 
+
+\section{Jump Shape Measurement}
+%
+The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and the
+slope at each coordinate to compute the equivalent fall height. Direct
+measurements of the coordinates can be done with surveying equipment or
+accurate GPS tools and indirect measurements can be done less expensively, but
+more laboriously with a tape measure and level or specialized tools like the
+Park Profiler. Differential GPS is a particularly nice method for collecting
+data.
+
+Consumer grade differential GPS units can measure the Cartesian coordinates
+directly with 1~\si{\centi\meter} accuracy up to 1~\si{\kilo\meter}
+distances from the base station. For example, we have used the 1500 Piksi
+differential GPS system (SwiftNav, San Francisco, USA) to record slope shapes
+from a roving skier with GPS antenaee mounted to the helmet.
+
+
 \section{Software and Online Access}
 %
 Previously, we developed software for designing ski jumps with a constant
@@ -323,53 +341,6 @@ The source code is available on Gitlab
 (\url{https://pypi.org/project/skijumpdesign/}. Users can submit bugs, feature
 requests, code improvements, and additions at the Gitlab repository.  The
 software is documented at \href{https://skijumpdesign.readthedocs.io}{skijumpdesign.readthedocs.io}.
-
-\section{Jump Shape Measurement}
-\todo[inline]{You can tell this story without jump shape measurement, maybe case studies should be before this. Maybe move this before software section.}
-%
-The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and the
-slope at each coordinate to compute the equivalent fall height. Direct
-measurements of the coordinates can be done with surveying equipment or
-accurate GPS tools and indirect measurements can be done less expensively, but
-more laboriously.
-%
-\begin{description}
-  \item[Mark the jump center line] Mark a line that defines the projection of
-    the jumper's path onto the landing surface. This indicates the cross
-    sectional profile that is to be measured.
-  \item[Takeoff point] Locate the jumper takeoff point and measure the vertical
-    and horizontal location relative to the start of the origin of the tape
-    measure.
-  \item [Takeoff angle] Measure the absolute slope at the takeoff point using a
-    digital level.
-  \item[Tape Measure and Level] A flexible tape measure is laid parallel to the
-    center line along the surface of the jump. A series of distance
-    measurements can be recorded along with the slope at that location. The
-    absolute slope can be measured with a digital level. With the distance
-    along the curve and the slope at each distance measurement, the Cartesian
-    coordinates can be calculated with\todo{describe these calculations or
-    reference Mont's ASTM standard}.
-\end{description}
-
-
-\subsection{Surveying}
-%
-Analog and digital theodolites can be used to measure the relative angles from
-the device to points in the distance using standard surveying techniques. The
-Carteisan coordinates can be calculated from these measures.
-
-\subsection{Differential GPS}
-%
-Consumer grade differential GPS units can measure the Cartesian coordinates
-directly with 1~\si{\centi\meter} accuracy up to 1~\si{\kilo\meter}
-distances from the base station. For example, we have used the 1500 Piksi
-differential GPS system (SwiftNav, San Francisco, USA) to record slope shapes
-from a roving skier with GPS antenaee mounted to the helmet.
-
-\subsection{Park Profiler}
-%
-\todo[inline]{Add short description of the park profiler and cite McNeil's
-work on it.}
 
 \section{Case Studies}
 %
