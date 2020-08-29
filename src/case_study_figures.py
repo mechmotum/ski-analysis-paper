@@ -43,20 +43,26 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
 
     increment = 1.0
 
-    dist, efh = measured_surface.calculate_efh(np.deg2rad(takeoff_angle),
-                                               takeoff.end, skier, increment)
+    dist, efh, speeds = measured_surface.calculate_efh(
+        np.deg2rad(takeoff_angle), takeoff.end, skier, increment)
 
-    efh_ax.bar(dist, efh, color='black', align='center', width=increment/2,
-               label="Measured Landing Surface")
+    rects = efh_ax.bar(dist, efh, color='black', align='center',
+                       width=increment/2, label="Measured Landing Surface")
+    for rect, si in list(zip(rects, speeds))[::2]:
+        height = rect.get_height()
+        efh_ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
+                    '{:1.0f}'.format(si), fontsize='xx-small', ha='center',
+                    va='bottom')
 
-    dist, efh = landing.calculate_efh(np.deg2rad(takeoff_angle),
-                                      takeoff.end, skier, increment)
+    dist, efh, speeds = landing.calculate_efh(np.deg2rad(takeoff_angle),
+                                              takeoff.end, skier, increment)
 
     efh_ax.bar(dist, efh, color='C2', align='edge', width=increment/2,
                label="Designed Landing Surface")
 
-    dist, efh = landing_trans.calculate_efh(np.deg2rad(takeoff_angle),
-                                            takeoff.end, skier, increment)
+    dist, efh, speeds = landing_trans.calculate_efh(np.deg2rad(takeoff_angle),
+                                                    takeoff.end, skier,
+                                                    increment)
 
     efh_ax.bar(dist, efh, color='C2', align='edge', width=increment/2,
                label=None)
