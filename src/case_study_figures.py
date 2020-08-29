@@ -51,7 +51,7 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     for rect, si in list(zip(rects, speeds))[::2]:
         height = rect.get_height()
         efh_ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
-                    '{:1.0f}'.format(si), fontsize='xx-small', ha='center',
+                    '{:1.1f}'.format(si), fontsize='xx-small', ha='center',
                     va='bottom')
 
     dist, efh, speeds = landing.calculate_efh(np.deg2rad(takeoff_angle),
