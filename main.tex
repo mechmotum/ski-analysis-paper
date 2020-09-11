@@ -150,7 +150,34 @@ the first canon of engineering ethics.
 
 \section{Equivalent Fall Height}
 %
-The equivalent fall height $h$ of an object is defined as
+\emph{Equivalent fall height} is a commonly used as proxy measure for impact
+danger by numerous industries and safety standards~\cite{Hubbard2012}. It
+represents the required kinetic energy dissipated on impact from a given
+height. On the earth's surface this energy is given by the well known equation
+$mgh$. This literally is the energy available to injure in a non-rotating fall.
+The ability of this energy to injure can be reduced by controlling the impact
+circumstances, e.g. impact cushioning, body orientation, and body
+configuration, but the energy must be dissipated. Larger equivalent fall
+heights require more intricate digitation measures to reduce injury.
+
+Equivalent fall height is a particularly useful measure of danger due to its
+interpretability by people. We have builtin danger sensors when faced with
+drops of large heights and we have strong common sense for relating fall height
+to likelihood of injury due to experience with falls and observation of others'
+falls. For example, we have a sense of the danger associated from falling from
+building storeys of increasing magnitude. Ground floor falls are on the order
+of 1.5~\si{\meter}, second storey are 4.6~\si{\meter}, third
+storey~\si{\meter}, fourth storey 10.7~\si{\meter} and so on. OSHA considers
+1.8~\si{\meter} fall heights beyond the acceptable limit for workplace safety
+and the FAA's safety regulations for safe parachuting landings is a
+3~\si{\meter} fall height. As for skiing, the standards for the Olympic ski
+jumping call for equivalent fall heights of 0.46~\si{\meter}.
+
+% first, second, third, and fourth floor fall heights based on Vish2005
+%5, 15, 25, 35 ft
+%1.5, 4.6, 7.6, 10.7 m
+
+The equivalent fall height $h$ of an object is formally defined as
 %
 \begin{align}
   h = \frac{v^2}{2g}
@@ -160,8 +187,7 @@ The equivalent fall height $h$ of an object is defined as
 where $v$ is the impact velocity of an object and $g$ is the acceleration due
 to gravity. This definition results from equating the kinetic energy of an
 object moving at velocity $v$ with the potential energy of the same object at a
-height $h$ above the ground. Equivalent fall height is commonly used to measure
-impact severity by OSHA, FAA, and others~\cite{Hubbard2012}. To calculate the
+height $h$ above the ground. To calculate the
 equivalent fall height when impact is at an angle from the impact surface, the
 equation becomes
 %
@@ -170,10 +196,11 @@ equation becomes
   \label{eq:efh_slope}
 \end{align}
 %
-where $v_{\perp}$ is the velocity perpendicular to the impact surface. To
-calculate the equivalent fall height of a ski slope, we have defined the
-Cartesian coordinates of jump cross section in the jumper's path. We select the
-takeoff point to be the origin, as it is a common feature of all jumps.
+where $v_{\perp}$ is the velocity perpendicular to the impact surface. With
+this in mind, the equivalent fall height of a ski slope can be found by
+defining the Cartesian coordinates of jump cross section in the jumper's flight
+path. We select the takeoff point to be the origin of this coordinate system,
+as it is a common feature of most jumps.
 For the jumper to have a low impact velocity, and thus small equivalent fall
 height, there must only be a small misalignment between the takeoff\todo{Should
 this be landing angle? Or is this referring to the case of a flat surface?}
@@ -218,7 +245,6 @@ the flight equations of motion at various takeoff velocities and computing the
 misalignment in jumper landing angle and the slope angle to then find the
 equivalent fall height.
 
-\todo[inline]{Need a statement of the rational of EFH being a proxy for impact danger. The kinetic energy has to be dissipated on impact. The energy is mgh and it is available to injury you. EFH is important because it the energy available to injure.}
 
 \todo[inline]{Clearly articulate the assumptions made in our calculations. We
   should also reiterate how some aspects are negligible, as Mont has described
@@ -354,10 +380,6 @@ States in which the jury ruled in favor of the injured plaintiffs, in that
 there was a neglect in the design and construction of the jumps and that
 contributed significantly to the injury severity of the jumpers.
 
-Standard EFH for Olympic 90 meter jump: 0.46 m
-Maximum EFH OSHA standards: 1.8 m
-Maximum allowed for parachuting by FAA: 3 m standard numver AS8015
-
 \todo[inline]{Each one of these cases tells a story of why EFH matters.}
 
 \subsection{Charlene Vine v Bear Valley Ski Company}
@@ -427,22 +449,50 @@ possible landing location. In 2002, the jury ruled in favor of Ms.~Vine,
 agreeing that Bear Valley was responsible for designing safer
 jumps~\cite{Alvarado2002}.
 
-\subsection{Kenny Salvini v Ski Lifts Inc.}
+\subsection{Kenneth Salvini v Ski Lifts Inc.}
+%
+In 2004, Kenneth Salvini attempted a table top jump with skis in the terrain
+park of the The Summit at Snoqualmie ski resort in Snoqalmie, Washington, USA.
+In this case, Mr.~Salvini overshot the location the jump builders' intended
+landing location even while traveling at expected skiing speeds. Mr.~Salvini
+somersaulted during flight and landed on his back, ultimately causing
+quadriplegia. At his landing location the equivalent fall height was over 10
+meters, approximately a 4 storey fall height.
+Figure~\ref{fig:salvini-v-snoqualmie} shows the reconstruction of the jump
+profile in a solid black line based on measurements in the court proceedings.
+For takeoff speeds greater than 13~\si{\meter\per\second}
+(47~\si{\kilo\meter\per\hour}), the lower panel shows, also in black, that the
+equivalent fall height is greater than 8 meters and grows linear with larger
+takeoff speeds. Severe injury is almost certain from falls this high,
+especially so if landing in a way that causes undue forces to the spine, as in
+Mr.~Salvini's case.
+
+The green curve in the upper panel is the profile of a jump designed with a
+1~\si{\meter} equivalent fall height for maximum speeds of
+17~\si{\meter\per\second}. This profile requires significantly more snow than
+the measured jump but alleviates the dangerous impacts possible in the measured
+jump.
+
+This jump highlights how extreme the equivalent fall height can be if the jump
+is not designed. Few recreational skiers will jump out of a four storey window,
+snow landing or not. The likelihood of injury is quite clear and our internal
+altimeter.
 %
 \begin{figure}
   \centering
   \includegraphics[width=5.25in]{figures/salvini-v-snoqualmie.pdf}
-  \caption{\textbf{Measured Snoqualmie ski jump compared to a possible design}}
+  \caption{\textbf{Measured Snoqualmie ski jump compared to a possible design}
+  The upper panel shows the cross section of the measured landing surface in as
+  a solid black line. Example flight paths are shown with dashed and dotted
+  black lines from the 25~\si{\degree} takeoff angle. The
+  17~\si{\meter\per\second} takeoff speed is used as the design speed for a
+  jump designed with constant equivalent fall height in solid green for
+  comparison. The lower panel shows the equivalent fall height for both jumps
+  in corresponding colors at 1~\si{\meter} intervals. The numbers above the
+  vertical bars indicate the takeoff speed in meters per second required to
+  land at that location. Orange lines indicate relatable fall heights.}
   \label{fig:salvini-v-snoqualmie}
 \end{figure}
-
-\subsection{Utah}
-Given an undulating non constant angle parent slope you have the choise of a takeoff point that can make the jump safer.
-\subsection{Colorado}
-You can control the safety by limiting the approach lenght. This was an overjump because they had too long an approach.
-The jump has a very low EFH for low takeoff speeds (lower than 1 meter). So natural undulations led to a small EFH.
-\subsection{Wisconsin}
-Overjumped and takeoff ramp curvature caused rotation. In the software we haven't added the rotation aspect. You can get rid of backwards rotation easily by making the takeoff flat. Can reference FIS 90 m jump rules that specify that the last part is straight for 6 to 8 meters. Cause you have to counteract this effect. 3 m fall height on your feet you break your ankle.
 
 \section{Conclusion}
 %
