@@ -151,27 +151,28 @@ the first canon of engineering ethics.
 \section{Equivalent Fall Height}
 %
 \emph{Equivalent fall height} is a commonly used as proxy measure for impact
-danger by numerous industries and safety standards~\cite{Hubbard2012}. It
-represents the required kinetic energy dissipated on impact from a given
-height. On the earth's surface this energy is given by the well known equation
-$mgh$. This literally is the energy available to injure in a non-rotating fall.
-The ability of this energy to injure can be reduced by controlling the impact
+danger by industry in safety standards~\cite{Hubbard2012}. It represents the
+required kinetic energy dissipated on impact from a given height. On the
+earth's surface this energy is given by the well known equation $mgh$. This is
+the energy available to injure on impact in a non-rotating fall.  The ability
+of this energy to injure can be reduced by controlling the impact
 circumstances, e.g. impact cushioning, body orientation, and body
 configuration, but the energy must be dissipated. Larger equivalent fall
-heights require more intricate digitation measures to reduce injury.
+heights require more intricate protection measures to reduce injury.
 
 Equivalent fall height is a particularly useful measure of danger due to its
-interpretability by people. We have builtin danger sensors when faced with
-drops of large heights and we have strong common sense for relating fall height
-to likelihood of injury due to experience with falls and observation of others'
-falls. For example, we have a sense of the danger associated from falling from
-building storeys of increasing magnitude. Ground floor falls are on the order
-of 1.5~\si{\meter}, second storey are 4.6~\si{\meter}, third
-storey~\si{\meter}, fourth storey 10.7~\si{\meter} and so on. OSHA considers
-1.8~\si{\meter} fall heights beyond the acceptable limit for workplace safety
-and the FAA's safety regulations for safe parachuting landings is a
-3~\si{\meter} fall height. As for skiing, the standards for the Olympic ski
-jumping call for equivalent fall heights of 0.46~\si{\meter}.
+interpretability by people. People have builtin danger sensors when faced with
+potential falls from large heights and they have strong common sense for
+relating fall height to likelihood of injury due to experience with falls and
+observation of others' falls. For example, we have a sense of the danger
+associated from falling from building storeys of increasing magnitude. Ground
+floor falls are on the order of 1.5~\si{\meter}, second storey are
+4.6~\si{\meter}, third storey~\si{\meter}, fourth storey 10.7~\si{\meter} and
+so on~\cite{Vish2005}. OSHA considers 1.8~\si{\meter} fall heights beyond the
+acceptable limit for workplace safety and the FAA's safety regulations for safe
+parachuting landings is a 3~\si{\meter} fall height. As for skiing, the
+standards for the Olympic ski jumping call for equivalent fall heights of
+0.46~\si{\meter}.
 
 % first, second, third, and fourth floor fall heights based on Vish2005
 %5, 15, 25, 35 ft
@@ -184,12 +185,11 @@ The equivalent fall height $h$ of an object is formally defined as
   \label{eq:efh_general}
 \end{align}
 %
-where $v$ is the impact velocity of an object and $g$ is the acceleration due
+where $v$ is the impact velocity of the object and $g$ is the acceleration due
 to gravity. This definition results from equating the kinetic energy of an
-object moving at velocity $v$ with the potential energy of the same object at a
-height $h$ above the ground. To calculate the
-equivalent fall height when impact is at an angle from the impact surface, the
-equation becomes
+object moving at velocity $v$ at impact with the potential energy of the same
+object at a height $h$ above the ground. To calculate the equivalent fall
+height when impact is at an angle from the impact surface, the equation becomes
 %
 \begin{align}
   h = v_{\perp}^2/2g
@@ -202,54 +202,61 @@ defining the Cartesian coordinates of jump cross section in the jumper's flight
 path. We select the takeoff point to be the origin of this coordinate system,
 as it is a common feature of most jumps.
 For the jumper to have a low impact velocity, and thus small equivalent fall
-height, there must only be a small misalignment between the takeoff\todo{Should
-this be landing angle? Or is this referring to the case of a flat surface?}
-angle, $\theta$, and the slope angle, $\phi$.
+height, there must only be a small misalignment between the jumper's landing angle,
+$\theta_J$, and the angle of the landing surface, $\theta_L$. Knowing the
+misalignment and the jumper's impact speed, $v_J$, provides enough to compute
+the perpendicular component of impact velocity.
 %
 \begin{align}
-  v_{\perp} = \sqrt{2gh} = v\sin(\theta - \phi)
+  v_{\perp} = \sqrt{2gh} = v_J\sin(\theta_J - \theta_L)
 \end{align}
 
-If no aerodynamic forces is assumed, the projectile equations show that x, y
-system is linear and quadratic in time.\todo{Not sure what this sentence is
-supposed to mean}.
-Inverting the parabola gives the initial velocity, $v_o$ required to reach a
-given location:
+If aerodynamic forces are neglected~\footnote{Aerodynamic forces are an order
+of magnitude lower than the gravitational forces~\cite{Hubbard2012}}, the
+projectile equations are linear and quadratic in time. Inverting the parabola
+gives the initial speed, $v_o$ required to reach a given location if a takeoff
+angle of $\theta_T$ is assumed
 %
 \begin{align}
-  v_o = \sqrt{\frac{x^2g}{2(x \tan \theta_o -y)\cos^{2}\theta}}
+  v_o = \sqrt{\frac{x^2g}{2(x \tan\theta_T - y)\cos^{2}\theta_T}}
 \end{align}
 
-Using the above equations, the equivalent fall height h is a function of only
-four variables: takeoff angle $\theta$, landing coordinates $(x, y)$, and the slope of
-the landing surface $\frac{dy}{dx}$ also written as $\tan\phi$. Given a takeoff
-angle, one can either solve for the slope $\frac{dy}{dx}$ given equivalent fall
-height $h$ or the equivalent fall height given the impact slope $\phi$. The
-following equations show the two forms where the first is useful in designing
-jumps with a specified equivalent fall height and the second is useful in
-evaluating an existing jump.
+Using the above equations, the equivalent fall height $h$ can be formulated and
+it is a function of only four variables: takeoff angle $\theta_T$, impact
+coordinates $(x, y)$ on the landing surface, and the slope of the landing
+surface $\frac{dy}{dx}$ (also written as $\frac{dy}{dx}=\tan\theta_L$ where
+$\theta_L$ is the landing surface angle). Given a takeoff angle, one can either
+solve for the slope $\frac{dy}{dx}$ given equivalent fall height $h$ or the
+equivalent fall height given the landing surface angle $\theta_L$. The
+following two equations show the two forms where the first is useful in
+designing jumps with a specified equivalent fall height~\cite{Levy2015} and the
+second is useful in evaluating an existing jump.
 %
 \begin{align}
-  \frac{dy}{dx} = \tan\left[\tan^{-1}\left(\frac{2y(x)}{x} - \tan\theta\right) +
-    \sin^{-1}\sqrt{\frac{h}{\frac{x^2}{4(x\tan\theta -
+  \frac{dy}{dx} = \tan\left[\tan^{-1}\left(\frac{2y(x)}{x} - \tan\theta_T\right) +
+    \sin^{-1}\sqrt{\frac{h}{\frac{x^2}{4(x\tan\theta_T -
     y(x))\cos^{2}\theta} - y(x)}}\right] \\
-  h = \left[\frac{x^2}{4(x\tan\theta - y)\cos^{2}\theta} -
-    y\right]\sin^{2}\left[\tan^{-1}\left(\frac{2y}{x}- \tan\theta\right)- \tan^{-1}\frac{dy}{dx}\right]
+  h = \left[\frac{x^2}{4(x\tan\theta_T - y)\cos^{2}\theta_T} -
+    y\right]\sin^{2}\left[\tan^{-1}\left(\frac{2y}{x}- \tan\theta_T\right) - \tan^{-1}\frac{dy}{dx}\right]
   \label{eq:efh}
 \end{align}
 
-Jumpers are subject to aerodynamic drag. If included there is no closed form
+These closed form equations are useful for understanding the fundamental
+relationship of equivalent fall height to the landing surface and well predict
+these values for small jumps but other factors may be useful to include in the
+model. For example, jumpers are subject to aerodynamic drag and this is not
+negligible for larger jumps. If drag is included there is no closed form
 solution for the equivalent fall height, but the equivalent fall height can be
-computed through simulation. The jumper's flight path is found by integrating
-the flight equations of motion at various takeoff velocities and computing the
-misalignment in jumper landing angle and the slope angle to then find the
-equivalent fall height.
-
-
-\todo[inline]{Clearly articulate the assumptions made in our calculations. We
-  should also reiterate how some aspects are negligible, as Mont has described
-  in prior papers.}
-
+computed through iterative simulation~\cite{Levy2015}. The jumper's flight path
+is found by integrating the flight equations of motion at various takeoff
+velocities and computing the misalignment in jumper landing angle and the slope
+angle to then find the equivalent fall height. This more general simulation
+method is implemented in the software described herein and the results reflect
+the inclusion of gravitational and drag forces. The simulations require
+measurements of the landing surface cross-sectional profile coordinates $(x,y)$
+relative to the takeoff point and a measurement of the takeoff angle. The next
+section describes a method of acquiring these coordinate measurements using a
+relatively inexpensive differential GPS system.
 
 \section{Jump Shape Measurement}
 %
@@ -262,16 +269,13 @@ Park Profiler. Differential GPS is a particularly nice method for collecting
 data.
 
 Consumer grade differential GPS units can measure the Cartesian coordinates
-directly with 1~\si{\centi\meter} accuracy up to 1~\si{\kilo\meter}
-distances from the base station. For example, we have used the 1500 Piksi
-differential GPS system (SwiftNav, San Francisco, USA) to record slope shapes
-from a roving skier with GPS antenaee mounted to the helmet. To measure, the
-skier slowly slides up the takeoff ramp and stops at the takeoff point. At
-the takeoff point, the skier makes a T shape by moving side to side on the
-ramp. This T shape is important to determine the center of origin for the EFH
-analysis. 
-
-
+directly with 1~\si{\centi\meter} accuracy up to 1~\si{\kilo\meter} distances
+from the base station. For example, we have used the 1500 Piksi differential
+GPS system (SwiftNav, San Francisco, USA) to record slope shapes from a roving
+skier with GPS antenaee mounted to the helmet. To measure, the skier slowly
+slides up the takeoff ramp and stops at the takeoff point. At the takeoff
+point, the skier makes a T shape by moving side to side on the ramp. This T
+shape is important to determine the center of origin for the EFH analysis.
 
 \section{Software and Online Access}
 %
@@ -378,9 +382,9 @@ software is documented at \href{https://skijumpdesign.readthedocs.io}{skijumpdes
 Below we present two case studies derived from court proceedings in the United
 States in which the jury ruled in favor of the injured plaintiffs, in that
 there was a neglect in the design and construction of the jumps and that
-contributed significantly to the injury severity of the jumpers.
-
-\todo[inline]{Each one of these cases tells a story of why EFH matters.}
+contributed significantly to the injury severity of the jumpers. The results
+below assume a skier mass, frontal area, and drag coefficient of 75~\si{\kg},
+0.34~\si{\meter\squared}, and drag coefficient of 0.821, respectively.
 
 \subsection{Charlene Vine v Bear Valley Ski Company}
 %
