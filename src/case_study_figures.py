@@ -41,6 +41,12 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
 
     prof_ax.set_aspect('equal')
 
+    efh_ax.axhline(4.6, color='C1', label='Avg. 2 Storey Fall Height')
+    efh_ax.axhline(3.0, color='C1', linestyle='dashed',
+                   label='Avg. 1 Storey Fall Height')
+    efh_ax.axhline(1.5, color='C1', linestyle='dashdot',
+                   label='Knee Collapse Height')
+
     increment = 1.0
 
     dist, efh, speeds = measured_surface.calculate_efh(
@@ -66,12 +72,6 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
 
     efh_ax.bar(dist, efh, color='C2', align='edge', width=increment/2,
                label=None)
-
-    efh_ax.axhline(4.6, color='C1', label='Avg. 2 Storey Fall Height')
-    efh_ax.axhline(3.0, color='C1', linestyle='dashed',
-                   label='Avg. 1 Storey Fall Height')
-    efh_ax.axhline(1.5, color='C1', linestyle='dashdot',
-                   label='Knee Collapse Height')
 
     prof_ax = takeoff.plot(ax=prof_ax, linewidth=2, color='C2', label=None)
 
