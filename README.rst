@@ -1,30 +1,44 @@
-Build the paper
-===============
+Get the paper source and set up the software
+============================================
 
-::
+Make a directory somewhere to work in and navigate there::
 
-   $ make
+   $ mkdir ski-paper
+   $ cd ski-paper
 
-Generate figures
-================
+Clone the paper and the skijumpdesign repositories::
 
-To generate the figures, create a conda environment for this project::
+   $ git clone git@gitlab.com:mechmotum/ski-jump-analysis-paper.git
+   $ git clone git@gitlab.com:moorepants/skijumpdesign.git
 
-   $ conda env create -f /path/to/ski-jump-analysis-paper/environment.yml
+Create a conda environment for this project::
 
-Activate the enivronment::
+   $ conda env create -f ski-jump-analysis-paper/environment.yml
+
+Activate the environment::
 
    $ conda activate ski-analysis-paper
 
-Install the development version of skijumpdesign (for now)::
+Install the development version of skijumpdesign::
 
-   (ski-analysis-paper)$ git clone https://gitlab.com/moorepants/skijumpdesign.git
    (ski-analysis-paper)$ cd skijumpdesign
-   (ski-analysis-paper)$ python setup.py develop
+   (ski-analysis-paper)$ pip install --no-dependencies -e .
+   (ski-analysis-paper)$ cd -
 
-And run the Python script to generate the figures::
+Build the paper
+===============
 
-   (ski-analysis-paper)$ python /path/to/ski-jump-analysis-paper/src/case_study_figures.py
+Navigate into the paper directory::
+
+   (ski-analysis-paper)$ cd ski-jump-analysis-paper
+
+Run the Python script to generate the figures::
+
+   (ski-analysis-paper)$ python src/case_study_figures.py
+
+Build the paper::
+
+   (ski-analysis-paper)$ make
 
 References
 ==========
