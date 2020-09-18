@@ -24,6 +24,7 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     for surface in (slope, approach, takeoff, landing, landing_trans, flight):
         surface.shift_coordinates(delx, dely)
 
+    # generate some example flight paths
     design_speed = flight.speed[0]
     low_speed = 1/2*design_speed
     med_speed = 3/4*design_speed
@@ -36,15 +37,22 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     flight_med = skier.fly_to(measured_surface, init_pos=takeoff.end,
                               init_vel=tuple(med_speed*vel_vec))
 
+    # create the figure
     fig, (prof_ax, efh_ax) = plt.subplots(2, 1, sharex=True,
                                           constrained_layout=True)
-
     prof_ax.set_aspect('equal')
 
-    efh_ax.axhline(4.6, color='C1', label='Avg. 2 Storey Fall Height')
-    efh_ax.axhline(3.0, color='C1', linestyle='dashed',
+    # horizontal lines for knee collapse and floor height
+    # storey fall heights are calculated from Vish 2005 using
+    # average_window_fall_height.py
+    efh_ax.axhline(8.4, color='C1', linestyle='solid',
+                   label='Avg. 3 Storey Fall Height')
+    efh_ax.axhline(6.0, color='C1', linestyle='dashed',
+                   label='Avg. 2 Storey Fall Height')
+    efh_ax.axhline(4.4, color='C1', linestyle='dashdot',
                    label='Avg. 1 Storey Fall Height')
-    efh_ax.axhline(1.5, color='C1', linestyle='dashdot',
+    # this value comes from Minetti1998
+    efh_ax.axhline(1.5, color='C1', linestyle='dotted',
                    label='Knee Collapse Height')
 
     increment = 1.0
@@ -89,7 +97,7 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     prof_ax = measured_surface.plot(ax=prof_ax, color='black',
                                     label="Measured Landing Surface")
 
-    prof_ax.set_title('Design Speed: {:1.0f} m/s'.format(design_speed))
+    #prof_ax.set_title('Design Speed: {:1.0f} m/s'.format(design_speed))
 
     prof_ax.set_ylabel('Vertical Position [m]')
     efh_ax.set_ylabel('Equivalent Fall Height [m]')
@@ -102,8 +110,8 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
 
     return prof_ax, efh_ax
 
-# Vine v Bear Valley
 
+# Vine v Bear Valley
 landing_surface_data = np.loadtxt(os.path.join(PROJECT_ROOT, 'data',
                                                'california-2002-surface.csv'),
                                   delimiter=',',  # comma separated
@@ -132,7 +140,6 @@ fig.set_figwidth(5.25)
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'vine-v-bear-valley.pdf'))
 
 # Salvini v Snoqualmie
-
 landing_surface_data = np.loadtxt(os.path.join(PROJECT_ROOT, 'data',
                                                'washington-2004-surface.csv'),
                                   delimiter=',',  # comma separated
