@@ -86,8 +86,8 @@ easily controlled for and is an obvious safety design factor to minimize
 without loss of enjoyment from ski and snowboard participants.
 
 This paper 1) explains why equivalent fall height is important to assess in
-terran park jump design, 2) explains how to measure the Cartesian coordinates
-of a jump using differental GPS, 3) describes how to calculate equivalent fall
+terrain park jump design, 2) explains how to measure the Cartesian coordinates
+of a jump using differential GPS, 3) describes how to calculate equivalent fall
 height, 3) details a user-friendly web application for calculating equivalent
 fall height, and 4) uses some cases studies to show how dangerous past
 constructed jumps can be when equivalent fall height is not explicitly
@@ -150,17 +150,15 @@ problems that cause injuries, holding paramount the safety health and welfare
 of the public. The latter attempts to defend the practices that might have
 contributed to the injury to limit financial losses of insurance companies.
 Proverbial two sides to every question do not exist in science and engineering.
+
 Experiments in snowsports, no matter how expensive and sophisticated the
 instrumentation, are not going to disprove the fundamental laws of classical
-mechanics. If some statics or experimental results do not seem to support work
-based on classical mechanics, then there is a problem with the statistical or
-experimental design or their interpretation, and not with classical mechanics.
-~\todo{I don't like this sentence, as experiments are good things, but these
-folks just use them to cloud the discussion. And this isn't how it works. We
-observe the world and make models, classical mechanics is a model (a really
-good one, but still model).} Defending practices that lead to injuries at the
-service of industry can prolong these practices, which can lead to further
-injuries, clearly violating the first canon of engineering ethics.
+mechanics. If statistics or experimental results do seem in conflict with
+predictions from classical mechanics, then there is a problem with the
+statistical or experimental design or their interpretation, and not with
+classical mechanics. Defending practices that lead to injuries at the service
+of industry can prolong these practices, which can lead to further injuries,
+clearly violating the first canon of engineering ethics.
 
 \section{Equivalent Fall Height}
 %
@@ -346,17 +344,13 @@ measured data points and then calculating the equivalent fall height at
 >>> x  # display the x coordinates
 array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
         2.2,  2.4,  2.6,  2.8,  3. ,  3.2,  3.4,  3.6,  3.8,  4. ,  4.2,
-        4.4,  4.6,  4.8,  5. ,  5.2,  5.4,  5.6,  5.8,  6. ,  6.2,  6.4,
        ...
-       22. , 22.2, 22.4, 22.6, 22.8, 23. , 23.2, 23.4, 23.6, 23.8, 24. ,
        24.2, 24.4, 24.6, 24.8, 25. , 25.2, 25.4, 25.6, 25.8, 26. , 26.2,
        26.4, 26.6, 26.8])
 >>> efh  # display the equivlanent fall height for each x coordinate
 array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
        0.09096091, 0.12358184, 0.13702364, 0.15202999, 0.17018343,
-       0.21215627, 0.25897831, 0.31081833, 0.34819418, 0.39161618,
        ...
-       3.5068079 , 3.63031286, 3.75685189, 3.87041262, 3.90461937,
        3.93910556, 3.97387212, 4.00891899, 4.04424779, 4.07984952,
        4.11573359, 4.68049185, 5.53413479, 6.45253722, 7.42628019])
   \end{minted}
@@ -376,9 +370,12 @@ application with one of the case study jumps loaded for analysis.
 \begin{figure}
   \centering
   \includegraphics[width=5.00in]{figures/web-app-screenshot.png}
-  \caption{\textbf{Screenshot of the web app} The web app consists of the 1)
-    menu, 2) interactive plot, 3) file upload widget, 4) file contents display,
-    5) takeoff angle input, 4) compute button, and 5) results download button.}
+  \caption{\textbf{Screenshot of the web app} To use the app, a user selects
+    ``Ski Jump Analysis'' from the primary menu [1], uploads a CSV of XLS file
+    by dragging it onto the screen [3], inspects the input data for accuracy in
+    the table [4], sets the takeoff angle [5], runs the analysis by pressing
+    the ``Compute'' button [6], views the results in the interactive plot [2],
+    and downloads the results by pressing the ``Download EFH'' button [7].}
   \label{fig:web-app-screenshot}
 \end{figure}
 
