@@ -26,17 +26,18 @@
 \maketitle
 
 \begin{abstract}
-  Terrain parks are now present in most snowsports resorts and for decades the
-  epidemiological evidence has mounted showing that increases in injuries are
+  Terrain parks are now present in most snow sport resorts. For decades
+  epidemiological evidence has mounted that shows increases in injuries are
   correlated with the growth in terrain park numbers. We show through several
   case studies that large equivalent fall heights play significant roles in
-  traumatic injuries at terrain park jumps. Even with this evidence, little has
-  been done to make jumps safer by design due to an apathetic ski industry and
-  deliberate clouding of the scientific truths. To help remedy this, we provide
-  an accessible online tool for terrain park builders that can both evaluate
-  existing jumps for impact danger and design jumps that control for impact
-  danger. With the tools available, the barriers to designing safer jumps is
-  further lowered for the ski industry to address the epidemic.
+  traumatic injuries at these terrain park jumps. Even with this evidence,
+  little has been done to make jumps safer by design due to an apathetic ski
+  industry and deliberate clouding of the scientific truths. To help remedy
+  this, we provide an accessible online tool for terrain park builders that can
+  both evaluate existing jumps for impact danger and design jumps that control
+  for impact danger. With the tools available, the barriers to designing safer
+  jumps is further lowered for the ski industry make steps in addressing the
+  epidemic.
 \end{abstract}
 
 \section*{Outline}
@@ -211,75 +212,26 @@ The equivalent fall height $h$ of an object is formally defined as
 where $v$ is the impact velocity of the object and $g$ is the acceleration due
 to gravity. This definition results from equating the kinetic energy of an
 object moving at velocity $v$ at impact with the potential energy of the same
-object at a height $h$ above the ground. To calculate the equivalent fall
-height when impact is at an angle from the impact surface, the equation becomes
-%
-\begin{align}
-  h = \frac{v_{\perp}^2}{2g}
-  \label{eq:efh_slope}
-\end{align}
-%
-where $v_{\perp}$ is the velocity perpendicular to the impact surface. With
-this in mind, the equivalent fall height of a ski slope can be found by
-defining the Cartesian coordinates of the landing surface along the jumper's flight
-path. We select the takeoff point to be the origin of this coordinate system,
-as it is a common feature of most jumps.
-For the jumper to have a low impact velocity, and thus small equivalent fall
-height, there must only be a small misalignment between the jumper's landing angle,
-$\theta_J$, and the angle of the landing surface, $\theta_L$. Knowing the
-misalignment and the jumper's impact speed, $v_J$, provides enough to compute
-the perpendicular component of impact velocity.
-%
-\begin{align}
-  v_{\perp} = \sqrt{2gh} = v_J\sin(\theta_J - \theta_L)
-\end{align}
+object at a height $h$ above the ground.
 
-If aerodynamic forces are neglected~\footnote{Aerodynamic forces are an order
-of magnitude lower than the gravitational forces~\cite{Hubbard2012}}, the
-projectile equations are linear and quadratic in time. Inverting the parabolic
-flight path result gives the initial speed, $v_o$ required to reach a given
-location if a takeoff angle of $\theta_T$ is assumed
+Using Equation~\ref{eq:efh_general} as a starting point, the equivalent fall
+height $h$ can be determined for any landing surface one impacts after a jump
+flight trajectory~\cite{Hubbard2012}. The resulting equation, when neglecting
+air drag, is
 %
 \begin{align}
-  v_o = \sqrt{\frac{x^2g}{2(x \tan\theta_T - y)\cos^{2}\theta_T}}
-\end{align}
-
-Using the above equations, the equivalent fall height $h$ can be formulated and
-it is a function of only four variables: takeoff angle $\theta_T$, impact
-coordinates $(x, y)$ on the landing surface, and the slope of the landing
-surface $\frac{dy}{dx}$ (also written as $\frac{dy}{dx}=\tan\theta_L$ where
-$\theta_L$ is the landing surface angle). Given a takeoff angle, one can either
-solve for the slope $\frac{dy}{dx}$ given equivalent fall height $h$ or the
-equivalent fall height given the landing surface angle $\theta_L$. The
-following two equations show the two forms where the first is useful in
-designing jumps with a specified equivalent fall height~\cite{Levy2015} and the
-second is useful in evaluating an existing jump.
-%
-\begin{align}
-  \frac{dy}{dx} = \tan\left[\tan^{-1}\left(\frac{2y(x)}{x} - \tan\theta_T\right) +
-    \sin^{-1}\sqrt{\frac{h}{\frac{x^2}{4(x\tan\theta_T -
-    y(x))\cos^{2}\theta} - y(x)}}\right] \\
   h = \left[\frac{x^2}{4(x\tan\theta_T - y)\cos^{2}\theta_T} -
     y\right]\sin^{2}\left[\tan^{-1}\left(\frac{2y}{x}- \tan\theta_T\right) - \tan^{-1}\frac{dy}{dx}\right]
   \label{eq:efh}
 \end{align}
 
-These closed form equations are useful for understanding the fundamental
-relationship of equivalent fall height to the landing surface and well predict
-these values for small jumps but other factors may be useful to include in the
-model. For example, jumpers are subject to aerodynamic drag and this is not
-negligible for larger jumps. If drag is included there is no closed form
-solution for the equivalent fall height, but the equivalent fall height can be
-computed through iterative simulation~\cite{Levy2015}. The jumper's flight path
-is found by integrating the flight equations of motion at various takeoff
-velocities and computing the misalignment in jumper landing angle and the slope
-angle to then find the equivalent fall height. This more general simulation
-method is implemented in the software described herein and the results reflect
-the inclusion of gravitational and drag forces. The simulations require
-measurements of the landing surface cross-sectional profile coordinates $(x,y)$
-relative to the takeoff point and a measurement of the takeoff angle. The next
-section describes a method of acquiring these coordinate measurements using a
-relatively inexpensive differential GPS system.
+This equation is only a function of four variables: takeoff angle $\theta_T$,
+impact coordinates $(x,y)$ on the landing surface, and the slope of the landing
+surface $\frac{dy}{dx}$. It is important to note that this surface is not a
+function of takeoff speed. To analyze a jump, it is sufficient to measure the
+Cartesian coordinates of the landing surface along the jumper's flight path and
+the takeoff angle. The slope $\frac{dy}{dx}$ can be computed from the measured
+coordinates $(x,y)$.
 
 \section{Case Studies}
 %
@@ -473,12 +425,28 @@ this sport is paramount.
 
 \section{Example software library use}
 %
+This closed form equations are useful for understanding the fundamental
+relationship of equivalent fall height to the landing surface and well predict
+these values for small jumps but other factors may be useful to include in the
+model. For example, jumpers are subject to aerodynamic drag and this is not
+negligible for larger jumps. If drag is included there is no closed form
+solution for the equivalent fall height, but the equivalent fall height can be
+computed through iterative simulation~\cite{Levy2015}. The jumper's flight path
+is found by integrating the flight equations of motion at various takeoff
+velocities and computing the misalignment in jumper landing angle and the slope
+angle to then find the equivalent fall height. This more general simulation
+method is implemented in the software described herein and the results reflect
+the inclusion of gravitational and drag forces. The simulations require
+measurements of the landing surface cross-sectional profile coordinates $(x,y)$
+relative to the takeoff point and a measurement of the takeoff angle.
+
 Listing~\ref{lis:example-efh-calc} demonstrates creating a surface from some
 measured data points and then calculating the equivalent fall height at
 0.2\si{\meter} increments.
 %
 \begin{listing*}
   \begin{minted}{pycon}
+
 >>> import numpy as np
 >>> from skijumpdesign import Surface, Skier
 >>> takeoff_ang = 10  # degrees
