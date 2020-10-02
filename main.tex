@@ -25,6 +25,20 @@
 
 \maketitle
 
+\begin{abstract}
+  Terrain parks are now present in most ski resorts and for decades the
+  epidemiological evidence has mounted showing that increases in injuries are
+  correlated with the growth in terrain park numbers. We show through several
+  case studies that large equivalent fall heights play significant roles in
+  traumatic injuries at terrain park jumps. Even with this evidence, little has
+  been done to make jumps safer by design due to an apathetic ski inustry and
+  deliberate clouding of the scientific truths. To help remedy this, we provide
+  an accessible online tool for terrain park builders that can both evaluate
+  existing jumps for impact danger and design jumps that control for impact
+  danger. With the tools availalble, the barriers to designing safer jumps is
+  further lowered.
+\end{abstract}
+
 \section*{Outline}
 %
 \begin{itemize}
@@ -68,20 +82,6 @@
       \end{itemize}
   \end{itemize}
 \end{itemize}
-
-\begin{abstract}
-  Terrain parks are now present in most ski resorts and for decades the
-  epidemiological evidence has mounted showing that increases in injuries are
-  correlated with the growth in terrain park numbers. We show through several
-  case studies that large equivalent fall heights play significant roles in
-  traumatic injuries at terrain park jumps. Even with this evidence, little has
-  been done to make jumps safer by design due to an apathetic ski inustry and
-  deliberate clouding of the scientific truths. To help remedy this, we provide
-  an accessible online tool for terrain park builders that can both evaluate
-  existing jumps for impact danger and design jumps that control for impact
-  danger. With the tools availalble, the barriers to designing safer jumps is
-  further lowered.
-\end{abstract}
 
 \section{Introduction}
 %
@@ -282,133 +282,6 @@ relative to the takeoff point and a measurement of the takeoff angle. The next
 section describes a method of acquiring these coordinate measurements using a
 relatively inexpensive differential GPS system.
 
-\section{Jump Shape Measurement}
-%
-The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and the
-slope at each coordinate to compute the equivalent fall height. Direct
-measurements of the coordinates can be done with surveying equipment or
-accurate GPS tools and indirect measurements can be done less expensively, but
-more laboriously with a tape measure and level or specialized tools like the
-Park Profiler~\todo{need citation}. Differential GPS has become less expensive
-and is a particularly accurate and simple method for collecting the necessary
-data.
-
-Consumer grade differential GPS units can measure the Cartesian coordinates
-directly with 1~\si{\centi\meter} accuracy up to 1~\si{\kilo\meter} distances
-from the base station. For example, we have used the \$1500 Piksi differential
-GPS system (SwiftNav, San Francisco, USA) to record slope shapes from a roving
-skier with GPS antennae mounted to the helmet. To collect measurements, the
-skier slowly slides up the takeoff ramp and stops at the takeoff point. At the
-takeoff point, the skier makes a T shape by moving side to side on the ramp
-along the jump lip. This T shape is used to determine the origin of the jump's
-coordinates. The skier then slowly traverses the landing surface in the same
-fashion as the takeoff surface. The differential GPS system records the
-Cartesian coordinates of the surface directly relative to an origin at the base
-station location. The T shape is used to locate the desired origin at the
-takeoff point and align the X direction along the jumper's flight path.
-
-\section{Software and Online Access}
-%
-Previously, we developed software for designing ski jumps with a constant
-equivalent fall height~\cite{Moore2018}. The software comprises of a general
-purpose, extensible, object oriented software library with tools for 2D skiing
-simulation. Using the library code, a web application was developed for
-interactive jump design. The web application is designed for a non-technical
-end user and usable on a desktop, tablet, or mobile device; any device that
-supports a web browser.
-
-We have extended the capabilities of the software in version 0.2.0 for the
-purposes of the work described in this paper. New library features were added
-that automate the calculation of equivalent fall height for jump profiles
-described by a series of Cartesian coordinates.
-Listing~\ref{lis:example-efh-calc} demonstrates creating a surface from some
-measured data points and then calculating the equivalent fall height at
-0.2\si{\meter} increments.
-%
-\begin{listing*}
-  \begin{minted}{pycon}
->>> import numpy as np
->>> from skijumpdesign import Surface, Skier
->>> takeoff_ang = 10  # degrees
->>> takeoff_point = (0, 0)  # meters
->>> x_ft = np.array([-232.3,-203.7,-175.0,-146.3,-117.0,-107.4,
-...    -97.7,-88.0,-78.2,-68.5,-58.8,-49.1,-39.4,-34.5,-29.7,
-...    -24.8,-19.8,-17.8,-15.8,-13.8,-11.8,-9.8,-7.8,-5.9,-3.9,
-...    -2.0,0.0,0.0,0.0, 2.0,3.9,5.9,7.9,9.9,11.9,13.9,15.9,
-...    17.9,19.9,21.9,23.9,25.8,27.8,29.7,31.5,33.4,35.2,37.0,
-...    38.8,43.3,47.8,52.3,56.8,61.5,66.2,70.9,75.7,80.6,85.5,
-...    88.4,88.4])
-...
->>> y_ft = np.array([55.5,46.4,37.7,29.1,22.2,19.7,17.2,14.8,
-...    12.5,10.2,7.7,5.2,2.9,1.8,0.7,-0.2,-1.0,-1.2,-1.4,-1.6,
-...    -1.7,-1.6,-1.5,-1.3,-1.0,-0.4,0.0,0.0,0.0,-0.3,-0.8,
-...    -1.0,-1.4,-1.4,-1.5,-1.5,-1.5,-1.5,-1.6,-1.8,-2.0,-2.4,
-...    -2.9,-3.5,-4.2,-5.0,-5.8,-6.7,-7.5,-9.8,-12.0,-14.2,
-...    -16.2,-18.1,-19.8,-21.4,-22.9,-24.0,-25.0,-25.6,-25.6])
-...
->>> x_mt = x_ft*0.3048 # convert to meters
->>> y_mt = y_ft*0.3048 # convert to meters
->>> # create a surface from the data
->>> measured_surf = Surface(x_mt, y_mt)
->>> # use the default skier properites for simulations
->>> skier = Skier()
->>> # calculate the equivalent fall height
->>> x, efh = measured_surf.calculate_efh(
-...     np.deg2rad(takeoff_ang), takeoff_point, skier, increment=0.2)
-...
->>> x  # display the x coordinates
-array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
-        2.2,  2.4,  2.6,  2.8,  3. ,  3.2,  3.4,  3.6,  3.8,  4. ,  4.2,
-       ...
-       24.2, 24.4, 24.6, 24.8, 25. , 25.2, 25.4, 25.6, 25.8, 26. , 26.2,
-       26.4, 26.6, 26.8])
->>> efh  # display the equivlanent fall height for each x coordinate
-array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
-       0.09096091, 0.12358184, 0.13702364, 0.15202999, 0.17018343,
-       ...
-       3.93910556, 3.97387212, 4.00891899, 4.04424779, 4.07984952,
-       4.11573359, 4.68049185, 5.53413479, 6.45253722, 7.42628019])
-  \end{minted}
-  \caption{Python interpreter session showing how one could compute the
-  equivlanten fall height of a measured jump.}
-  \label{lis:example-efh-calc}
-\end{listing*}
-
-Additionally, a new
-``analysis'' page was added to the web application which allows users to upload
-either a comma separated value CSV text file or a Microsoft Excel spreadsheet
-file or with the jump profile coordinates. The jump is then analyzed and the
-equivalent fall height is displayed graphically for interactive user
-manipulation and viewing. Figure~\ref{fig:web-app-screenshot} shows the web
-application with one of the case study jumps loaded for analysis.
-%
-\begin{figure}
-  \centering
-  \includegraphics[width=5.00in]{figures/web-app-screenshot.png}
-  \caption{\textbf{Screenshot of the web app} To use the app, a user selects
-    ``Ski Jump Analysis'' from the primary menu [1], uploads a CSV of XLS file
-    by dragging it onto the screen [3], inspects the input data for accuracy in
-    the table [4], sets the takeoff angle [5], runs the analysis by pressing
-    the ``Compute'' button [6], views the results in the interactive plot [2],
-    and downloads the results by pressing the ``Download EFH'' button [7].}
-  \label{fig:web-app-screenshot}
-\end{figure}
-
-The software is written in Python and directly depends on popular packages
-including Cython~\cite{Behnel2011}, matplotlib~\cite{Hunter2007},
-NumPy~\cite{Oliphant2006}, pandas~\cite{McKinney2020},
-Plotly/Dash~\cite{Plotly2015}, pycvodes~\cite{Dahlgren2018},
-SciPy~\cite{Virtanen2020}, SymPy~\cite{Meurer2017}, and xlrd.
-The software is open source and licensed under the MIT redistribution license.
-The source code is available on Gitlab
-(\url{https://gitlab.com/moorepants/skijumpdesign}) and PyPi
-(\url{https://pypi.org/project/skijumpdesign/}. Users can submit bug reports, feature
-requests, code improvements, and additions at the Gitlab repository. The
-software is documented at
-\href{https://skijumpdesign.readthedocs.io}{skijumpdesign.readthedocs.io}. The
-software is used to analyze the terrain park jump case studies in the next
-section.
-
 \section{Case Studies}
 %
 Below we present two case studies derived from court proceedings in the United
@@ -530,6 +403,55 @@ altimeter.
   \label{fig:salvini-v-snoqualmie}
 \end{figure}
 
+\section{Software and Online Access}
+%
+Previously, we developed software for designing ski jumps with a constant
+equivalent fall height~\cite{Moore2018}. The software comprises of a general
+purpose, extensible, object oriented software library with tools for 2D skiing
+simulation. Using the library code, a web application was developed for
+interactive jump design. The web application is designed for a non-technical
+end user and usable on a desktop, tablet, or mobile device; any device that
+supports a web browser.
+
+We have extended the capabilities of the software in version 0.2.0 for the
+purposes of the work described in this paper. New library features were added
+that automate the calculation of equivalent fall height for jump profiles
+described by a series of Cartesian coordinates.
+Additionally, a new
+``analysis'' page was added to the web application which allows users to upload
+either a comma separated value CSV text file or a Microsoft Excel spreadsheet
+file or with the jump profile coordinates. The jump is then analyzed and the
+equivalent fall height is displayed graphically for interactive user
+manipulation and viewing. Figure~\ref{fig:web-app-screenshot} shows the web
+application with one of the case study jumps loaded for analysis.
+%
+\begin{figure}
+  \centering
+  \includegraphics[width=5.00in]{figures/web-app-screenshot.png}
+  \caption{\textbf{Screenshot of the web app} To use the app, a user selects
+    ``Ski Jump Analysis'' from the primary menu [1], uploads a CSV of XLS file
+    by dragging it onto the screen [3], inspects the input data for accuracy in
+    the table [4], sets the takeoff angle [5], runs the analysis by pressing
+    the ``Compute'' button [6], views the results in the interactive plot [2],
+    and downloads the results by pressing the ``Download EFH'' button [7].}
+  \label{fig:web-app-screenshot}
+\end{figure}
+
+The software is written in Python and directly depends on popular packages
+including Cython~\cite{Behnel2011}, matplotlib~\cite{Hunter2007},
+NumPy~\cite{Oliphant2006}, pandas~\cite{McKinney2020},
+Plotly/Dash~\cite{Plotly2015}, pycvodes~\cite{Dahlgren2018},
+SciPy~\cite{Virtanen2020}, SymPy~\cite{Meurer2017}, and xlrd.
+The software is open source and licensed under the MIT redistribution license.
+The source code is available on Gitlab
+(\url{https://gitlab.com/moorepants/skijumpdesign}) and PyPi
+(\url{https://pypi.org/project/skijumpdesign/}. Users can submit bug reports, feature
+requests, code improvements, and additions at the Gitlab repository. The
+software is documented at
+\href{https://skijumpdesign.readthedocs.io}{skijumpdesign.readthedocs.io}. The
+software is used to analyze the terrain park jump case studies in the next
+section.
+
 \section{Conclusion}
 %
 There are, of course, more factors than jump landing surface shape that
@@ -547,4 +469,87 @@ this sport is paramount.
 \bibliographystyle{unsrt}
 \bibliography{references}
 
+
+\appendix
+
+\section{Example software library use}
+%
+Listing~\ref{lis:example-efh-calc} demonstrates creating a surface from some
+measured data points and then calculating the equivalent fall height at
+0.2\si{\meter} increments.
+%
+\begin{listing*}
+  \begin{minted}{pycon}
+>>> import numpy as np
+>>> from skijumpdesign import Surface, Skier
+>>> takeoff_ang = 10  # degrees
+>>> takeoff_point = (0, 0)  # meters
+>>> x_ft = np.array([-232.3,-203.7,-175.0,-146.3,-117.0,-107.4,
+...    -97.7,-88.0,-78.2,-68.5,-58.8,-49.1,-39.4,-34.5,-29.7,
+...    -24.8,-19.8,-17.8,-15.8,-13.8,-11.8,-9.8,-7.8,-5.9,-3.9,
+...    -2.0,0.0,0.0,0.0, 2.0,3.9,5.9,7.9,9.9,11.9,13.9,15.9,
+...    17.9,19.9,21.9,23.9,25.8,27.8,29.7,31.5,33.4,35.2,37.0,
+...    38.8,43.3,47.8,52.3,56.8,61.5,66.2,70.9,75.7,80.6,85.5,
+...    88.4,88.4])
+...
+>>> y_ft = np.array([55.5,46.4,37.7,29.1,22.2,19.7,17.2,14.8,
+...    12.5,10.2,7.7,5.2,2.9,1.8,0.7,-0.2,-1.0,-1.2,-1.4,-1.6,
+...    -1.7,-1.6,-1.5,-1.3,-1.0,-0.4,0.0,0.0,0.0,-0.3,-0.8,
+...    -1.0,-1.4,-1.4,-1.5,-1.5,-1.5,-1.5,-1.6,-1.8,-2.0,-2.4,
+...    -2.9,-3.5,-4.2,-5.0,-5.8,-6.7,-7.5,-9.8,-12.0,-14.2,
+...    -16.2,-18.1,-19.8,-21.4,-22.9,-24.0,-25.0,-25.6,-25.6])
+...
+>>> x_mt = x_ft*0.3048 # convert to meters
+>>> y_mt = y_ft*0.3048 # convert to meters
+>>> # create a surface from the data
+>>> measured_surf = Surface(x_mt, y_mt)
+>>> # use the default skier properites for simulations
+>>> skier = Skier()
+>>> # calculate the equivalent fall height
+>>> x, efh = measured_surf.calculate_efh(
+...     np.deg2rad(takeoff_ang), takeoff_point, skier, increment=0.2)
+...
+>>> x  # display the x coordinates
+array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
+        2.2,  2.4,  2.6,  2.8,  3. ,  3.2,  3.4,  3.6,  3.8,  4. ,  4.2,
+       ...
+       24.2, 24.4, 24.6, 24.8, 25. , 25.2, 25.4, 25.6, 25.8, 26. , 26.2,
+       26.4, 26.6, 26.8])
+>>> efh  # display the equivlanent fall height for each x coordinate
+array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
+       0.09096091, 0.12358184, 0.13702364, 0.15202999, 0.17018343,
+       ...
+       3.93910556, 3.97387212, 4.00891899, 4.04424779, 4.07984952,
+       4.11573359, 4.68049185, 5.53413479, 6.45253722, 7.42628019])
+  \end{minted}
+  \caption{Python interpreter session showing how one could compute the
+  equivlanten fall height of a measured jump.}
+  \label{lis:example-efh-calc}
+\end{listing*}
+
+
+\section{Jump Shape Measurement}
+%
+The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and the
+slope at each coordinate to compute the equivalent fall height. Direct
+measurements of the coordinates can be done with surveying equipment or
+accurate GPS tools and indirect measurements can be done less expensively, but
+more laboriously with a tape measure and level or specialized tools like the
+Park Profiler~\todo{need citation}. Differential GPS has become less expensive
+and is a particularly accurate and simple method for collecting the necessary
+data.
+
+Consumer grade differential GPS units can measure the Cartesian coordinates
+directly with 1~\si{\centi\meter} accuracy up to 1~\si{\kilo\meter} distances
+from the base station. For example, we have used the \$1500 Piksi differential
+GPS system (SwiftNav, San Francisco, USA) to record slope shapes from a roving
+skier with GPS antennae mounted to the helmet. To collect measurements, the
+skier slowly slides up the takeoff ramp and stops at the takeoff point. At the
+takeoff point, the skier makes a T shape by moving side to side on the ramp
+along the jump lip. This T shape is used to determine the origin of the jump's
+coordinates. The skier then slowly traverses the landing surface in the same
+fashion as the takeoff surface. The differential GPS system records the
+Cartesian coordinates of the surface directly relative to an origin at the base
+station location. The T shape is used to locate the desired origin at the
+takeoff point and align the X direction along the jumper's flight path.
 \end{document}
