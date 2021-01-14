@@ -45,11 +45,11 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     # horizontal lines for knee collapse and floor height
     # storey fall heights are calculated from Vish 2005 using
     # average_window_fall_height.py
-    efh_ax.axhline(8.4, color='C1', linestyle='solid',
+    efh_ax.axhline(8.8, color='C1', linestyle='solid',
                    label='Avg. 3 Story Fall Height')
-    efh_ax.axhline(6.0, color='C1', linestyle='dashed',
+    efh_ax.axhline(5.1, color='C1', linestyle='dashed',
                    label='Avg. 2 Story Fall Height')
-    efh_ax.axhline(4.4, color='C1', linestyle='dashdot',
+    efh_ax.axhline(2.6, color='C1', linestyle='dashdot',
                    label='Avg. 1 Story Fall Height')
     # this value comes from Minetti1998
     efh_ax.axhline(1.5, color='C1', linestyle='dotted',
