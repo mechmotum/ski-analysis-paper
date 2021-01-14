@@ -91,18 +91,18 @@ injury. Greater impact velocity normal to the surface will cause greater
 injury, due to the increased energy that must be dissipated. A common surrogate
 for measuring impact velocity is ``equivalent fall height''.  Equivalent fall
 height provides a conceptually simple and familiar interpretation of the danger
-from impact. Equivalent fall height is used in a variety of safety standards
-around the world from skydiving~\todo{add citation} to children's playground
-equipment~\cite{Chalmers1996}. The equivalent fall height of ski and snowboard
-terrain park jumps can be calculated if the Cartesian coordinates of the
-surface profile along the jumper's path and takeoff angle are
+from a worse cast impact. Equivalent fall height is used in a variety of safety
+standards around the world from skydiving~\todo{add citation} to children's
+playground equipment~\cite{Chalmers1996}. The equivalent fall height of ski and
+snowboard terrain park jumps can be calculated if the Cartesian coordinates of
+the surface profile along the jumper's path and takeoff angle are
 available~\cite{Hubbard2012}. Minimizing the equivalent fall height is one of
-the dominant jump design factors that can reduce injury. Equivalent fall height
+the primary jump design factors that can reduce injury. Equivalent fall height
 can be controlled for and it is an obvious safety design factor to minimize
 without loss of enjoyment from ski and snowboard participants.
 
-This paper reiterates the societal cost of the increasing terrain park injuries and
-then focuses on specific case studies that highlight the danger incurred if
+This paper reiterates the societal cost of the increasing terrain park injuries
+and then focuses on specific case studies that highlight the danger incurred if
 equivalent fall height is not controlled for. We then present a user-friendly
 web application for calculating equivalent fall height of existing or planned
 jumps. We see this application as a part of the solution in reducing injuries
@@ -111,6 +111,13 @@ that ski jump builders can use increasing the safety in their resorts.
 \subsection{History}
 %
 \todo[inline]{Mont should write this section.}
+Terrain parks are a relatively new addition to snowsports resorts. The increase
+is tied to growth in interest in aerial maneuvers and the growth of
+participation in extreme sports. Unfortunately, this is correlated to an
+increase injuries.  Jackson et al.~\cite{Jackson2004} determined that snow
+skiing in 2004 replaced football as the second leading cause of serious head
+and spinal cord injuries in the United States. It is estimated that around 10\%
+of <15 year old ski and snowboard injuries are severe~\cite{Polites2018}.
 
 \section{Equivalent Fall Height}
 %
@@ -120,24 +127,25 @@ required kinetic energy dissipated on impact from a given height. On the
 earth's surface this energy is given by the well known equation $mgh$. This is
 the energy available to injure on impact in a non-rotating fall. The ability of
 this energy to injure can be reduced by controlling the impact circumstances,
-e.g. impact cushioning, body orientation, and body configuration, but the
-energy must be dissipated. Larger equivalent fall heights require more
-intricate protection measures to reduce injury.
+e.g. impact cushioning, body orientation, body configuration and active body
+motion, but the energy must nevertheless be dissipated. Larger equivalent fall
+heights require more intricate protection measures to reduce injury.
 
 Equivalent fall height is a particularly useful measure of danger due to its
 interpretability by people. People have a intuitive danger sense when faced
 with potential falls from large heights and they have strong common sense for
 relating fall height to likelihood of injury due to experience with falls and
 observation of others' falls. For example, we have a sense of the danger
-associated from falling from building storys of increasing magnitude. Ground
-floor falls are on the order of 4.4~\si{\meter}, second story are
-6.0~\si{\meter}, third story 8.4~\si{\meter}, and so on~\cite{Vish2005}. OSHA
-considers 1.8~\si{\meter} fall heights beyond the acceptable limit for
-workplace safety~\todo{need citation} and the FAA's safety regulations for safe
-parachuting landings is a 3~\si{\meter} fall height~\todo{need citation}.
-\cite{Chalmers1996} pushes for 1.5~\si{\meter} maximum fall heights for
-playground equipment. As for skiing, the standards for the Olympic ski jumping
-call for equivalent fall heights of 0.46~\si{\meter}~\todo{need citation}.
+associated from falling from building stories of increasing magnitude. Ground
+floor falls are on the order of 2.6~\si{\meter}, second story are
+5.1~\si{\meter}, third story 8.8~\si{\meter}, and so on~\cite{Vish2005}. OSHA
+requires fall protection for fall heights greater than 1.2~\si{\meter} for
+general workplace safety~\todo{need citation} and the FAA's safety regulations
+for safe parachuting landings is a 3~\si{\meter} fall height~\todo{need
+citation}.  Chalmers et al.~\cite{Chalmers1996} pushes for 1.5~\si{\meter}
+maximum fall heights for playground equipment. As for skiing, the standards for
+the Olympic ski jumping call for equivalent fall heights of
+0.46~\si{\meter}~\todo{need citation}.
 
 The equivalent fall height $h$ of an object is formally defined as
 %
@@ -355,7 +363,11 @@ classical mechanics. Defending practices that lead to injuries at the service
 of industry can prolong these practices, which can lead to further injuries,
 clearly violating the first canon of engineering ethics.
 
-\section{Software and Online Access}
+\section{What Can Be Done?}
+%
+Existing jumps can be assessed for danger from excessive fall heights.
+
+\subsection{Software and Online Access}
 %
 Previously, we developed software for designing ski jumps with a constant
 equivalent fall height~\cite{Moore2018}. The software comprises of a general
