@@ -475,9 +475,32 @@ array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
   \label{lis:example-efh-calc}
 \end{listing*}
 
+Listing~\ref{lis:example-meas-calc} demonstrates calculating the landing
+surface's Carteisan coordinates from measured distance and angle data collected
+with the method described in the prior section.
+%
+\begin{listing*}
+  \begin{minted}{pycon}
+>>> from skijump.functions import cartesian_from_measurements
+>>> dis = [14.5, 15.0, 15.5, 16.0, 16.5, 17.0]
+>>> ang = np.deg2rad([4.6, -7.4, -16.5, -9.7, -11, -6.9])
+>>> x, y, to_point, to_angle = cartesian_from_measurements(dis, ang)
+>>> print(x)
+[0.         0.49985074 0.98901508 1.47600306 1.96786738 2.46177962]
+>>> print(y)
+[ 0.         -0.01221609 -0.1157451  -0.22907075 -0.31890113 -0.39668737]
+>>> print(to_point)
+(0.0, 0.0)
+>>> print(to_angle)
+0.08028514559173916
+  \end{minted}
+  \caption{Python interpreter session showing how one could compute the
+  Cartesian coordinates from equivlanten fall height of a measured jump.}
+  \label{lis:example-meas-calc}
+\end{listing*}
 
 \section{Jump Shape Measurement}
-%
+
 The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and slope
 of the landing surface along the path of the jumper. There are a number of
 possible measurement techniques for collecting data adequate for the equivalent
