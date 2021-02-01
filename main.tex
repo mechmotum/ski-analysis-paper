@@ -478,26 +478,39 @@ array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
 
 \section{Jump Shape Measurement}
 %
-The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and the
-slope at each coordinate to compute the equivalent fall height. Direct
-measurements of the coordinates can be done with surveying equipment or
-accurate GPS tools and indirect measurements can be done less expensively, but
-more laboriously with a tape measure and level or specialized tools like the
-Park Profiler~\todo{need citation}. Differential GPS has become less expensive
-and is a particularly accurate and simple method for collecting the necessary
-data.
+The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and slope
+of the landing surface along the path of the jumper. There are a number of
+possible measurement techniques for collecting data adequate for the equivalent
+fall height calculation but the simplest method only requires a digital level
+(smartphone level measurement applications are likely sufficient and readily
+available), a flexible tape measure, and less than an hour's time from one
+person per jump. A tenth of a degree accuracy from the level and 25 centimeter
+accuracy from the tape measure should be sufficient for all typical slowly
+varying jumps. The takeoff point should be identified and the tape measure
+should then be draped over the contour of the landing surface along the
+projection of the flight path onto the landing surface. The origin of the tape
+measure should be aligned with the takeoff point. Starting with the takeoff
+point, the digital level should be used to record the absolute angle at every
+25~\si{\centi\meter} increment along the tape. Positive angles should be
+recorded for positive slop and negative angles for negative slope. The
+tabulated data should include the distance along the surface from the takeoff
+point, $d_i$, and the associated surface angle, $\theta_i$, at each distance
+measurement for $n$ measurements. Assuming $\theta_i$ is in radians, the
+Cartesian coordinates can be computed using the average angle to find the
+adjacent coordinates.
 
-Consumer grade differential GPS units can measure the Cartesian coordinates
-directly with 1~\si{\centi\meter} accuracy up to 1~\si{\kilo\meter} distances
-from the base station. For example, we have used the \$1500 Piksi differential
-GPS system (SwiftNav, San Francisco, USA) to record slope shapes from a roving
-skier with GPS antennae mounted to the helmet. To collect measurements, the
-skier slowly slides up the takeoff ramp and stops at the takeoff point. At the
-takeoff point, the skier makes a T shape by moving side to side on the ramp
-along the jump lip. This T shape is used to determine the origin of the jump's
-coordinates. The skier then slowly traverses the landing surface in the same
-fashion as the takeoff surface. The differential GPS system records the
-Cartesian coordinates of the surface directly relative to an origin at the base
-station location. The T shape is used to locate the desired origin at the
-takeoff point and align the X direction along the jumper's flight path.
+\begin{align}
+  \frac{dy}{dx}_{i} & = \arctan{\theta_i} \\
+  x_{i + 1} & =
+  \begin{cases}
+    0 & \text{for } i=0 \\
+    x_i + (d_{i+1} - d_i)\cos{(\theta_{i+1} + \theta_i)/2} &  \text{for } i=1\ldots n
+  \end{cases} \\
+  y_{i + 1} & =
+  \begin{cases}
+    0 & \text{for } i=0 \\
+    y_i + (d_{i+1} - d_i)\sin{(\theta_{i+1} + \theta_i)/2} &  \text{for } i=1\ldots n
+  \end{cases}
+\end{align}
+
 \end{document}
