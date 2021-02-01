@@ -28,9 +28,9 @@
 \begin{abstract}
   Terrain parks are now present in most snow sport resorts. For decades,
   epidemiological evidence has mounted that shows increases in injuries are
-  correlated with the growth in terrain park numbers. We show through two case
-  studies that large equivalent fall heights play significant roles in
-  traumatic injuries at these terrain park jumps. Even with this evidence,
+  correlated with the growth in terrain park numbers. We use two case studies
+  to provide evidence that large equivalent fall heights play significant roles
+  in traumatic injuries at these terrain park jumps. Even with this evidence,
   little has been done to make jumps safer by design due to an apathetic ski
   industry and deliberate clouding of the scientific truths. To help remedy
   this, we provide an accessible online tool for terrain park builders that can
@@ -172,8 +172,8 @@ surface tangent with the jumper's flight path at impact.
   jump designed with constant equivalent fall height in solid green for
   comparison. The lower panel shows the equivalent fall height for both jumps
   in corresponding colors at 1~\si{\meter} intervals. The numbers above the
-  vertical bars indicate the takeoff speed in meters per second required to
-  land at that location. Orange lines indicate relatable fall heights.}
+  black vertical bars indicate the takeoff speed in meters per second required
+  to land at that location. Orange lines indicate relatable fall heights.}
   \label{fig:vine-v-bear-valley}
 \end{figure}
 
@@ -250,8 +250,8 @@ altimeter.
   jump designed with constant equivalent fall height in solid green for
   comparison. The lower panel shows the equivalent fall height for both jumps
   in corresponding colors at 1~\si{\meter} intervals. The numbers above the
-  vertical bars indicate the takeoff speed in meters per second required to
-  land at that location. Orange lines indicate relatable fall heights.}
+  black vertical bars indicate the takeoff speed in meters per second required
+  to land at that location. Orange lines indicate relatable fall heights.}
   \label{fig:salvini-v-snoqualmie}
 \end{figure}
 
@@ -323,13 +323,13 @@ clearly violating the first canon of engineering ethics.
 %
 Assessing and reshaping existing jumps for dangerous equivalent fall heights is
 a very low hanging opportunity for ski resorts to reduce the danger of their
-terrain park jumps. Accurate enough measurements of an exisiting slope can be
+terrain park jumps. Accurate enough measurements of an existing slope can be
 done with simple tools, e.g. a tape measure and a digital level, and only takes
-a short amount of time per jump. The calculation and visulaization of the
+a short amount of time per jump. The calculation and visualization of the
 equivalent fall height from these measurements can take some time if manually
-done but we are are making available an online, freely accesible, and user
+done but we are are making available an online, freely accessible, and user
 friendly web application that makes the calculation and visualization step
-almost instaneous for the terrain park builder. With the tool described in the
+almost in stannous for the terrain park builder. With the tool described in the
 next section, terrain park builders can easily add this safety assessment to
 their toolbox, even using it from a smartphone while in the field. There is no
 reason that this basic assessment should not be part of the jump construction
@@ -380,9 +380,8 @@ The source code is available on Gitlab
 (\url{https://pypi.org/project/skijumpdesign/}. Users can submit bug reports, feature
 requests, code improvements, and additions at the Gitlab repository. The
 software is documented at
-\href{https://skijumpdesign.readthedocs.io}{skijumpdesign.readthedocs.io}. The
-software is used to analyze the terrain park jump case studies in the next
-section.
+\href{https://skijumpdesign.readthedocs.io}{skijumpdesign.readthedocs.io}.
+Basic examples of using the library are provided in the appendix.
 
 \section{Conclusion}
 %
@@ -403,43 +402,6 @@ this sport is paramount.
 
 
 \appendix
-
-\section{Jump Shape Measurement}
-%
-The form of Equation~\ref{eq:efh} requires the Cartesian coordinates and slope
-of the landing surface along the path of the jumper. There are a number of
-possible measurement techniques for collecting data adequate for the equivalent
-fall height calculation but the simplest method only requires a digital level
-(smartphone level measurement applications are likely sufficient and readily
-available), a flexible tape measure, and less than an hour's time from one
-person per jump. A tenth of a degree accuracy from the level and 25 centimeter
-accuracy from the tape measure should be sufficient for all typical slowly
-varying jumps. The takeoff point should be identified and the tape measure
-should then be draped over the contour of the landing surface along the
-projection of the flight path onto the landing surface. The origin of the tape
-measure should be aligned with the takeoff point. Starting with the takeoff
-point, the digital level should be used to record the absolute angle at every
-25~\si{\centi\meter} increment along the tape. Positive angles should be
-recorded for positive slop and negative angles for negative slope. The
-tabulated data should include the distance along the surface from the takeoff
-point, $d_i$, and the associated surface angle, $\theta_i$, at each distance
-measurement for $n$ measurements. Assuming $\theta_i$ is in radians, the
-Cartesian coordinates can be computed using the average angle to find the
-adjacent coordinates.
-%
-\begin{align}
-  \frac{dy}{dx}_{i} & = \arctan{\theta_i} \\
-  x_{i + 1} & =
-  \begin{cases}
-    0 & \text{for } i=0 \\
-    x_i + (d_{i+1} - d_i)\cos{(\theta_{i+1} + \theta_i)/2} &  \text{for } i=1\ldots n
-  \end{cases} \\
-  y_{i + 1} & =
-  \begin{cases}
-    0 & \text{for } i=0 \\
-    y_i + (d_{i+1} - d_i)\sin{(\theta_{i+1} + \theta_i)/2} &  \text{for } i=1\ldots n
-  \end{cases}
-\end{align}
 
 \section{Example software library use}
 %
@@ -488,7 +450,7 @@ measured data points and then calculating the equivalent fall height at
 >>> y_mt = y_ft*0.3048 # convert to meters
 >>> # create a surface from the data
 >>> measured_surf = Surface(x_mt, y_mt)
->>> # use the default skier properites for simulations
+>>> # use the default skier properties for simulations
 >>> skier = Skier()
 >>> # calculate the equivalent fall height
 >>> x, efh = measured_surf.calculate_efh(
@@ -500,7 +462,7 @@ array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
        ...
        24.2, 24.4, 24.6, 24.8, 25. , 25.2, 25.4, 25.6, 25.8, 26. , 26.2,
        26.4, 26.6, 26.8])
->>> efh  # display the equivlanent fall height for each x coordinate
+>>> efh  # display the equivalent fall height for each x coordinate
 array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
        0.09096091, 0.12358184, 0.13702364, 0.15202999, 0.17018343,
        ...
@@ -508,31 +470,74 @@ array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
        4.11573359, 4.68049185, 5.53413479, 6.45253722, 7.42628019])
   \end{minted}
   \caption{Python interpreter session showing how one could compute the
-  equivlanten fall height of a measured jump.}
+  equivalent fall height of a measured jump.}
   \label{lis:example-efh-calc}
 \end{listing*}
 
+\section{Jump Shape Measurement}
+%
+Equation~\ref{eq:efh} requires the Cartesian coordinates and slope of the
+landing surface along the path of the jumper. There are a number of possible
+measurement techniques for collecting data adequate for the equivalent fall
+height calculation but the simplest method only requires a digital level
+\footnote{smartphone level measurement applications are likely sufficient and
+readily available}, a flexible tape measure, and less than an hour's time from
+one person per jump. A tenth of a degree accuracy from the level and down to 25
+centimeter accuracy from the tape measure should be sufficient for typical snow
+sport jumps varying jumps.
+
+To measure the jump, the takeoff point should be identified and the tape
+measure should then be draped over the contour of the landing surface along the
+projection of the expected flight path onto the landing surface. The origin of
+the tape measure should be aligned with the takeoff point. Starting with the
+takeoff point, the digital level should be used to record the absolute angle at
+regular increments along the tape. The increment can be varied between
+25~\si{\centi\meter} and 100~\si{\centi\meter}, with the former used for steep
+slope changes and the later for less steep; 50~\si{\centi\meter} increments are
+appropriate for average jump shapes. Positive angles should be recorded for
+positive slope and negative angles for negative slope. The tabulated data
+should include the distance along the surface from the takeoff point, $d_i$,
+and the associated surface angle, $\theta_i$, at each distance measurement for
+$n$ measurements. Assuming $\theta_i$ is in radians, the Cartesian coordinates
+can be computed using the average angle to find the adjacent coordinates. The
+following equations show provide the necessary data for the calculation of
+equivalent fall height:
+%
+\begin{align}
+  \frac{dy}{dx}_{i} & = \arctan{\theta_i} \\
+  x_{i + 1} & =
+  \begin{cases}
+    0 & \text{for } i=0 \\
+    x_i + (d_{i+1} - d_i)\cos{(\theta_{i+1} + \theta_i)/2} &  \text{for } i=1\ldots n
+  \end{cases} \\
+  y_{i + 1} & =
+  \begin{cases}
+    0 & \text{for } i=0 \\
+    y_i + (d_{i+1} - d_i)\sin{(\theta_{i+1} + \theta_i)/2} &  \text{for } i=1\ldots n
+  \end{cases}
+\end{align}
+
 Listing~\ref{lis:example-meas-calc} demonstrates calculating the landing
 surface's Carteisan coordinates from measured distance and angle data collected
-with the method described in the prior section.
+with the method described above.
 %
 \begin{listing*}
   \begin{minted}{pycon}
 >>> from skijump.functions import cartesian_from_measurements
->>> dis = [14.5, 15.0, 15.5, 16.0, 16.5, 17.0]
->>> ang = np.deg2rad([4.6, -7.4, -16.5, -9.7, -11, -6.9])
+>>> dis = [14.5, 15.0, 15.5, 16.0, 16.5, 17.0]  # meters
+>>> ang = np.deg2rad([4.6, -7.4, -16.5, -9.7, -11, -6.9])  # radians
 >>> x, y, to_point, to_angle = cartesian_from_measurements(dis, ang)
->>> print(x)
+>>> print(x)  # meters
 [0.         0.49985074 0.98901508 1.47600306 1.96786738 2.46177962]
->>> print(y)
+>>> print(y)  # meters
 [ 0.         -0.01221609 -0.1157451  -0.22907075 -0.31890113 -0.39668737]
->>> print(to_point)
+>>> print(to_point)  # takeoff point in meters
 (0.0, 0.0)
->>> print(to_angle)
+>>> print(to_angle)  # takeoff angle in radians
 0.08028514559173916
   \end{minted}
   \caption{Python interpreter session showing how one could compute the
-  Cartesian coordinates from equivlanten fall height of a measured jump.}
+  Cartesian coordinates from equivalent fall height of a measured jump.}
   \label{lis:example-meas-calc}
 \end{listing*}
 
