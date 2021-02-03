@@ -25,6 +25,49 @@ Install the development version of skijumpdesign::
    (ski-analysis-paper)$ pip install --no-dependencies -e .
    (ski-analysis-paper)$ cd -
 
+Updating the References
+=======================
+
+Setup
+-----
+
+1. Install Zotero.
+2. Install the zotero connector for your web browser: https://www.zotero.org/download/connectors
+3. Open Zotero (application on your computer).
+4. Setup syncing in the Zotero preferences by providing your zotero username
+   and password.
+5. Install the zotero-better-bibtex plugin by following these directions: https://retorque.re/zotero-better-bibtex/installation/
+6. Restart zotero
+7. In the Zotero menu open the Edit>Preferences and click the "Better BibTex"
+   button. Change the citation key format to ``[auth][year]`` and close the
+   preferences window.
+8. Select the "Ski Jump EFH Analysis" folder.
+9. Highlight (select) all the items in the folder and right click. Select the
+   Better BibTeX > Refresh BibTeX key to set all the citekeys to the new
+   format.
+
+Adding new references
+---------------------
+
+1. Open Zotero and select the "Ski Jump EFH Analysis" folder in the left
+   column.
+2. Open your web browser and navigate to a journal article web page.
+3. Press the "Save to Zotero" button in the upper right (just to right of url
+   bar). The article (and pdf) should show up in Zotero.
+
+See these instructions if more info is needed: https://www.zotero.org/support/adding_items_to_zotero
+
+Updating the .bib file on Overleaf
+----------------------------------
+
+1. In Zotero, right click the "Ski Jump EFH Analysis" folder and select "Export
+   collection".
+2. Set the Format to "Better BibTeX" and press "OK".
+3. Save the ``.bib`` file somewhere as ``references.bib``.
+4. In Overleaf, remove the ``references.bib`` file and upload your new one.
+   Optionally, you can open the file on your computer, copy all the text and
+   paste over all the text in the bib file on Overleaf.
+
 Build the paper
 ===============
 
