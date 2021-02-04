@@ -348,15 +348,20 @@ Assessing and reshaping existing jumps for dangerous equivalent fall heights is
 a very low hanging opportunity for ski resorts to reduce the danger of their
 terrain park jumps. Accurate enough measurements of an existing slope can be
 done with simple tools, e.g. a tape measure and a digital level, and only takes
-a short amount of time per jump. The calculation and visualization of the
-equivalent fall height from these measurements can take some time if manually
-done but we are are making available an online, freely accessible, and user
-friendly web application that makes the calculation and visualization step
-almost in stannous for the terrain park builder. With the tool described in the
-next section, terrain park builders can easily add this safety assessment to
-their toolbox, even using it from a smartphone while in the field. There is no
-reason that this basic assessment should not be part of the jump construction
-process.
+a short amount of time per jump, see Appendix~\ref{sec-jump-shape-measurement}.
+The calculation and visualization of the equivalent fall height from these
+measurements can take some time if manually done but we are are making
+available an online, freely accessible, and user friendly web application that
+makes the calculation and visualization step almost instantaneous for the
+terrain park builder. With the tool described in the next section, terrain park
+builders can easily add this safety assessment to their toolbox, even using it
+from a smartphone while in the field. There is no reason that this basic
+assessment should not be part of the jump construction process. The laws of
+nature clearly tell us that designing jumps with lower equivalent fall heights
+will have a positive probability in reducing injuries.  The only ethical
+decision is to adopt these methods as saving even one person from a life of
+paralysis must be worth the minor inconvenience of shaping jumps using these
+rules.
 
 \subsection{Software and Online Access}
 %
@@ -498,6 +503,7 @@ array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
 \end{listing*}
 
 \section{Jump Shape Measurement}
+\label{sec:jump-shape-measurement}
 %
 Equation~\ref{eq:efh} requires the Cartesian coordinates and slope of the
 landing surface along the path of the jumper. There are a number of possible
@@ -541,7 +547,7 @@ equivalent fall height:
 \end{align}
 
 Listing~\ref{lis:example-meas-calc} demonstrates calculating the landing
-surface's Carteisan coordinates from measured distance and angle data collected
+surface's Cartesian coordinates from measured distance and angle data collected
 with the method described above.
 %
 \begin{listing*}
