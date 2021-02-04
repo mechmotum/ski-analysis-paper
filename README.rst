@@ -32,12 +32,15 @@ Setup
 -----
 
 1. Install Zotero.
-2. Install the zotero connector for your web browser: https://www.zotero.org/download/connectors
+2. Install the Zotero connector for your web browser:
+   https://www.zotero.org/download/connectors
 3. Open Zotero (application on your computer).
 4. Setup syncing in the Zotero preferences by providing your zotero username
-   and password.
-5. Install the zotero-better-bibtex plugin by following these directions: https://retorque.re/zotero-better-bibtex/installation/
-6. Restart zotero
+   and password (create an account if needed and inform Jason of your
+   username).
+5. Install the zotero-better-bibtex plugin by following these directions:
+   https://retorque.re/zotero-better-bibtex/installation/
+6. Restart Zotero
 7. In the Zotero menu open the Edit>Preferences and click the "Better BibTex"
    button. Change the citation key format to ``[auth][year]`` and close the
    preferences window.
@@ -55,7 +58,8 @@ Adding new references
 3. Press the "Save to Zotero" button in the upper right (just to right of url
    bar). The article (and pdf) should show up in Zotero.
 
-See these instructions if more info is needed: https://www.zotero.org/support/adding_items_to_zotero
+See these instructions if more info is needed:
+https://www.zotero.org/support/adding_items_to_zotero
 
 Updating the .bib file on Overleaf
 ----------------------------------
