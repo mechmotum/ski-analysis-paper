@@ -26,57 +26,75 @@
 \maketitle
 
 \begin{abstract}
-  Terrain parks now exist in almost all US snow sport resorts. For several
-  decades, epidemiological evidence has mounted that shows increases in
-  injuries are correlated with the growth in terrain park numbers. We discuss
-  two case studies as evidence that large equivalent fall heights play
-  significant roles in traumatic injuries at these terrain park jumps. Due to a
-  resistant skiing industry, even with the accumulating evidence, little has
-  been done to make jumps safer by design and deliberate clouding of the
-  scientific truths. To help remedy this, we provide an accessible online tool
-  for terrain park builders to both evaluate the safety of existing jumps by
-  calculating their impact danger and to design jump shapes that control their
-  impact danger. With the tools available, the barriers to designing safer
-  jumps is further lowered for the ski industry to make steps in addressing the
-  epidemic.
+  Terrain parks now exist at almost all US snow sport resorts. For several
+  decades, epidemiological evidence has mounted showing injury increases are correlated 
+  with  growth in terrain park use but the skiing industry has resisted making 
+  jumps safer using analytical engineering design. We discuss
+  two case studies illustrating that large equivalent fall heights play
+  significant roles in traumatic injuries in terrain park jumps. As a remedy, we 
+  provide an accessible online tool for terrain park builders, both to evaluate 
+  safety of existing jumps by calculating their impact danger and to design jump 
+  landing surface shapes that control this danger. 
 \end{abstract}
 
 \section{Introduction}
 %
-When a person impacts a surface in the event of a fall, there is a risk of
-injury. Greater impact velocity normal to the surface will cause greater
-injury, due to the increased energy that must be dissipated. A common surrogate
+When a falling person impacts a fixed surface, there is a risk of
+injury. A greater impact velocity normal to the surface causes greater
+injury, due to the increased kinetic energy that must be dissipated. A common surrogate
 for measuring impact velocity is ``equivalent fall height''.  Equivalent fall
 height provides a conceptually simple and familiar interpretation of the danger
-from a worse cast impact. Equivalent fall height is used in a variety of safety
-standards around the world from skydiving~\todo{add citation} to children's
+from a worst-case impact. It is used in a variety of safety
+standards around the world, from skydiving~\todo{add citation} to children's
 playground equipment~\cite{Chalmers1996}. The equivalent fall height of ski and
 snowboard terrain park jumps can be calculated if the Cartesian coordinates of
-the surface profile along the jumper's path and takeoff angle are
-available~\cite{Hubbard2012}. Minimizing the equivalent fall height is one of
-the primary jump design factors that can reduce injury. Equivalent fall height
-can be controlled for and it is an obvious safety design factor to minimize
-without loss of enjoyment from ski and snowboard participants.
+the landing surface profile along the jumper's path and the takeoff angle are
+known~\cite{Hubbard2012}. Controlling the equivalent fall height is one of
+the primary jump design methods that can reduce likelihood and severity of landing injury. 
 
-This paper reiterates the societal cost of the increasing terrain park injuries
+%Equivalent fall height
+%can be controlled for and it is an obvious safety design factor to minimize
+%without loss of enjoyment from ski and snowboard participants.
+
+This paper reiterates the societal cost of increasing terrain park injuries
 and then focuses on specific case studies that highlight the danger incurred if
 equivalent fall height is not controlled for. We then present a user-friendly
 web application for calculating equivalent fall height of existing or planned
 jumps. We see this application as a part of the solution in reducing injuries
-that ski jump builders can use increasing the safety in their resorts.
+that ski jump builders can use to increase the safety in their resorts.
 
 \subsection{History}
 %
-Terrain parks are not a new addition to snow sports resorts. Their introduction
-began in the 1980's and was tied to growth in interest in aerial maneuvers and
-participation in extreme sports. Their growth accelerated and continued until
-today  more than 90\% of US ski resorts include terrain parks. Unfortunately,
-this ubiquity is correlated to an in increase injuries.  An early review noted
+Terrain park jumps are not a new addition to snow sports resorts. Their gradual 
+introduction in the 1980's was tied to increased interest in aerial maneuvers 
+and extreme sports participation. Growth accelerated and has continued until
+today nearly 95\% of US ski resorts include terrain parks. Unfortunately,
+this ubiquity is correlated to injury increases.  Two early longitudinal studies  
+in the 1980's and early 1990's (Diebert1998, Furrer1995) already found significant 
+increases in head injuries and concussions. The Consumer Product and Safety Commission 
+(CPSC1999) learned that head injuries accounted for a majority of skiing and 
+snowboarding deaths. An early review (Koehle2002) noted "[S]eventy-seven percent 
+of spinal injuries (Tarazi1999) and 30\% of head injuries (Fukada2001) in 
+snowboarding were a result of jumps." Krause2004 %et al.~\cite{Krause2004} 
+determined that by 2004 snow skiing had replaced football as the second leading 
+cause of serious head and spinal cord injuries in the US. 
 
-Jackson et al.~\cite{Jackson2004} determined that snow
-skiing in 2004 replaced football as the second leading cause of serious head
-and spinal cord injuries in the United States. It is estimated that around 10\%
-of <15 year old ski and snowboard injuries are severe~\cite{Polites2018}.
+These early increasing injury assessments persisted. According to Russell2014, "between 
+5\% and 27\% of skiing and snowboarding injuries occur[red] in terrain parks 
+(Bridges2003, Goulet2007,  Moffat2009, Greve2009, Brooks2010,and Ruedl2013)". 
+Incredibly, at the first Winter Youth Olympic Games more than a third of all 
+snowboard half-pipe and slope-style competitors became injured (Ruedl2012). 
+Epidemiological research continues to show (Carus2016, Audet2019, Hosaka2020) 
+that injuries in terrain park jumps are both more likely and more severe than 
+those on normal slopes.  Audet2019 states  there is strong evidence that skiing 
+or snowboarding in a terrain park is a risk factor for head, neck, back, and 
+severe injuries. Hosaka2020 concludes that jumping is one of the main causes 
+for serious spinal injuries, regardless of skill level, and suggests that, 
+because the incidence of spinal injuries has not decreased over time, ski resorts 
+and the ski industry should focus on designing fail-safe jump features to minimize 
+the risk of serious spinal injury.  Similar related  suggestions have been made 
+in the literature for more than a decade (Hubbard2009, Swedberg2012, McNeil2012, 
+McNeil2012a, McNeil2015, Hubbard2015, Levy2015, Petrone2017, Moore2018).  
 
 \section{Equivalent Fall Height}
 %
@@ -129,7 +147,7 @@ air drag, is
   \label{eq:efh}
 \end{align}
 
-This equation is only a function of four variables: takeoff angle $\theta_T$,
+This expression is  a function of only four variables: takeoff angle $\theta_T$,
 impact coordinates $(x,y)$ on the landing surface, and the slope of the landing
 surface $\frac{dy}{dx}$. It is important to note that this surface is not a
 function of takeoff speed. To analyze a jump, it is sufficient to measure the
@@ -141,25 +159,25 @@ coordinates $(x,y)$.
 %
 Below we present two case studies derived from court proceedings in the United
 States of America in which the jury ruled in favor of the injured plaintiffs,
-in that there was neglect in the design and construction of the jumps that
+judging that there was neglect in the design and construction of the jumps that
 contributed significantly to the injury severity of the jumpers. The results
 below assume a skier mass, frontal area, and drag coefficient of 75~\si{\kg},
 0.34~\si{\meter\squared}, and drag coefficient of 0.821, respectively.
 
-\subsection{Charlene Vine v Bear Valley Ski Company}
+\subsection{Vine v Bear Valley}
 %
-In April of 2000, Ms. Charlene Vine's spine was broken when she crashed on a
+In April 2000, jumper Vine's spine was damaged when she crashed on a
 jump constructed at the Bear Valley Ski Resort in California, USA. The jump
-shape was that of a ``tabletop'' which is a common shape of terrain park jumps.
-It is the jump constructor's intent that jumpers fully clear the table; landing
-on the so called ``sweet spot'' when jumping, but Ms.~Vine landed short of the
-end of the table. Compounding the danger of a short landing, this jump's
-tabletop, which would typically be flat and level, was concave.  At the
-11~\si{\meter} horizontal landing distance from the takeoff point the surface
-was sloped upwards approximately 5~\si{\degree}. The upper panel of
+shape was a ``tabletop'', a common form of terrain park jumps.
+It is the jump builder's intent that jumpers completely clear the table, landing
+on the so called ``sweet spot'' when jumping, but Vine landed short of the
+end of the table. The upper panel of
 Figure~\ref{fig:vine-v-bear-valley} shows a reasonable approximation of the
-jump (in black) at Bear Valley Ski Resort based on measurements taken of the
-jump for the trial.  The shape of this surface highlights the detrimental
+Bear Valley jump (in black) based on measurements taken during 
+the accident investigation. Compounding the danger of a short landing, this jump's
+tabletop, which would typically be flat and horizontal, was instead concave.  At the
+11~\si{\meter} horizontal landing distance from the takeoff point the surface
+was sloped upwards approximately 5~\si{\degree}.  The shape of this surface highlights the detrimental
 effect of misaligning the surface tangent with the jumper's flight path at
 impact.
 %
@@ -214,15 +232,15 @@ possible landing location. In 2002, the jury ruled in favor of Ms.~Vine,
 agreeing that Bear Valley was responsible for designing safer
 jumps~\cite{Alvarado2002}.
 
-\subsection{Kenneth Salvini v Ski Lifts Inc.}
+\subsection{Salvini v Ski Lifts Inc.}
 %
-In 2004, Kenneth Salvini attempted a table top jump with skis in the terrain
+In 2004, Salvini attempted a table top jump with skis in the terrain
 park of the The Summit at Snoqualmie ski resort in Snoqalmie, Washington, USA.
-In this case, Mr.~Salvini overshot the location the jump builders' intended
-landing location even while traveling at expected skiing speeds. Mr.~Salvini
-somersaulted during flight and landed on his back, ultimately causing
+In this case, Mr.~Salvini overshot the location the intended
+landing location even while traveling at expected skiing speeds, rotated 
+backward during flight and landed on his back, ultimately causing
 quadriplegia. At his landing location the equivalent fall height was over 10
-meters, approximately a 4 story fall height.
+meters, approximately a 4-story fall height.
 Figure~\ref{fig:salvini-v-snoqualmie} shows the reconstruction of the jump
 profile in a solid black line based on measurements in the court proceedings.
 For takeoff speeds greater than 13~\si{\meter\per\second}
@@ -261,9 +279,9 @@ altimeter tells us so.
 
 \section{Moral Imperative}
 %
-Reducing the risk of injury on manufactured terrain park jumps motivates this
-work. Intelligent, engineering design based on the laws of mechanics can shape
-features to limit equivalent fall height. Utilizing this fact, complies with
+Reducing the risk of injury on fabricated terrain park jumps motivates this
+work. Intelligent engineering design based on the laws of mechanics can shape
+landing surfaces to limit equivalent fall height. Utilizing this fact, complies with
 the first canon of engineering ethics: ``Hold paramount the safety, health and
 welfare of the public''~\cite{NSPE2019}. In the context of snow sport safety,
 the first canon compels engineers to direct their technical expertise to
@@ -274,13 +292,13 @@ non-designed surfaces, there are zero reasons not to attempt to control for
 equivalent fall height.
 
 People unfamiliar with the legal and insurance systems in the United States of
-America might fail to appreciate that technical literature is corrupted in the
-defense of unsafe practices and corporate profits. Peer-reviewed, technical
+America might fail to appreciate that technical literature is often corrupted in the
+defense of unsafe practices and corporate profits. Peer-reviewed technical
 literature provides support for testimony in U.S. lawsuits. Plaintiffs and
 defendants both hire their own experts to testify. Authors of technical papers
-can make money by testifying. When it is for the defense, this testimony can
-result in denying compensation to injuries, and serves to prolong unsafe
-practices in snowsports. Rarely do experts report any conflicts of interest in
+can make money by testifying. When it is for the defense this testimony can
+result in denying compensation for injuries, and serve to prolong unsafe
+practices in snowsports. Rarely do experts report conflicts of interest in
 their papers and presentations, or when they organize and chair meetings or
 edit publications. Financial support for publications used by expert witnesses
 can be routed through consulting companies to pretend some deniability of
@@ -288,7 +306,7 @@ conflicts in their papers.
 
 Designing jumps to limit equivalent fall height and reduce the risk of injuries
 is based on well-known and well-established physics. The concept that designing
-jumps to limit equivalent fall height and controlling for energy dissipation
+jumps, to limit equivalent fall height and control energy dissipation,
 can reduce the risk is irrefutable. Another way to put it is that impact energy
 in a jump landing could be set to that of walking which has a magnitude
 evolution guarantees the walker no injury, yet these jumps are built that
@@ -340,12 +358,12 @@ that the authors may believe falling on ones head from greater and greater
 heights may \emph{not} cause greater injuries. It is not clear why one might
 propose such a hypothesis in the first place.
 
-The first two studies, do a poor job of isolating variables, and were not
+The first two studies do a poor job of isolating variables, and were not
 intended to, and the third suffers from restriction of equivalent fall height
 range. But most importantly, and quite noticeably, none of these papers are
 written with the intent to reduce injury rates. No ways are suggested in which
 their findings could be used to promote the safety, health, and welfare of the
-public. What these papers have done, is attempt to muddy the waters around the
+public. What these papers have done, is attempt to muddy the waters regarding the
 fact that impacting a surface at a lower velocity is safer.
 
 Testifying for an injured plaintiff, or to defend corporations, in injury
@@ -358,11 +376,11 @@ companies. Proverbial two sides to every question do not exist in science and
 engineering.
 
 Poorly executed experiments in snowsports, no matter how expensive and
-sophisticated the instrumentation, are not going to disprove the fundamental
-laws of classical mechanics. If statistics or experimental results do seem in
-conflict with predictions from classical mechanics, then there is a problem
-with the statistical or experimental design or their interpretation, and not
-with classical mechanics. Defending practices that lead to injuries at the
+sophisticated the instrumentation, cannot disprove the fundamental
+laws of  mechanics. If statistics or experimental results do seem in
+conflict with predictions from classical mechanics, then there is likely a problem
+with the statistical or experimental design or its interpretation, and not
+with the mechanics itself. Defending practices that lead to injuries at the
 service of industry can prolong these practices, which can lead to further
 injuries, clearly violating the first canon of engineering ethics.
 
