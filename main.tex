@@ -30,7 +30,7 @@
   terrain park use. Injury risk could be reduced through analytical engineering
   design of jump profiles to control the equivalent fall height, i.e., energy
   dissipated on impact when landing. The ski industry and their insurance
-  companies are resisting making terrain park jumps safer in this way. We
+  companies are resisting making terrain park jumps safer in this way.\todo{If we are going to state this we need to have citable evidence. -- JM} We
   discuss two case studies illustrating that large equivalent fall heights play
   significant roles in traumatic injuries in terrain park jumps. As a remedy,
   we provide an accessible online tool for terrain park builders, both to
@@ -54,21 +54,17 @@ are known, including the starting point, take off ramp, and landing hill along
 the jumper's path. Controlling energy dissipation in the human body, and hence
 controlling equivalent fall height in terrain park jumps, is paramount to safe
 design methods to reduce likelihood and severity of injury. Equivalent fall
-height should be the first attribute of a jump's landing design taken into
-consideration due to the obvious connection to injury and the ease of
+height should be a primary attribute of a jump's landing design taken into
+consideration due to the clear connection to injury and the ease of
 controlling for it.
 
 This paper discusses societal costs of increasing terrain park injuries and
-focuses on two case studies that illustrate the danger, if equivalent fall
-height is not controlled. We then present a user-friendly web application for
-calculating equivalent fall height of existing or planned jumps. We see this
-application as a part of the solution to reducing injuries in terrain park
-jumps. Jump builders may use it to reduce the risk of injuries in their
-resorts.
+focuses on two case studies that illustrate the danger if equivalent fall
+height is not controlled. Following this, we highlight examples of published ski safety research that attempt to sow doubt rather than contribute to improved safety. We then present a user-friendly web application for calculating equivalent fall height of existing or planned jumps. We see this application as a part of the solution to reducing injuries in terrain park jumps. Jump builders may use it to reduce the risk of injuries in their resorts.
 
 \subsection{History}
 %
-Terrain park jumps are not a new addition to snow sports resorts. Their gradual
+Terrain park jumps are not new additions to snow sports resorts. Their gradual
 introduction in the 1980's was tied to increased interest in aerial maneuvers
 and extreme sports participation. Growth accelerated and has continued.  Today
 nearly 95\% of US ski resorts include terrain parks. Unfortunately, this
@@ -79,18 +75,18 @@ Safety Commission~\cite{CPSC1999} learned that between 1993 and 1997 head injuri
 for a majority of skiing
 and snowboarding deaths. An early review~\cite{Koehle2002} noted that "[S]eventy-seven
 percent of spinal injuries~\cite{Tarazi1999} and 30\% of head
-injuries~\cite{Fukada2001}
+injuries~\cite{Fukuda2001}
 in snowboarding were a result of jumps." Jackson et al.~\cite{Jackson2004}
 determined that by 2004 snow skiing had replaced football as the second leading
 cause of serious head and spinal cord injuries in the US.
 
 These early increasing injury assessments persisted. According to
 \cite{Russell2014}, "between 5\% and 27\% of skiing and snowboarding injuries
-occur[red] in terrain parks \cite{Bridges2003, Goulet2007,  Moffat2009,
-Greve2009, Brooks2010,Ruedl2013}".  Incredibly, at the first Winter Youth
+occur[red] in terrain parks \cite{Bridges2003, Goulet2007,Moffat2009,
+Greve2009,Brooks2010,Ruedl2013}". Incredibly, at the first Winter Youth
 Olympic Games more than a third of all snowboard half-pipe and slope-style
 competitors became injured \cite{Ruedl2012}. Epidemiological research
-continues to show \cite{Carus2016,Audet2019a, Hosaka2020} that injuries on
+continues to show \cite{Carus2016,Audet2019a,Hosaka2020} that injuries on
 terrain park jumps are both more likely and more severe than those on normal
 slopes. Audet et. al~\cite{Audet2019a} states  there is strong evidence that
 skiing or snowboarding in a terrain park is a risk factor for head, neck,
@@ -101,7 +97,7 @@ not decreased over time, ski resorts and the ski industry should focus on
 designing fail-safe jump features to minimize the risk of serious spinal
 injury.  Similar suggestions have repeatedly been made in peer-reviewed
 literature for more than a decade
-\cite{Hubbard2009,Swedberg2012,McNeil2012,McNeil2012a,McNeil2015,Hubbard2015,
+\cite{Hubbard2009,Swedberg2012,McNeil2012,McNeil2012a,Hubbard2015,
 Levy2015,Petrone2017,Moore2018}.
 
 \section{Equivalent Fall Height}
@@ -125,19 +121,14 @@ with falling from building stories of increasing magnitude. Ground floor falls
 are on the order of 2.6~\si{\meter}, second story are 5.1~\si{\meter}, third
 story 8.8~\si{\meter}, and so on~\cite{Vish2005}. OSHA requires fall protection
 for fall heights greater than 1.2~\si{\meter} for general workplace
-safety~\todo{OSHA1994} and the FAA's safety regulations for safe parachuting
-landings is a 3~\si{\meter} fall height~\todo{need citation}.  Chalmers et
-al.~\cite{Chalmers1996} pushes for 1.5~\si{\meter} maximum fall heights for
-playground equipment. As for skiing, the standards for the Olympic traditional
-Nordic ski jumping call for equivalent fall heights of
-0.46~\si{\meter}~\todo{need citation}.
+safety~\cite{OSHA2021}. Chalmers et al.~\cite{Chalmers1996} pushes for 1.5~\si{\meter} maximum fall heights for playground equipment. Although there are no standards in Olympic Nordic ski jumps, they have equivalent fall heights in the neighborhood of 0.5~\si{\meter}.
 
 The equivalent fall height $h$ of an object is formally defined as
 %
-%\begin{align}
-  
-%  \label{eq:efh_general}
-%\end{align}
+\begin{align}
+  h = \frac{v^2}{2g}
+  \label{eq:efh_general}
+\end{align}
 %
 where $v$ is the impact velocity of the object and $g$ is the acceleration due
 to gravity. This definition results from equating the kinetic energy of an
@@ -158,7 +149,7 @@ drag here for simplicity, is
 This expression is  a function of only four variables: takeoff angle
 $\theta_T$, impact coordinates $(x,y)$ on the landing surface, and the slope of
 the landing surface $\frac{dy}{dx}$. It is important to note that this surface
-is not a function of takeoff speed. To analyze a jump, it is sufficient to
+is not a function of takeoff speed~\todo{add citation here}. To analyze a jump, it is sufficient to
 measure the Cartesian coordinates of the landing surface along the jumper's
 flight path and the takeoff angle. Slopes $\frac{dy}{dx}$ are computed
 numerically from the measured coordinates $(x,y)$.  LET'S EXPLAIN WHY SPEED CAN
@@ -169,8 +160,7 @@ BE IGNORED.
 Below we present two case studies from court proceedings in the United States.
 In these cases juries ruled in favor of injured plaintiffs, judging that
 neglect in jump design and construction contributed significantly to their
-injuries. Simulation results below assume skier mass, frontal area, and drag
-coefficient of 75~\si{\kg}, 0.34~\si{\meter\squared}, and 0.821, respectively.
+injuries. The simulation results below follow from the methods in ~\cite{Levy2015} and assume skier mass, frontal area, and drag coefficient of 75~\si{\kg}, 0.34~\si{\meter\squared}, and 0.821, respectively.
 
 \subsection{Vine v. Bear Valley}
 %
@@ -285,7 +275,7 @@ Employing engineering ethically to reduce the risk of injury on fabricated
 terrain park jumps, motivates this work. Engineering analysis and design, based
 on the laws of mechanics can be used shape terrain park jumps to limit
 equivalent fall heights. These laws go back centuries to Issac Newton and
-Émilie du Châtelet, \cite{Zinsser2007}. These are introduced in high school physics and
+Émilie du Châtelet~\cite{Zinsser2007}. These laws are introduced in high school physics and
 are fundamental in engineering education. Our motivation complies with the
 first canon of engineering ethics: ``Hold paramount the safety, health and
 welfare of the public''~\cite{NSPE2019}. In the context of snow sport safety,
@@ -317,10 +307,7 @@ Designing jumps to limit equivalent fall height and reduce the risk of injuries
 is based on well-known, well-established, centuries-old physics. The concept
 that designing jumps, to limit equivalent fall height and control energy
 dissipation, can reduce injury risk, is irrefutable. Said another way, impact
-energy in a jump landing could be set a walking speed. This speed a magnitude
-that evolution has apparently guaranteed not to cause a walker serious injury.
-Yet, these jumps are built such that injury from impact is much more likely. To
-counter this solid, fundamental, scientific concept defense experts introduce
+energy in a jump landing could be set to a walking impact speed. This speed is a magnitude that evolution has apparently guaranteed not to cause a walker serious injury. Yet, these jumps are built such that injury from impact is much more likely. To counter this solid, fundamental, scientific concept defense experts introduce
 confounding factors are that serve to cloud and confuse the basic issues.
 Consider three examples of papers co-authored by well-known skiing industry
 defense experts who have testified for the ski industry and their insurance
@@ -352,7 +339,7 @@ time. One should question what these weightings are.  Data and robust modern
 statistical methods exist for testing their stated hypothesis. We can only
 speculate as to why those may have not been used for this analysis. Drawing
 their final conclusion, that addition of terrain parks mitigates risks, is
-quite a stretch, given the data and debatable analysis.When it comes to health
+quite a stretch, given the data and debatable analysis. When it comes to health
 and safety of the public, society is also interested in reducing or eliminating
 the absolute numbers. This is especially true for activities in which the risk
 of catastrophic life-changing or fatal injuries can be mitigated by ethical
@@ -379,8 +366,7 @@ which their findings could be used to promote the safety, health, and welfare
 of the public. What these papers have done, is attempt to muddy the waters
 regarding the fact that impacting a surface at a lower velocity is safer. This
 strategy of introducing bogus science is well know in litigation in the U.S..
-For example the same strategy was used to defend the tobacco industry
-[Merchants of Doubt, Naomi Oreskas and Erik M. Conway, Bloomsbury, 2010].
+For example the same strategy was used to defend the tobacco industry~\cite{Oreskes2010}.
 
 Testifying for an injured plaintiff, or to defend corporations, in injury
 cases, are not equivalent actions ethically. Authoring papers with no intent on
@@ -422,10 +408,9 @@ probability in reducing injuries.  The only ethical decision is to adopt these
 methods; as saving even one person from a life of paralysis must be worth the
 minor inconvenience of shaping jumps using the rules in \cite{Levy2015}.
 
-Standards - ASTM F27
-Struggle to write ski binding adjustment standards
-Modified scope to avoid writing standards on snow surfaces
-
+Standards - ASTM F27,
+Struggle to write ski binding adjustment standards,
+Modified scope to avoid writing standards on snow surfaces,
 Insurance and risk 
 
 \subsection{Software and Online Access}
@@ -491,7 +476,6 @@ this sport should be held paramount.
 
 \bibliographystyle{unsrt}
 \bibliography{references}
-
 
 \appendix
 
