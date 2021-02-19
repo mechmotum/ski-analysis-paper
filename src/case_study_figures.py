@@ -12,7 +12,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(DIR_OF_THIS_FILE, '..'))
 
 def compare_measured_to_designed(measured_surface, equiv_fall_height,
                                  parent_slope_angle, approach_length,
-                                 takeoff_angle, skier):
+                                 takeoff_angle, skier, xlim):
 
     # NOTE : A different Skier() object is used internally in make_jump()
     slope, approach, takeoff, landing, landing_trans, flight, outputs = \
@@ -38,9 +38,11 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
                               init_vel=tuple(med_speed*vel_vec))
 
     # create the figure
-    fig, (prof_ax, efh_ax) = plt.subplots(2, 1, sharex=True,
-                                          constrained_layout=True)
-    prof_ax.set_aspect('equal')
+    fig, (prof_ax, efh_ax) = plt.subplots(2, 1,
+                                          sharex=True,
+                                          #constrained_layout=True,
+                                          #subplot_kw={'adjustable': 'box'},
+                                          )
 
     # horizontal lines for knee collapse and floor height
     # storey fall heights are calculated from Vish 2005 using
@@ -81,20 +83,29 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     efh_ax.bar(dist, efh, color='C2', align='edge', width=increment/2,
                label=None)
 
-    prof_ax = takeoff.plot(ax=prof_ax, linewidth=2, color='C2', label=None)
+    prof_ax.plot(takeoff.x, takeoff.y, linewidth=2, color='C2', label=None)
 
-    prof_ax = flight_low.plot(ax=prof_ax, color='black', linestyle='dashdot',
-                              label='Flight @ {:1.0f} m/s'.format(low_speed))
-    prof_ax = flight_med.plot(ax=prof_ax, color='black', linestyle='dashed',
-                              label='Flight @ {:1.0f} m/s'.format(med_speed))
-    prof_ax = flight.plot(ax=prof_ax, color='black', linestyle='dotted',
-                          label='Flight @ {:1.0f} m/s'.format(design_speed))
+    prof_ax.plot(flight_low.pos[:, 0], flight_low.pos[:, 1],
+                 color='black',
+                 linestyle='dashdot',
+                 label='Flight @ {:1.0f} m/s'.format(low_speed))
+    prof_ax.plot(flight_med.pos[:, 0], flight_med.pos[:, 1],
+                 color='black',
+                 linestyle='dashed',
+                 label='Flight @ {:1.0f} m/s'.format(med_speed))
+    prof_ax.plot(flight.pos[:, 0], flight.pos[:, 1],
+                 color='black',
+                 linestyle='dotted',
+                 label='Flight @ {:1.0f} m/s'.format(design_speed))
 
-    prof_ax = landing.plot(ax=prof_ax, color='C2', linewidth=2, label=None)
-    prof_ax = landing_trans.plot(ax=prof_ax, color='C2', linewidth=2,
-                                 label='Designed Landing Surface')
+    prof_ax.plot(landing.x, landing.y,
+                 color='C2', linewidth=2, label=None)
+    prof_ax.plot(landing_trans.x, landing_trans.y,
+                  color='C2', linewidth=2,
+                  label='Designed Landing Surface')
 
-    prof_ax = measured_surface.plot(ax=prof_ax, color='black',
+    prof_ax.plot(measured_surface.x, measured_surface.y,
+                                    color='black',
                                     label="Measured Landing Surface")
 
     #prof_ax.set_title('Design Speed: {:1.0f} m/s'.format(design_speed))
@@ -105,8 +116,16 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
 
     efh_ax.grid()
     prof_ax.grid()
-    efh_ax.legend(loc='upper left')
-    prof_ax.legend(loc='lower left')
+    #efh_ax.legend(loc='upper left')
+    #prof_ax.legend(loc='lower left')
+
+    prof_ax.set_xlim(xlim)
+    #efh_ax.set_xlim(xlim)
+
+    prof_ax.set_aspect('equal') #, share=True)
+    #efh_ax.set_aspect('equal')
+
+
 
     return prof_ax, efh_ax
 
@@ -129,7 +148,8 @@ skier = Skier()
 
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
-                                                  takeoff_angle, skier)
+                                                  takeoff_angle, skier,
+                                                  (-10, 25))
 ylim = profile_ax.get_ylim()
 profile_ax.set_ylim((-20.0, ylim[1]))
 
@@ -157,7 +177,8 @@ skier = Skier()
 
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
-                                                  takeoff_angle, skier)
+                                                  takeoff_angle, skier,
+                                                  (-10, 45))
 
 ylim = profile_ax.get_ylim()
 profile_ax.set_ylim((-30.0, ylim[1]))
