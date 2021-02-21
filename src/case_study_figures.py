@@ -12,7 +12,8 @@ PROJECT_ROOT = os.path.abspath(os.path.join(DIR_OF_THIS_FILE, '..'))
 
 def compare_measured_to_designed(measured_surface, equiv_fall_height,
                                  parent_slope_angle, approach_length,
-                                 takeoff_angle, skier, xlim):
+                                 takeoff_angle, skier, xlim, ylim_top,
+                                 ylim_bot):
 
     # NOTE : A different Skier() object is used internally in make_jump()
     slope, approach, takeoff, landing, landing_trans, flight, outputs = \
@@ -38,12 +39,17 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
                               init_vel=tuple(med_speed*vel_vec))
 
     # create the figure
-    fig, (prof_ax, efh_ax) = plt.subplots(2, 1,
+    fig, (prof_ax, efh_ax) = plt.subplots(nrows=2,
+                                          ncols=1,
                                           sharex=True,
                                           figsize=(5.25, 4.25),
                                           constrained_layout=True,
-                                          gridspec_kw=dict(height_ratios=[2,1.5]),
+                                          gridspec_kw={'height_ratios':
+                                                       [1, 0.75]},
                                           )
+
+    efh_ax.grid(axis='x')
+    prof_ax.grid()
 
     increment = 2.0
 
@@ -52,11 +58,21 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
 
     rects = efh_ax.bar(dist_meas, efh_meas, color='black', align='center',
                        width=increment/2, label="Measured Landing Surface")
-    for rect, si in list(zip(rects, speeds)): #[::2]:
+    for rect, si in list(zip(rects[1:], speeds[1:])):
         height = rect.get_height()
-        efh_ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
-                    '{:1.1f}'.format(si), fontsize='xx-small', ha='center',
-                    va='bottom', rotation=90)
+        rect_x = rect.get_x() + rect.get_width()/2.0
+        efh_ax.text(rect.get_x() + rect.get_width()/2.,
+                    height + 0.65,
+                    '{:1.1f}'.format(si),
+                    fontsize='xx-small',
+                    ha='center',
+                    va='bottom',
+                    rotation=90,
+                    bbox={'boxstyle': 'square,pad=0.1',
+                          'color': 'white',
+                          }
+                    )
+        efh_ax.arrow(rect_x, height, 0.0, 0.65, fc='gray', ec='gray')
 
     dist, efh, speeds = landing.calculate_efh(np.deg2rad(takeoff_angle),
                                               takeoff.end, skier, increment)
@@ -99,17 +115,16 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     # horizontal lines for knee collapse and floor height
     # storey fall heights are calculated from Vish 2005 using
     # average_window_fall_height.py
-    if np.max(efh_meas) > 8.0:
-        efh_ax.axhline(8.8, color='C1', linestyle='solid',
-                    label='Avg. 3 Story Fall Height')
-    efh_ax.axhline(5.1, color='C1', linestyle='dashed',
+    floor_line_color = 'gray'  # 'C1' #  (orange)
+    efh_ax.axhline(8.8, color=floor_line_color, linestyle='solid',
+                   label='Avg. 3 Story Fall Height')
+    efh_ax.axhline(5.1, color=floor_line_color, linestyle='dashed',
                    label='Avg. 2 Story Fall Height')
-    efh_ax.axhline(2.6, color='C1', linestyle='dashdot',
+    efh_ax.axhline(2.6, color=floor_line_color, linestyle='dashdot',
                    label='Avg. 1 Story Fall Height')
     # this value comes from Minetti1998
-    efh_ax.axhline(1.5, color='C1', linestyle='dotted',
+    efh_ax.axhline(1.5, color=floor_line_color, linestyle='dotted',
                    label='Knee Collapse Height')
-
 
     #prof_ax.set_title('Design Speed: {:1.0f} m/s'.format(design_speed))
 
@@ -117,14 +132,11 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     efh_ax.set_ylabel('Equivalent Fall Height [m]')
     efh_ax.set_xlabel('Horizontal Position [m]')
 
-    efh_ax.grid()
-    prof_ax.grid()
-
-
     prof_ax.set_xlim(*xlim)
-    prof_ax.set_ylim(-15, 5)  # doesn't work
+    prof_ax.set_ylim(*ylim_top)
 
     efh_ax.set_xlim(*xlim)
+    efh_ax.set_ylim(*ylim_bot)
 
     prof_ax.set_aspect('equal')
 
@@ -150,13 +162,8 @@ skier = Skier()
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
                                                   takeoff_angle, skier,
-                                                  (-10, 25))
-#ylim = profile_ax.get_ylim()
-#profile_ax.set_ylim((-20.0, ylim[1]))
-
+                                                  (-10, 25), (-10, 5), (0, 6))
 fig = profile_ax.figure
-
-fig.set_figwidth(5.25)
 
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'vine-v-bear-valley.pdf'))
 
@@ -179,10 +186,7 @@ skier = Skier()
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
                                                   takeoff_angle, skier,
-                                                  (-10, 45))
-
-#ylim = profile_ax.get_ylim()
-#profile_ax.set_ylim((-30.0, ylim[1]))
+                                                  (-10, 45), (-15, 5), (0, 15))
 
 fig = profile_ax.figure
 
