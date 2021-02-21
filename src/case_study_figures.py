@@ -40,31 +40,19 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     # create the figure
     fig, (prof_ax, efh_ax) = plt.subplots(2, 1,
                                           sharex=True,
-                                          #constrained_layout=True,
-                                          #subplot_kw={'adjustable': 'box'},
+                                          figsize=(5.25, 4.25),
+                                          constrained_layout=True,
+                                          gridspec_kw=dict(height_ratios=[2,1.5]),
                                           )
 
-    # horizontal lines for knee collapse and floor height
-    # storey fall heights are calculated from Vish 2005 using
-    # average_window_fall_height.py
-    efh_ax.axhline(8.8, color='C1', linestyle='solid',
-                   label='Avg. 3 Story Fall Height')
-    efh_ax.axhline(5.1, color='C1', linestyle='dashed',
-                   label='Avg. 2 Story Fall Height')
-    efh_ax.axhline(2.6, color='C1', linestyle='dashdot',
-                   label='Avg. 1 Story Fall Height')
-    # this value comes from Minetti1998
-    efh_ax.axhline(1.5, color='C1', linestyle='dotted',
-                   label='Knee Collapse Height')
+    increment = 2.0
 
-    increment = 1.0
-
-    dist, efh, speeds = measured_surface.calculate_efh(
+    dist_meas, efh_meas, speeds = measured_surface.calculate_efh(
         np.deg2rad(takeoff_angle), takeoff.end, skier, increment)
 
-    rects = efh_ax.bar(dist, efh, color='black', align='center',
+    rects = efh_ax.bar(dist_meas, efh_meas, color='black', align='center',
                        width=increment/2, label="Measured Landing Surface")
-    for rect, si in list(zip(rects, speeds))[::2]:
+    for rect, si in list(zip(rects, speeds)): #[::2]:
         height = rect.get_height()
         efh_ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
                     '{:1.1f}'.format(si), fontsize='xx-small', ha='center',
@@ -101,12 +89,27 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     prof_ax.plot(landing.x, landing.y,
                  color='C2', linewidth=2, label=None)
     prof_ax.plot(landing_trans.x, landing_trans.y,
-                  color='C2', linewidth=2,
-                  label='Designed Landing Surface')
+                 color='C2', linewidth=2,
+                 label='Designed Landing Surface')
 
     prof_ax.plot(measured_surface.x, measured_surface.y,
-                                    color='black',
-                                    label="Measured Landing Surface")
+                 color='black',
+                 label="Measured Landing Surface")
+
+    # horizontal lines for knee collapse and floor height
+    # storey fall heights are calculated from Vish 2005 using
+    # average_window_fall_height.py
+    if np.max(efh_meas) > 8.0:
+        efh_ax.axhline(8.8, color='C1', linestyle='solid',
+                    label='Avg. 3 Story Fall Height')
+    efh_ax.axhline(5.1, color='C1', linestyle='dashed',
+                   label='Avg. 2 Story Fall Height')
+    efh_ax.axhline(2.6, color='C1', linestyle='dashdot',
+                   label='Avg. 1 Story Fall Height')
+    # this value comes from Minetti1998
+    efh_ax.axhline(1.5, color='C1', linestyle='dotted',
+                   label='Knee Collapse Height')
+
 
     #prof_ax.set_title('Design Speed: {:1.0f} m/s'.format(design_speed))
 
@@ -116,16 +119,14 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
 
     efh_ax.grid()
     prof_ax.grid()
-    #efh_ax.legend(loc='upper left')
-    #prof_ax.legend(loc='lower left')
-
-    prof_ax.set_xlim(xlim)
-    #efh_ax.set_xlim(xlim)
-
-    prof_ax.set_aspect('equal') #, share=True)
-    #efh_ax.set_aspect('equal')
 
 
+    prof_ax.set_xlim(*xlim)
+    prof_ax.set_ylim(-15, 5)  # doesn't work
+
+    efh_ax.set_xlim(*xlim)
+
+    prof_ax.set_aspect('equal')
 
     return prof_ax, efh_ax
 
@@ -150,8 +151,8 @@ profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
                                                   takeoff_angle, skier,
                                                   (-10, 25))
-ylim = profile_ax.get_ylim()
-profile_ax.set_ylim((-20.0, ylim[1]))
+#ylim = profile_ax.get_ylim()
+#profile_ax.set_ylim((-20.0, ylim[1]))
 
 fig = profile_ax.figure
 
@@ -180,11 +181,9 @@ profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   takeoff_angle, skier,
                                                   (-10, 45))
 
-ylim = profile_ax.get_ylim()
-profile_ax.set_ylim((-30.0, ylim[1]))
+#ylim = profile_ax.get_ylim()
+#profile_ax.set_ylim((-30.0, ylim[1]))
 
 fig = profile_ax.figure
-
-fig.set_figwidth(5.25)
 
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'salvini-v-snoqualmie.pdf'))
