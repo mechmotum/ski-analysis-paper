@@ -12,8 +12,9 @@ PROJECT_ROOT = os.path.abspath(os.path.join(DIR_OF_THIS_FILE, '..'))
 
 def compare_measured_to_designed(measured_surface, equiv_fall_height,
                                  parent_slope_angle, approach_length,
-                                 takeoff_angle, skier, xlim, ylim_top,
-                                 ylim_bot):
+                                 takeoff_angle, xlim, ylim_top, ylim_bot):
+
+    skier = Skier()
 
     # NOTE : A different Skier() object is used internally in make_jump()
     slope, approach, takeoff, landing, landing_trans, flight, outputs = \
@@ -37,6 +38,8 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
                               init_vel=tuple(low_speed*vel_vec))
     flight_med = skier.fly_to(measured_surface, init_pos=takeoff.end,
                               init_vel=tuple(med_speed*vel_vec))
+    flight_max = skier.fly_to(measured_surface, init_pos=takeoff.end,
+                              init_vel=tuple(design_speed*vel_vec))
 
     # create the figure
     fig, (prof_ax, efh_ax) = plt.subplots(nrows=2,
@@ -56,15 +59,24 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     dist_meas, efh_meas, speeds = measured_surface.calculate_efh(
         np.deg2rad(takeoff_angle), takeoff.end, skier, increment)
 
-    rects = efh_ax.bar(dist_meas, efh_meas, color='black', align='center',
-                       width=increment/2, label="Measured Landing Surface")
+    meas_color = 'black'
+    design_color = 'C2'  # mpl default green
+
+    # bar graph for measured efh
+    rects = efh_ax.bar(dist_meas, efh_meas,
+                       color=meas_color,
+                       align='center',
+                       width=increment/2,
+                       label="Measured Landing Surface")
+
+    # adds takeoff speed just above the measured efh bars
     for rect, si in list(zip(rects[1:], speeds[1:])):
         height = rect.get_height()
         rect_x = rect.get_x() + rect.get_width()/2.0
         efh_ax.text(rect.get_x() + rect.get_width()/2.,
                     height + 0.65,
                     '{:1.1f}'.format(si),
-                    fontsize='xx-small',
+                    fontsize='x-small',
                     ha='center',
                     va='bottom',
                     rotation=90,
@@ -77,7 +89,10 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     dist, efh, speeds = landing.calculate_efh(np.deg2rad(takeoff_angle),
                                               takeoff.end, skier, increment)
 
-    efh_ax.bar(dist, efh, color='C2', align='edge', width=increment/2,
+    efh_ax.bar(dist, efh,
+               color=design_color,
+               align='edge',  # shift bars slightly to not hide measured bars
+               width=increment/2,
                label="Designed Landing Surface")
 
     dist, efh, speeds = landing_trans.calculate_efh(np.deg2rad(takeoff_angle),
@@ -97,7 +112,7 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
                  color='black',
                  linestyle='dashed',
                  label='Flight @ {:1.0f} m/s'.format(med_speed))
-    prof_ax.plot(flight.pos[:, 0], flight.pos[:, 1],
+    prof_ax.plot(flight_max.pos[:, 0], flight_max.pos[:, 1],
                  color='black',
                  linestyle='dotted',
                  label='Flight @ {:1.0f} m/s'.format(design_speed))
@@ -106,11 +121,13 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
                  color='C2', linewidth=2, label=None)
     prof_ax.plot(landing_trans.x, landing_trans.y,
                  color='C2', linewidth=2,
-                 label='Designed Landing Surface')
+                 label=None,
+                 )
 
     prof_ax.plot(measured_surface.x, measured_surface.y,
                  color='black',
-                 label="Measured Landing Surface")
+                 label=None,
+                 )
 
     # horizontal lines for knee collapse and floor height
     # storey fall heights are calculated from Vish 2005 using
@@ -126,10 +143,8 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     efh_ax.axhline(1.5, color=floor_line_color, linestyle='dotted',
                    label='Knee Collapse Height')
 
-    #prof_ax.set_title('Design Speed: {:1.0f} m/s'.format(design_speed))
-
     prof_ax.set_ylabel('Vertical Position [m]')
-    efh_ax.set_ylabel('Equivalent Fall Height [m]')
+    efh_ax.set_ylabel('Equivalent Fall\nHeight [m]')
     efh_ax.set_xlabel('Horizontal Position [m]')
 
     prof_ax.set_xlim(*xlim)
@@ -139,6 +154,8 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     efh_ax.set_ylim(*ylim_bot)
 
     prof_ax.set_aspect('equal')
+
+    prof_ax.legend()
 
     return prof_ax, efh_ax
 
@@ -151,20 +168,17 @@ landing_surface_data = np.loadtxt(os.path.join(PROJECT_ROOT, 'data',
 
 landing_surface = Surface(landing_surface_data[:, 0],  # x values in meters
                           landing_surface_data[:, 1])  # y values in meters
-takeoff_angle = 30.0  # degrees
+takeoff_angle = 30.0  # degrees, matches measured from case data
 takeoff_point = (0.0, 0.0)  # meters
 fall_height = 1.0  # meters
-slope_angle = -8.0  # degrees
-approach_length = 180.0  # meters
-
-skier = Skier()
+slope_angle = -6.0  # degrees
+approach_length = 420.0  # meters
 
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
-                                                  takeoff_angle, skier,
+                                                  takeoff_angle,
                                                   (-10, 25), (-10, 5), (0, 6))
 fig = profile_ax.figure
-
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'vine-v-bear-valley.pdf'))
 
 # Salvini v Snoqualmie
@@ -175,19 +189,16 @@ landing_surface_data = np.loadtxt(os.path.join(PROJECT_ROOT, 'data',
 
 landing_surface = Surface(landing_surface_data[:, 0],  # x values in meters
                           landing_surface_data[:, 1])  # y values in meters
-takeoff_angle = 25.0  # degrees
+takeoff_angle = 25.0  # degrees, matches measured from case data
 takeoff_point = (0.0, 0.0)  # meters
 fall_height = 1.0  # meters
-slope_angle = -10.0  # degrees
-approach_length = 220.0  # meters
-
-skier = Skier()
+slope_angle = -8.0  # degrees
+approach_length = 280.0  # meters
 
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
-                                                  takeoff_angle, skier,
-                                                  (-10, 45), (-15, 5), (0, 15))
+                                                  takeoff_angle,
+                                                  (-10, 45), (-15, 5), (0, 16))
 
 fig = profile_ax.figure
-
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'salvini-v-snoqualmie.pdf'))
