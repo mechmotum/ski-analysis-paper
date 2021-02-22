@@ -29,10 +29,10 @@
   decades, epidemiological evidence shows increased injuries correlate with
   terrain park use. Injury risk could be reduced through analytical engineering
   design of jump profiles to control the equivalent fall height, i.e., energy
-  dissipated on impact when landing. The ski industry and their insurance
-  companies are resisting making terrain park jumps safer in this way.\todo{If
-  we are going to state this (in the abstract) we need to have citable
-  evidence. Not sure we provide that in the paper. -- JM} We discuss two case
+  dissipated on impact when landing. We know of no evidence the ski industry and their insurance
+  companies are supporting making terrain park jumps safer in this way. We discuss two case
+  %\todo{If we are going to state this (in the abstract) we need to have citable
+  %evidence. Not sure we provide that in the paper. -- JM}  - sentence modified MH
   studies illustrating that large equivalent fall heights play significant
   roles in traumatic injuries in terrain park jumps. As a remedy, we provide an
   accessible online tool for terrain park builders, both to evaluate safety of
@@ -79,7 +79,7 @@ nearly 95\% of US ski resorts include terrain parks. Unfortunately, this
 ubiquity is correlated to injury increases.  Two early longitudinal studies  in
 the 1980's and early 1990's~\cite{Deibert1998,Furrer1995} had already found
 significant increases in head injuries and concussions. The Consumer Product
-Safety Commission~\cite{CPSC1999} learned that between 1993 and 1997 head
+Safety Commission~\cite{CPSC1999} determined that between 1993 and 1997 head
 injuries accounted for a majority of skiing and snowboarding deaths. An early
 review~\cite{Koehle2002} noted that "[S]eventy-seven percent of spinal
 injuries~\cite{Tarazi1999} and 30\% of head injuries~\cite{Fukuda2001} in
@@ -127,10 +127,9 @@ with falling from building stories of increasing magnitude. Ground floor falls
 are on the order of 2.6~\si{\meter}, second story are 5.1~\si{\meter}, third
 story 8.8~\si{\meter}, and so on~\cite{Vish2005}. OSHA requires fall protection
 for fall heights greater than 1.2~\si{\meter} for general workplace
-safety~\cite{OSHA2021}. Chalmers et al.~\cite{Chalmers1996} pushes for
+safety~\cite{OSHA2021}. Chalmers et al.~\cite{Chalmers1996} argues for
 1.5~\si{\meter} maximum fall heights for playground equipment. Although there
-are no standards in Olympic Nordic ski jumps, they have equivalent fall heights
-in the neighborhood of 0.5~\si{\meter}.
+are no standards in Olympic Nordic ski jumps, their equivalent fall heights have been measured to be in the neighborhood of 0.5~\si{\meter}.
 
 The equivalent fall height $h$ of an object is formally defined as
 %
@@ -139,11 +138,11 @@ The equivalent fall height $h$ of an object is formally defined as
 where $v$ is the impact velocity of the object and $g$ is the acceleration due
 to gravity. This definition results from equating the kinetic energy of an
 object moving at velocity $v$ at impact with the potential energy of the same
-object at a height $h$ above the ground.
+object at height $h$ above the ground.
 
 Using Equation~\ref{eq:efh_general} as a starting point, the equivalent fall
 height $h$ can be determined for any landing surface one impacts after a jump
-flight trajectory~\cite{Hubbard2012}. The resulting equation, neglecting air
+flight trajectory~\cite{Petrone2017}. The resulting equation, neglecting air
 drag here for simplicity, is
 %
 \begin{align}
@@ -155,19 +154,19 @@ drag here for simplicity, is
 
 This expression is  a function of only four variables: takeoff angle
 $\theta_T$, impact coordinates $(x,y)$ on the landing surface, and the slope of
-the landing surface $\frac{dy}{dx}$. It is important to note that this surface
-is not a function of takeoff speed~\todo{Mont will add citation here}. To analyze a jump,
+the landing surface $\frac{dy}{dx}$. Note that the expression
+is not a function of takeoff speed~\cite{Petrone2017}. To analyze a jump,
 it is sufficient to measure the Cartesian coordinates of the landing surface
 along the jumper's flight path and the takeoff angle. Slopes $\frac{dy}{dx}$
-are computed numerically from the measured coordinates $(x,y)$.~\todo{LET'S
-EXPLAIN WHY SPEED CAN BE IGNORED -- CB}.
+are computed numerically from the measured coordinates $(x,y)$.
+%~\todo{LET'S EXPLAIN WHY SPEED CAN BE IGNORED -- CB}. the ref does this- MH
 
 \section{Case Studies}
 %
-Below we present two case studies from court proceedings in the United States.
-In these cases juries ruled in favor of injured plaintiffs, judging that
+Next we present two case studies from court proceedings in the United States.
+In both these cases juries ruled in favor of injured plaintiffs, judging that
 neglect in jump design and construction contributed significantly to their
-injuries. The simulation results below follow from the methods in
+injuries~\cite{Alvarado2002}~\cite{Salvini2008}. The simulation results below follow from the methods in
 ~\cite{Levy2015} and assume skier mass, frontal area, and drag coefficient of
 75~\si{\kg}, 0.34~\si{\meter\squared}, and 0.821, respectively.
 
@@ -175,7 +174,7 @@ injuries. The simulation results below follow from the methods in
 %
 In April 2000, Ms.~Vine's lower spine was injured when she fell on a jump at
 Bear Valley Ski Resort in California. The jump shape was a ``tabletop'', a
-common form of terrain park jump.  The builder's intent is that jumpers
+common form of terrain park jump (Fig.~\ref{fig:vine-v-bear-valley}).  The builder's intent is that jumpers
 completely clear the table, landing on the down-slope near the so-called
 ``sweet spot'', but Vine landed short of the knuckle (the end of the tabletop). The
 upper panel of Fig.~\ref{fig:vine-v-bear-valley} shows the jump surface (solid
@@ -183,7 +182,7 @@ black) based on  accident investigation measurements. This tabletop, which
 would typically be flat and horizontal, was instead concave, compounding the
 danger of a short landing. At the 11~\si{\meter} actual measured horizontal
 landing distance from the takeoff point, the surface was sloped upwards
-approximately 5\si{\degree}. The surface shape emphasizes the detrimental
+approximately 5\si{\degree}. The concave shape emphasizes the detrimental
 effect of not aligning more closely the surface tangent with the jumper flight
 path at impact.
 %
@@ -196,10 +195,11 @@ path at impact.
   13~\si{\meter\per\second} takeoff speed is used as the design speed for a
   comparison jump (solid green) designed to have constant equivalent fall
   height of 1~\si{\meter}.
-  b) Lower panel shows equivalent fall height for both jumps in corresponding
-  colors at 1~\si{\meter} intervals. Numbers above vertical bars indicate
-  takeoff speed required to land at that location. Orange lines indicate
-  relatable fall heights.}
+  b) Equivalent fall height for both jumps in corresponding
+  colors at 1~\si{\meter} intervals. Numbers above bars indicate
+  takeoff speed required to land at that location. 
+  %Orange lines indicate relatable fall heights.
+  }
   \label{fig:vine-v-bear-valley}
 \end{figure}
 
@@ -224,35 +224,36 @@ lower impact forces when landing in the rotated position.
 In contrast, a landing surface designed to have a constant equivalent fall
 height can be created with a similar amount of construction costs that would
 reduce the fall height.  The green jump profile in the upper panel of
-Figure~\ref{fig:vine-v-bear-valley} shows a possible jump design,
-~\cite{Levy2015}, of similar size with similar flight times that ensures a
-constant equivalent fall height everywhere of 1~\si{\meter}.  The convex shape
+Figure~\ref{fig:vine-v-bear-valley} shows a possible jump design, see~\cite{Levy2015}, of similar size with similar flight times that ensures a
+constant (smaller) equivalent fall height almost everywhere of 1~\si{\meter}.  The convex shape
 of this jump is interestingly close to what one would get if the original
-tabletop were inverted, showing how the convex nature of the jump shape is
-critically important to control equivalent fall height. A jump of this design
-would have lowered impact forces for any orientation landing at any possible
-landing location. In 2002, the jury ruled in favor of Ms.~Vine, agreeing that
-Bear Valley was responsible for designing safer jumps~\cite{Alvarado2002}.
+concave tabletop were inverted, showing how the convex nature of the landing shape is
+critically important to control equivalent fall height. This jump design
+would have lowered impact forces for landings at any 
+location. In 2002, the jury ruled in favor of Ms.~Vine, agreeing that
+Bear Valley was responsible for designing safer jumps.
 
 \subsection{Salvini v. Ski Lifts Inc.}
 %
 In 2004, Mr.~Salvini attempted a table-top jump on skis in the terrain park of
 the The Summit at Snoqualmie ski resort, in Washington state.  Salvini overshot
-the intended landing location even while traveling at expected skiing speeds,
+the intended landing location even traveling at typical skiing speeds,
 rotated backward during flight and landed on his back, ultimately causing
 quadriplegia. At his landing location the equivalent fall height was over 10
 meters, approximately a 4-story fall.  Figure~\ref{fig:salvini-v-snoqualmie}
 shows the jump profile in a solid black line based on measurements from the
 accident investigation.  For takeoff speeds greater than
-13~\si{\meter\per\second} (47~\si{\kilo\meter\per\hour}), the lower panel
+13~\si{\meter\per\second}
+%(47~\si{\kilo\meter\per\hour})
+, the lower panel
 shows, also in black, that the equivalent fall height is greater than 8 meters
 and grows linearly with larger takeoff speeds. Severe injury is almost certain
 from falls this high, especially so if landing in a way that causes undue
 forces to the spine, as in this case.
 
-The green curve in the upper panel is the jump profile designed to have a
+The upper panel shows the jump profile (green) designed to have a
 1~\si{\meter} equivalent fall height for all speeds below
-17~\si{\meter\per\second}. This profile requires significantly more snow than
+16~\si{\meter\per\second}. This profile requires significantly more snow than
 the measured jump but alleviates the dangerous impacts possible in the measured
 jump.
 
@@ -269,23 +270,25 @@ cannot sense potential risks until we have left the takeoff are in the air.
   \caption{\textbf{Snoqualmie jump compared to possible safer design}
   a) Measured landing surface (solid black) and jumper flight paths (intermittent
   black) for 25~\si{\degree} takeoff angle. The
-  17~\si{\meter\per\second} takeoff speed is used as the design speed for a comparison
-  jump (solid green) designed to have constant equivalent fall height of 1~\si{\meter}.
-  b) Lower panel shows equivalent fall height for both jumps
+  16~\si{\meter\per\second} takeoff speed is used as the design speed for a comparison
+  jump (solid green) which has constant equivalent fall height of 1~\si{\meter}.
+  b) Equivalent fall height for both jumps
   in corresponding colors at 1~\si{\meter} intervals. Numbers above
-  vertical bars indicate takeoff speed required
-  to land at that location. Orange lines indicate relatable fall heights.}
+  bars indicate takeoff speed required
+  to land at that location. 
+  %Orange lines indicate relatable fall heights.
+  }
   \label{fig:salvini-v-snoqualmie}
 \end{figure}
 
 \section{Moral Imperative}
 %
-Employing engineering ethically to reduce the risk of injury on fabricated
-terrain park jumps, motivates this work. Engineering analysis and design, based
-on the laws of mechanics can be used shape terrain park jumps to limit
+Employing engineering ethically to reduce risk of injury on fabricated
+terrain park jumps motivates this work. Engineering analysis and design, based
+on the laws of mechanics, can be used shape jump landings to limit
 equivalent fall heights. These laws go back centuries to Issac Newton and
-Émilie du Châtelet~\cite{Zinsser2007}. These laws are introduced in high school
-physics and are fundamental in engineering education. Our motivation complies
+Émilie du Châtelet~\cite{Zinsser2007}, are introduced as early as high school
+physics, and are fundamental to engineering education. Our motivation is consistent 
 with the first canon of engineering ethics: ``Hold paramount the safety, health
 and welfare of the public''~\cite{NSPE2019}. In the context of snow sport
 safety, the first canon compels engineers to direct their technical expertise
@@ -298,29 +301,26 @@ skiing industry and their insurance companies to adopt such design methods?
 
 People unfamiliar with the legal and insurance systems in the USA may fail to
 appreciate that technical literature is often corrupted in legal defense of
-unsafe practices and protecting corporate assets. Peer-reviewed technical
-literature is used to support testimony in U.S. lawsuits. Both plaintiffs and
+unsafe practices and to protect corporate assets. Peer-reviewed technical
+literature is often used to support testimony in U.S. lawsuits. Both plaintiffs and
 defendants hire their own experts to testify and authors of technical papers
-can make money by testifying. When this testimony is for the defense, the
-testimony can result in denying compensation for injuries, and serve to prolong
+can make money by testifying. When this testimony is for the defense, it 
+can result in denying compensation for injuries, and serve to prolong
 unsafe practices. Rarely do experts report conflicts of interest in their
 papers and presentations, or when they organize and chair meetings or edit
 publications. Financial support for publications used by expert witnesses can
 be routed through consulting companies to pretend some deniability of conflicts
 of interest in their papers. Sadly, this is deceitful, self-serving, and
-unethical, because it ignores the first canon of engineering ethics. It should
+unethical, because it ignores the first canon of engineering ethics. It could
 be argued that, if someone ignores engineering ethics, they are not acting as
 engineers, and what they are doing cannot be considered engineering.
 
 Designing jumps to limit equivalent fall height and reduce the risk of injuries
 is based on well-known, well-established, centuries-old physics. The concept
-that designing jumps, to limit equivalent fall height and control energy
-dissipation, can reduce injury risk, is irrefutable. Said another way, impact
-energy in a jump landing could be set to a walking impact speed. This speed is
-a magnitude that evolution has apparently guaranteed not to cause a walker
-serious injury. Yet, these jumps are built such that injury from impact is much
+that designing jumps can reduce injury risk, by limiting equivalent fall height and hence the amount of energy dissipation, is irrefutable. Said another way, impact
+energy in a jump landing can be set to correspond to a walking impact speed. This speed is of a magnitude that evolution has apparently guaranteed not to cause serious injury to a walker. Yet, some jumps are being built such that injury from impact is much
 more likely. To counter this solid, fundamental, scientific concept defense
-experts introduce confounding factors are that serve to cloud and confuse the
+experts introduce confounding factors that serve to cloud and confuse the
 basic issues.  Consider three examples of papers co-authored by well-known
 skiing industry defense experts who have testified for the ski industry and
 their insurance companies.
@@ -346,7 +346,7 @@ Shealy et al. 2015 was expressly designed such that only passage of time was
 used as an explanatory variable for incident rates. The authors do not report
 absolute numbers of fatalities and injuries, only incident rates, which provide
 a more favorable view for the ski industry and their risk assessment. They use
-weighting factors which they don not disclose in order to harmonize data over
+weighting factors which they do not disclose in order to harmonize data over
 time. One should question what these weightings are.  Data and robust modern
 statistical methods exist for testing their stated hypothesis. We can only
 speculate as to why those may have not been used for this analysis. Drawing
