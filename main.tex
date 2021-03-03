@@ -39,10 +39,11 @@
 
 %\authorrunning{Short form of author list} % if too long for running head
 
-\institute{J.K. Moore \at
-              Delft University of Technology \\
-              Tel.: +123-45-678910\\
-              \email{j.k.moore@tudelft.nl}           %  \\
+\institute{J.K. Moore \and
+  Delft University of Technology \\
+  Mekelweg 2, NL 2628 CD Delft, The Netherlands\\ 
+  Tel.: +123-45-678910\\
+  \email{j.k.moore@tudelft.nl}           %  \\
 %             \emph{Present address:} of F. Author  %  if needed
            \and
            S. Author \at
@@ -63,10 +64,8 @@
   ski industry and their insurance companies are supporting making terrain park
   jumps safer in this way. We discuss two case studies illustrating that large
   equivalent fall heights play significant roles in traumatic injuries in
-  terrain park jumps. As a remedy, we provide an accessible online tool for
-  terrain park builders, both to evaluate safety of existing jumps by
-  calculating their impact danger and to design jump profile shapes that
-  control equivalent fall heights and thereby reduce the risk of injury.
+  terrain park jumps. As a remedy, we discuss an a tool for
+  terrain park builders that is accessible online. This tool can be used to evaluate existing jumps and to design jump profile shapes with intended equivalent fall heights that can reduce injury risks.
 \end{abstract}
 
 \section{Introduction}
@@ -81,34 +80,27 @@ variety of safety standards around the world, from construction~\cite{OSHA2021}
 to children's playground equipment~\cite{Chalmers1996}. The equivalent fall
 height of ski and snowboard terrain park jumps can be
 calculated~\cite{McNeil2012} if the Cartesian coordinates of the jump profile
-are known, including the starting point, take off ramp, and landing hill along
+are known. The profile must include the starting point, take off ramp, and landing hill along
 the jumper's path. Controlling energy dissipation in the human body, and hence
-controlling equivalent fall height in terrain park jumps, is paramount to safe
-design methods to reduce likelihood and severity of injury. Equivalent fall
-height should be a primary attribute of a jump's landing design taken into
-consideration because of this clear connection to injury risk and the ease of
-which it can be controlled for.~\todo{Maybe we should also mention that
-shortening the approach, and thus max possible speed, is the first and simplest
-adjustment for decreasing injury - JM}.
+controlling equivalent fall height in terrain park jumps, is paramount to ethical engineering to reduce likelihood and severity of injury. Equivalent fall
+height should be a primary attribute of a jump's design. It must be taken into
+consideration because of a clear connection to injury risk and the ease of
+which it can be used in design and construction of jumps.
 
-This paper discusses societal costs of increasing terrain park injuries and
-focuses on two case studies that illustrate the danger if equivalent fall
-height is not controlled. Following this, we highlight examples of published
-ski safety research that attempt to sow doubt instead of contributing to
-improved safety. We then present a user-friendly web application for
+Societal costs of terrain park injuries are discussed here with two case studies that illustrate the danger if equivalent fall
+height is not controlled appropriately, or at all. We examine published papers
+that purport to be ski safety research, but are elaborate attempts to sow doubt about fall height dangers, apparently for expert testimpny by the authors in defending personal injury legal cases, while not proposing anything to improve safety. We then present a user-friendly web application for
 calculating equivalent fall height of existing or planned jumps. We see this
-application as a part of the solution to reducing injuries in terrain park
-jumps. Jump builders may use it to reduce the risk of injuries in their
-resorts.
+application as a part of the solution to reducing injuries at terrain park
+jumps. Jump builders can use it to reduce risks if injury on their jumps.
 
 \subsection{History}
 \label{sec:hist}
 %
 Terrain park jumps are not new additions to snow sports resorts. Their gradual
-introduction in the 1980's was tied to increased interest in aerial maneuvers
-and extreme sports participation. Growth accelerated and has continued. Today
-nearly 95\% of US ski resorts include terrain parks. Unfortunately, this
-ubiquity is correlated to injury increases. Two early longitudinal studies in
+introduction in the 1980's was accompanied by increased interest in aerial maneuvers
+and extreme sports participation. Numbers of terrain park jumps continued to grow in the intervening decades. Today they are nearly ubiquitous. Almost 95\% of US ski resorts include terrain parks. Unfortunately, this
+growth correlates with increased injuries. Two early longitudinal studies in
 the 1980's and early 1990's~\cite{Deibert1998,Furrer1995} had already found
 significant increases in head injuries and concussions. The Consumer Product
 Safety Commission determined that between 1993 and 1997 head injuries accounted
@@ -124,11 +116,11 @@ These early increasing injury assessments persisted. According to
 occur[red] in terrain parks
 \cite{Bridges2003,Goulet2007,Moffat2009,Greve2009,Brooks2010,Ruedl2013}''.
 Incredibly, at the first Winter Youth Olympic Games more than a third of all
-snowboard half-pipe and slope-style competitors became
-injured~\cite{Ruedl2012}. Epidemiological research continues to show
-\cite{Carus2016,Audet2019a,Hosaka2020} that injuries on terrain park jumps are
-both more likely and more severe than those on normal slopes. Audet et.
-al~\cite{Audet2019a} states there is strong evidence that skiing or
+snowboard half-pipe and slope-style competitors were
+injured~\cite{Ruedl2012}. Epidemiological research continues to
+show~\cite{Carus2016,Audet2019a,Hosaka2020} that injuries on terrain park jumps are
+both more likely and more severe than those on normal slopes.
+Audet et.~al~\cite{Audet2019a} provides strong evidence that skiing or
 snowboarding in a terrain park is a risk factor for head, neck, back, and
 severe injuries. Hosaka et. al~\cite{Hosaka2020} concludes that jumping is one
 of the main causes for serious spinal injuries, regardless of skill level, and
@@ -141,21 +133,21 @@ decade~\cite{Hubbard2009,Swedberg2012,McNeil2012,McNeil2012a,Hubbard2015,Levy201
 \section{Equivalent Fall Height}
 \label{sec:efh}
 %
-\emph{Equivalent fall height}, the kinetic energy that must be dissipated on
-impact from a given height, is a common proxy measure for impact danger by
-industry in safety standards~\cite{Hubbard2012}. On the earth's surface this
-energy is given by the well known equation $mgh$ and is equal to the kinetic
-energy available to injure a person in a non-rotating fall. The ability of this
+\emph{Equivalent fall height}, the weight specific kinetic energy that must be dissipated on falling 
+impact from a given height $h$, is a common proxy measure for impact danger in
+industrial safety standards~\cite{Hubbard2012}.  Near the earth's surface, potential
+energy is given by the well known expression $mgh$ and is transformed to the kinetic
+energy available to injure a person on impact in a non-rotating fall. The ability of this
 energy to injure can be reduced by controlling impact circumstances, e.g.
 impact cushioning, body orientation, body configuration and active body motion;
 however this energy must still be dissipated. Larger equivalent fall heights
-require more elaborate protection measures to reduce injury whereas lowering
-equivalent fall height is a non-elaborate measure for increasing safety.
+require more elaborate protection measures to reduce injury whereas reducing
+equivalent fall height is a less elaborate measure for increasing safety.
 
 Equivalent fall height is a particularly useful measure of danger due to its
 interpretability by lay people. People have an intuitive danger sense when
 faced with potential falls from large heights and they have strong common sense
-for relating fall height to likelihood of injury due to experience with their
+for relating fall height to likelihood of injury from experience with their
 own and others' falls. For example, we have a sense of the danger associated
 with falling from building stories of increasing magnitude. Ground floor falls
 are on the order of 2.6~\si{\meter}, second story are 5.1~\si{\meter}, third
@@ -163,7 +155,7 @@ story 8.8~\si{\meter}, and so on~\cite{Vish2005}. The US Occupational Safety
 and Health Administration, OSHA, requires fall protection for fall heights
 greater than 1.2~\si{\meter} for general workplace safety~\cite{OSHA2021}.
 Chalmers et al.~\cite{Chalmers1996} argues for 1.5~\si{\meter} maximum fall
-heights for playground equipment. The Swiss Council for Accident Prevention
+heights for playground equipment. The Swiss Council for Accident Prevention (i.e., Bfu, Bpa)
 make specific recommendations for equivalent fall height to be lower than
 1.5~\si{\meter} for jumps requiring basic skills~\cite{Heer2019}. And although
 there are no standards in Olympic Nordic ski jumps, ``equivalent landing
@@ -177,7 +169,7 @@ The equivalent fall height $h$ of an object is formally defined as
 where $v$ is the impact velocity of the object and $g$ is the acceleration due
 to gravity. This definition results from equating the kinetic energy of an
 object moving at velocity $v$ at impact with the potential energy of the same
-object at height $h$ above the ground.
+object at height $h$ above the ground. It is based on Newtonian mechanics and work by Emilie du Chatelet in the 17 hundreds. It is well established.
 
 Using Equation~\ref{eq:efh_general} as a starting point, the equivalent fall
 height $h$ can be determined for any landing surface one impacts after a jump
@@ -278,7 +270,7 @@ In 2004, Mr.~Salvini attempted a table-top jump on skis in the terrain park of
 The Summit at Snoqualmie Ski Resort, in Washington state. Salvini overshot the
 intended landing location while traveling at typical skiing speeds, rotated
 backward during flight and landed on his back, ultimately suffering
-quadriplegia. At his landing location of 29~\si{\meter} the equivalent fall
+quadriplegia. At his landing location of 30~\si{\meter} the equivalent fall
 height was over 10 meters, approximately a 3-story fall.
 Figure~\ref{fig:salvini-v-snoqualmie} shows the jump profile based on
 measurements from the accident investigation.  For takeoff speeds greater than
@@ -286,18 +278,6 @@ measurements from the accident investigation.  For takeoff speeds greater than
 height is greater than 10~\si{\meter} and grows linearly with larger takeoff
 speeds. Severe injury is almost certain in falls this high, especially so if
 landing in a way that causes undue forces to the spine, as in this case.
-
-The upper panel also shows a jump profile (green) designed to have a
-1~\si{\meter} equivalent fall height for all speeds below
-16~\si{\meter\per\second}. This profile requires significantly more snow than
-the measured jump but alleviates the dangerous impacts possible in the measured
-jump.
-
-This jump highlights how extreme the equivalent fall height can become if the jump
-is not properly designed. Few recreational skiers will jump out of a three
-story window, snow landing or not. The likelihood of injury is quite clear and
-our internal altimeter tells us so. However, our internal altimeters cannot
-sense potential risks until we have left the takeoff and are in the air.
 %
 \begin{figure}
   \centering
@@ -318,6 +298,16 @@ sense potential risks until we have left the takeoff and are in the air.
   \label{fig:salvini-v-snoqualmie}
 \end{figure}
 
+The upper panel also shows a jump profile (green) designed to have a
+1~\si{\meter} equivalent fall height for all speeds below
+16~\si{\meter\per\second}. This profile requires significantly more snow than
+the measured jump but alleviates the dangerous impacts possible in the measured
+jump.
+
+This jump highlights how extreme the equivalent fall height can become if the jump
+is not properly designed. Few recreational skiers will jump out of a three
+story window, snow landing or not. The likelihood of injury jumping from the window is quite clear and
+our internal altimeter tells us so, but it's not easy to discern when visually assessing a jump's shape out on the slopes.
 
 These two case studies clearly show that no or poor jump design can cause
 devastating consequences and that engineering analysis and design, based on the
@@ -363,23 +353,10 @@ cloud and confuse the basic issues.  Consider three examples of papers
 co-authored by well-known skiing industry defense experts who have testified
 for the skiing industry and their insurance companies.
 
-~\todo{Not sure this paragraph still should be included. It is relevant but maybe  distracting.}
-People unfamiliar with the legal and insurance systems in the USA may fail to
-appreciate that technical literature is often corrupted in legal defense of
-unsafe practices and to protect corporate assets. Peer-reviewed technical
-literature is often used to support testimony in U.S. lawsuits. Both plaintiffs
-and defendants hire their own experts to testify and authors of technical
-papers can make money by testifying. When this testimony is for the defense, it
-can result in denying compensation for injuries, and serve to prolong unsafe
-practices. Rarely do experts report conflicts of interest in their papers and
-presentations, or when they organize and chair meetings or edit publications.
-Financial support for publications used by expert witnesses can be routed
-through consulting companies to pretend plausible deniability of conflicts of
-interest in their papers. Sadly, this is deceitful, self-serving, and
-unethical, because it ignores the first canon of engineering ethics. It could
-be argued that, if someone ignores engineering ethics, they are not acting as
-engineers, and what they are doing cannot be considered engineering.
+%~\todo{Not sure this paragraph still should be included. It is relevant but maybe  distracting.}
+%People unfamiliar with the legal and insurance systems in the USA may fail to appreciate that technical literature is often corrupted in legal defense of unsafe practices and to protect corporate assets. Peer-reviewed technical literature is often used to support testimony in U.S. lawsuits. Both plaintiffs and defendants hire their own experts to testify and authors of technical papers can make money by testifying. When this testimony is for the defense, it can result in denying compensation for injuries, and serve to prolong unsafe practices. Rarely do experts report conflicts of interest in their papers and presentations, or when they organize and chair meetings or edit publications. Financial support for publications used by expert witnesses can be routed through consulting companies to pretend plausible deniability of conflicts of interest in their papers. Sadly, this is deceitful, self-serving, and unethical, because it ignores the first canon of engineering ethics. It could be argued that, if someone ignores engineering ethics, they are not acting as engineers, and what they are doing cannot be considered engineering.
 
+\todo[inline]{Add paragraph here that squishes the next 3 paragraphs into 1. This paragraph should retain the ability for the readers to judge for themselves whether the science is bad and supports our conjecture that the authors and ski industry are following the same patterns as these other industries (tobacco, etc.). We should tone down the explicit claims of unethical-ness.}
 Shealy et. al~\cite{Shealy2010} conducted an experimental study which attempts
 to test the hypothesis that takeoff speed is a predictor of the distance from a
 take-off to a jump landing. They indicate that a series of jumpers who use a
@@ -455,9 +432,8 @@ contributed to the injury, in order to limit financial losses of insurance
 companies. The proverbial two sides to every question do not exist in science
 and engineering.
 
-
 use UPTON SINCLAIR quote \cite{Sinclair1994}
- “It is difficult to get a man to understand something, when his salary depends on his not understanding it.” 
+“It is difficult to get a man to understand something, when his salary depends on his not understanding it.”
 
 \section{What Can Be Done?}
 \label{sec:action}
@@ -566,7 +542,7 @@ and remove the percent signs.
 \section*{Conflict of interest}
 \label{sec:conflict}
 %
-The authors declare that they have XXXX.
+MH served as a plaintiff's expert witness in the two case studies discussed above.
 
 % BibTeX users please use one of
 %\bibliographystyle{spbasic}      % basic style, author-year citations
