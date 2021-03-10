@@ -56,7 +56,7 @@
 \maketitle
 
 \begin{abstract}
-  Terrain parks now exist at almost all United Stats snow sport resorts. For
+  Terrain parks now exist at almost all United States snow sport resorts. For
   several decades, epidemiological evidence shows increased injuries correlate
   with terrain park use. Injury risk could be reduced through analytical
   engineering design of jump profiles to control the equivalent fall height,
@@ -64,7 +64,7 @@
   ski industry and their insurance companies are supporting making terrain park
   jumps safer in this way. We discuss two case studies illustrating that large
   equivalent fall heights play significant roles in traumatic injuries in
-  terrain park jumps. As a remedy, we discuss an a tool for
+  terrain park jumps. As a remedy, we discuss standards and a tool for
   terrain park builders that is accessible online. This tool can be used to evaluate existing jumps and to design jump profile shapes with intended equivalent fall heights that can reduce injury risks.
 \end{abstract}
 
@@ -79,8 +79,8 @@ conceptually simple and familiar interpretation of impact danger used in a
 variety of safety standards around the world, from construction~\cite{OSHA2021}
 to children's playground equipment~\cite{Chalmers1996}. The equivalent fall
 height of ski and snowboard terrain park jumps can be
-calculated~\cite{McNeil2012} if the Cartesian coordinates of the jump profile
-are known. The profile must include the starting point, take off ramp, and landing hill along
+calculated using the techniques in~\cite{McNeil2012} if the Cartesian coordinates of the jump profile
+are known. The profile must include the starting point, take off ramp, and landing hill, i..e., surface,  along
 the jumper's path. Controlling energy dissipation in the human body, and hence
 controlling equivalent fall height in terrain park jumps, is paramount to ethical engineering to reduce likelihood and severity of injury. Equivalent fall
 height should be a primary attribute of a jump's design. It must be taken into
@@ -89,10 +89,10 @@ which it can be used in design and construction of jumps.
 
 Societal costs of terrain park injuries are discussed here with two case studies that illustrate the danger if equivalent fall
 height is not controlled appropriately, or at all. We examine published papers
-that purport to be ski safety research, but are elaborate attempts to sow doubt about fall height dangers, apparently for expert testimpny by the authors in defending personal injury legal cases, while not proposing anything to improve safety. We then present a user-friendly web application for
+that purport to be ski safety research, but are elaborate attempts to sow doubt about fall height dangers, apparently for expert testimony by the authors in defending personal injury legal cases, while not proposing anything to improve safety. We then present a user-friendly web application for
 calculating equivalent fall height of existing or planned jumps. We see this
 application as a part of the solution to reducing injuries at terrain park
-jumps. Jump builders can use it to reduce risks if injury on their jumps.
+jumps. Jump designers can use it to reduce risks of injury on their jumps.
 
 \subsection{History}
 \label{sec:hist}
@@ -137,15 +137,14 @@ decade~\cite{Hubbard2009,Swedberg2012,McNeil2012,McNeil2012a,Hubbard2015,Levy201
 impact from a given height $h$, is a common proxy measure for impact danger in
 industrial safety standards~\cite{Hubbard2012}.  Near the earth's surface, potential
 energy is given by the well known expression $mgh$ and is transformed to the kinetic
-energy available to injure a person on impact in a non-rotating fall. The ability of this
-energy to injure can be reduced by controlling impact circumstances, e.g.
+energy available to injure a person on impact in a non-rotating fall. The ability of this energy to injure can be reduced by controlling impact circumstances, e.g.
 impact cushioning, body orientation, body configuration and active body motion;
 however this energy must still be dissipated. Larger equivalent fall heights
 require more elaborate protection measures to reduce injury whereas reducing
 equivalent fall height is a less elaborate measure for increasing safety.
 
 Equivalent fall height is a particularly useful measure of danger due to its
-interpretability by lay people. People have an intuitive danger sense when
+ability to be interpreted by lay people. People have an intuitive danger sense when
 faced with potential falls from large heights and they have strong common sense
 for relating fall height to likelihood of injury from experience with their
 own and others' falls. For example, we have a sense of the danger associated
@@ -155,8 +154,8 @@ story 8.8~\si{\meter}, and so on~\cite{Vish2005}. The US Occupational Safety
 and Health Administration, OSHA, requires fall protection for fall heights
 greater than 1.2~\si{\meter} for general workplace safety~\cite{OSHA2021}.
 Chalmers et al.~\cite{Chalmers1996} argues for 1.5~\si{\meter} maximum fall
-heights for playground equipment. The Swiss Council for Accident Prevention (i.e., Bfu, Bpa)
-make specific recommendations for equivalent fall height to be lower than
+heights for playground equipment. The Swiss Council for Accident Prevention
+makes specific recommendations for equivalent fall height to be lower than
 1.5~\si{\meter} for jumps requiring basic skills~\cite{Heer2019}. And although
 there are no standards in Olympic Nordic ski jumps, ``equivalent landing
 height`` is used in their design~\cite{Gasser2018} and these heights have been
@@ -186,11 +185,12 @@ drag here for simplicity, is
 This expression is  a function of only four variables: takeoff angle
 $\theta_T$, impact coordinates $(x,y)$ on the landing surface, and the slope of
 the landing surface $\frac{dy}{dx}$. Note that the expression is not a function
-of takeoff speed~\cite{Petrone2017}, because landing hill shapes, its tangent or slope, alignes with jumpers' trajectories, which have similar shapes regardless of speed, however with sufficient speed, corresponding to less friction, air drag, and higher starting points, the hill could be outjumped. To analyze a jump, it is sufficient to
+of takeoff speed~\cite{Petrone2017}, because landing hill shapes, its tangent or slope, aligns with jumpers' trajectories, which have similar shapes regardless of speed, however with sufficient speed, corresponding to less friction, air drag, and higher starting points, the hill could be out-jumped. To analyze a jump, it is sufficient to
 measure the Cartesian coordinates of the landing surface along the jumper's
 flight path and the takeoff angle. Slopes $\frac{dy}{dx}$ are computed
 numerically from the measured coordinates $(x,y)$. Curvature for the last two meters before the takeoff must be close to zero to avoid unintentional inversion in flight, although this does not influence equivalent fall heights.
-%~\todo{LET'S EXPLAIN WHY SPEED CAN BE IGNORED -- CB}. the ref does this- MH Can we explain this in a sentence here? It seems counter intitutive. SLOPE CHANGES WITH THE SCALE OF CALCULATION - HOW DETAILED DO THE DATA NEED TO BE? WHAT ABOUT CURVATURE OF TAKE-OFF?
+
+
 
 \section{Case Studies}
 \label{sec:case}
@@ -258,7 +258,7 @@ shows a possible jump design, see~\cite{Levy2015}, of similar size with similar
 flight times that ensures a constant (smaller) equivalent fall height almost
 everywhere of 1~\si{\meter}. The convex shape of this jump is interestingly
 close to what one would get if the original concave table-top were inverted,
-showing that convex landing shapes are critically important for controling equivalent fall heights. This alternative jump design would have lowered impact
+showing that convex landing shapes are critically important for controlling equivalent fall heights. This alternative jump design would have lowered impact
 forces for landings at any location. In 2002, the jury ruled in favor of
 Ms.~Vine, agreeing that Bear Valley was responsible for designing safer jumps.
 
@@ -314,19 +314,18 @@ laws of mechanics, can be used to shape jump landings that limit equivalent
 fall heights. Designing jumps in this way is based on the well-established,
 centuries-old physics of Issac Newton and Émilie du Châtelet~\cite{Zinsser2007},
 which are fundamental to physics and engineering education. It is irrefutable that
-designing jumps can reduce injury risk by limiting equivalent fall heights and
-hence the amount of impact energy dissipation.
+designing jumps to limit equivalent fall heights appropriately can reduce injury risks by reducing impact energies.
 
 \section{Moral Imperative}
 \label{sec:moral}
 %
 ``Hold paramount the safety, health and welfare of the
-public''~\cite{NSPE2019}, is the first canon of engineering ethics. The moral imperative of enginering ethics motivates us to do work. In the context of snow sport safety, the first canon
+public''~\cite{NSPE2019}, is the first canon of engineering ethics. The moral imperative of engineering ethics motivates us to do work. In the context of snow sport safety, the first canon
 compels engineers to direct our technical expertise to protecting snow sport
 participants from injuries. No one can rationally argue that reducing
 equivalent fall height would cause an increased likelihood of injury. Shaping well designed, safe jump landing hills is no more laborious than shaping poorly designed, unsafe landing hills. There can be no reason not to control
-equivalent fall heights with good enginering design practices. Nonetheless the skiing
-industry and their insurance companies seem reluctant adopt such design methods. Engineers they hire as expert witnesses work to sow doubt on this basic physics. What can their motivation be? If work does not adhere to the first canon of engineering ethics, it is not engineering. People doing this unethical work are not really engineers.
+equivalent fall heights with good engineering design practices. Nonetheless the skiing
+industry and their insurance companies are reluctant to adopt such design methods. Engineers they hire as expert witnesses work to sow doubt on this basic physics. What can their motivation be? If work does not adhere to the first canon of engineering ethics, it is not engineering. People doing this unethical work are not really engineers.
 
 Oreskes and Conway~\cite{Oreskes2010} have studied this problem more generally.
 They have shown that from time to time, scientific evidence accumulates that
@@ -338,52 +337,28 @@ over the last 60 years carefully described and analyzed in
 ~\cite{Oreskes2010} are the use of DDT, smoking tobacco, acid rain linked to
 coal-fired power plants, the ozone hole caused by CFCs, second-hand tobacco
 smoke’s effects, and CO2-caused climate change, among others. Rather than using
-proven science as a basis for changes in practice, the common strategic
+the proven science as a basis for changes in practice, the common strategic
 response of the industries involved has been to “emphasize the controversy
 among scientists and the need for continued research”~\cite{Oreskes2010}. A
 similar strategy has been used by skiing defense experts. To counter the solid,
-fundamental, scientific concept of landing hill design, based on equivalent
+fundamental, scientific concept of landing hill design, based on limiting equivalent
 fall height, defense experts have introduced confounding factors that serve to
-cloud and confuse the basic issues.  Consider three examples of papers
-co-authored by well-known skiing industry defense experts who have testified
-for the skiing industry and their insurance companies.
+cloud and confuse the basic issues. 
 
 %~\todo{Not sure this paragraph still should be included. It is relevant but maybe  distracting.} I think it is important.
 
-%People unfamiliar with legal, healthcare and insurance systems in the USA may fail to appreciate how technical literature is often corrupted in legal defense of unsafe practices and to protect corporate assets. Peer-reviewed technical literature is often used to support testimony in U.S. lawsuits. Both plaintiffs and defendants hire their own experts to testify and authors of technical papers can make money by testifying. When this testimony is for the defense, it can result in denying compensation for injuries, and serve to prolong unsafe practices. The healthcare systems in the US can leave families destitute with no recourse but to sue to have resources to retain basic possesions, like a car and home, which can require expensive modifications. Rarely do experts report conflicts of interest in their papers and presentations, or when they organize and chair meetings or edit publications. Financial support for publications used by expert witnesses can be routed through consulting companies to pretend plausible deniability of conflicts of interest in their papers. Sadly, this is deceitful, self-serving, and unethical, because it ignores the first canon of engineering ethics. It could be argued that, if someone ignores engineering ethics, they are not acting as engineers, and what they are doing cannot be considered engineering.
+In addition, those unfamiliar with legal, healthcare and insurance systems in the USA may fail to appreciate how technical literature is often corrupted in legal defense of unsafe practices and to protect corporate assets. Peer-reviewed technical literature is often used to support testimony in U.S. lawsuits. Both plaintiffs and defendants hire their own experts to testify and authors of technical papers can make money by testifying. When this testimony is for the defense, it can result in denying compensation for injuries, and serve to prolong unsafe practices. The healthcare systems in the US can leave families destitute with no recourse but to sue to have resources to retain basic possessions, like a car and home, which can require expensive accommodations for handicaps resulting from the injuries. Rarely do experts report their conflicts of interest in their papers and presentations, nor do they when they organize and chair meetings or edit publications. Financial support for publications used by expert witnesses gets routed through consulting companies to provide plausible deniability of conflicts of interest in their papers. 
 
-\todo[inline]{Add paragraph here that squishes the next 3 paragraphs into 1. This paragraph should retain the ability for the readers to judge for themselves whether the science is bad and supports our conjecture that the authors and ski industry are following the same patterns as these other industries (tobacco, etc.). We should tone down the explicit claims of unethical-ness.}
-Shealy et. al~\cite{Shealy2010} conducted an experimental study which attempts
+%\todo[inline]{Add paragraph here that squishes the next 3 paragraphs into 1. This paragraph should retain the ability for the readers to judge for themselves whether the science is bad and support our conjecture that the authors and ski industry are following the same patterns as these other industries (tobacco, etc.). We should tone down the explicit claims of unethical-ness.}
+
+ Consider three examples of papers
+co-authored by well-known skiing industry defense experts who have testified
+for the skiing industry and their insurance companies. Shealy et. al~\cite{Shealy2010} conducted an experimental study which attempted
 to test the hypothesis that takeoff speed is a predictor of the distance from a
-take-off to a jump landing. They indicate that a series of jumpers who use a
-terrain park jump land within a narrow region, which is reasonable once it is
-noted that the jumpers' takeoff speeds did not vary much either, i.e. no
-attempt was made to assess a reasonable range of their independent variable,
-speed. The authors state the preposterous conclusions both that there is ``no
-statistically significant relationship between takeoff speed and the distance
-traveled'' and that ``takeoff speed is not a dominant or controlling factor (in
-how far a jumper travels)''. These results should lead the careful researcher
-to question their experimental design and analysis methods, just as a high
-school physics student should if their an object in their lab experiment does
-not fall with an acceleration close to 9.8~\si{\meter\per\second\squared}.
+take-off to a jump landing. They reached the preposterous conclusions both that there is ``no statistically significant relationship between takeoff speed and the distance traveled'' and that ``takeoff speed is not a dominant or controlling factor (in how far a jumper travels)''. These conclusions were used to question the soundness of analytical modeling used by ~\cite{Hubbard2009,McNeil2012}. In contrast to the voluminous research Shealy et. al~\cite{Shealy2015} claimed that catastrophic and fatal injury rates at US snow resorts had not changed, even though terrain parks and jumping had.  increased over time. 
+%They indicate that a series of jumpers who use a terrain park jump land within a narrow region, which is reasonable once it is noted that the jumpers' takeoff speeds did not vary much either, i.e. no attempt was made to assess a reasonable range of their independent variable, speed. The authors state the preposterous conclusions both that there is ``no statistically significant relationship between takeoff speed and the distance traveled'' and that ``takeoff speed is not a dominant or controlling factor (in how far a jumper travels)''. These results should lead the careful researcher to question their experimental design and analysis methods, just as a high school physics student should if their an object in their lab experiment does not fall with an acceleration close to 9.8~\si{\meter\per\second\squared}.
 
-Shealy et. al~\cite{Shealy2015} claim that catastrophic and fatal injury rates
-at US snow resorts have not changed, even though terrain parks (and thus likely
-jumping) have increased over time. The statistical model in this study was
-expressly designed such that passage of time was used as the sole explanatory
-variable for incident rates. The authors do not report absolute numbers of
-fatalities and injuries, only incident rates, which provide a more favorable
-view for the ski industry and their risk assessment. No data is disclosed and
-they use unspecified weighting factors in order to harmonize data over time,
-leaving one to question what these weightings are. Data and robust modern
-statistical methods exist for testing their stated hypothesis. We can only
-speculate as to why those may have not been used for this analysis. Drawing
-their final conclusion, that addition of terrain parks mitigates risks, is
-quite a stretch, given the data and debatable analysis. When it comes to health
-and safety of the public, society is also interested in reducing or eliminating
-the absolute numbers.  This is especially true for activities in which the risk
-of catastrophic life-changing or fatal injuries can be mitigated by ethical
-engineering designs, and therefore are not be inherent to the sport.
+%Shealy et. al~\cite{Shealy2015} claim that catastrophic and fatal injury rates at US snow resorts have not changed, even though terrain parks (and thus likely jumping) have increased over time. The statistical model in this study was expressly designed such that passage of time was used as the sole explanatory variable for incident rates. The authors do not report absolute numbers of fatalities and injuries, only incident rates, which provide a more favorable view for the ski industry and their risk assessment. No data is disclosed and they use unspecified weighting factors in order to harmonize data over time,leaving one to question what these weightings are. Data and robust modern statistical methods exist for testing their stated hypothesis. We can only speculate as to why those may have not been used for this analysis. Drawing their final conclusion, that addition of terrain parks mitigates risks, is quite a stretch, given the data and debatable analysis. When it comes to health and safety of the public, society is also interested in reducing or eliminating the absolute numbers.  This is especially true for activities in which the risk of catastrophic life-changing or fatal injuries can be mitigated by ethical engineering designs, and therefore are not be inherent to the sport.
 
 In an article on landing positions, Scher et. al show that body orientation at
 impact can cause dangerous cervical spine loads~\cite{Scher2015}. They report
@@ -434,6 +409,10 @@ use UPTON SINCLAIR quote \cite{Sinclair1994}
 \section{What Can Be Done?}
 \label{sec:action}
 %
+Preventable injuries on terrain park jumps should stop as soon as possible. Everything possible should be done to make all the terrain jumps safe, with EFHs similar to FIS Nordic jumps and OSHA standards, as soon as possible. This means educating ski area operators and their grooming staff and getting them the tools to do the job. Standards need to be developed and followed for jump design, verification, inspection, and maintenance during the skiing.  Certification programs need to be developed and phased in as quickly as possible for jump building, inspecting, and maintenance.  This could be facilitated cooperation and coordination between experts that have been testifying for opposing litigants in court. Experts certainly understand the issues and should be using their engineering skills and knowledge to promote the safety, health, and welfare of the public, as the best, most ethical way of protecting corporate assets. Institution of these safety systems might progress faster in countries with public healthcare systems, where litigation is not required to recover medical expenses, by individuals and by their insurance companies. The US litigation system can eventually motivate  better safety standards, as it did for ski bindings in the 1980s.  The ski and insurance industries appeared to realize, through litigation losses, that it was better to have a clear standard of care. Education and certification programs developed for binding testing and maintenance for ski shops and tibia fractures largely disappeared.       
+
+Editors and organizers of journals and conferences should be aware that some submissions offer nothing to promote the safety, health, and welfare of the public. Defense experts who hide their conflicts of interest behind their consulting companies and write papers that help to perpetuate a dangerous status quo should not be allowed to present or publish their work. Reviewers must be aware of this and reject papers not consistent with the first canon of engineering ethics. They do not belong in engineering journals or conferences. 
+
 Assessing and reshaping existing jumps for dangerous equivalent fall heights
 should be an easy way for ski resorts to reduce the danger of their terrain
 park jumps. Accurate enough measurements of an existing slope can be taken with
@@ -456,6 +435,9 @@ must be worth the minor inconvenience of shaping jumps using the rules in
 
 \todo[inline]{Add:
 Standards - ASTM F27,
+Work on standards in the US has begun in ASTM committee F27, which developed binding standards in a laborious struggle in the 1970s and 1980s. Many academics were involved. They tested bindings in their labs and ran epidemiological studies at ski resorts. MIT, Cal Berkeley, Case Western Reserve, RIT and the University of Vermont were all involved, chairing the main committee and running sub committees. None of these institutions participate in ASTM snowsport standards development currently.
+
+were involved  with defining parts of a t
 Talk about how it was a long struggle to write ski binding adjustment standards,
 The ski people forced a modified scope to avoid writing standards on snow surfaces,
 Insurance and risk}
@@ -488,7 +470,7 @@ case study jumps loaded for analysis and explains the primary features.
   \includegraphics[width=5.00in]{figures/web-app-screenshot.png}
   \caption{\textbf{Screenshot of the ski jump design and analysis web app} To
     use the analysis portion of the app, a user selects ``Ski Jump Analysis''
-    from the primary menu [1], uploads a CSV or XLS file by dragging it onto
+    from the primary menu [1], uploads a .CSV or .XLS file by dragging it onto
     the screen [3], inspects the input data for accuracy in the table [4], sets
     the takeoff angle [5], runs the analysis by pressing the ``Run Analysis''
     button [6], views the results in the interactive plot [2], and downloads
