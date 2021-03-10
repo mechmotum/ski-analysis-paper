@@ -12,7 +12,8 @@ PROJECT_ROOT = os.path.abspath(os.path.join(DIR_OF_THIS_FILE, '..'))
 
 def compare_measured_to_designed(measured_surface, equiv_fall_height,
                                  parent_slope_angle, approach_length,
-                                 takeoff_angle, xlim, ylim_top, ylim_bot):
+                                 takeoff_angle, xlim, ylim_top, ylim_bot,
+                                 med_speed=None):
 
     skier = Skier()
 
@@ -29,7 +30,8 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
     # generate some example flight paths
     design_speed = flight.speed[0]
     low_speed = 1/2*design_speed
-    med_speed = 3/4*design_speed
+    if med_speed is None:
+        med_speed = 3/4*design_speed
 
     vel_vec = np.array([np.cos(np.deg2rad(takeoff_angle)),
                         np.sin(np.deg2rad(takeoff_angle))])
@@ -177,7 +179,8 @@ approach_length = 420.0  # meters
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
                                                   takeoff_angle,
-                                                  (-10, 25), (-10, 5), (0, 6))
+                                                  (-10, 25), (-10, 5), (0, 6),
+                                                  med_speed=10.0)
 fig = profile_ax.figure
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'vine-v-bear-valley.pdf'))
 
@@ -198,7 +201,8 @@ approach_length = 280.0  # meters
 profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   slope_angle, approach_length,
                                                   takeoff_angle,
-                                                  (-10, 45), (-15, 5), (0, 16))
+                                                  (-10, 45), (-15, 5), (0, 16),
+                                                  med_speed=15.0)
 
 fig = profile_ax.figure
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'salvini-v-snoqualmie.pdf'))
