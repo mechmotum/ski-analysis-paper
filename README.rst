@@ -28,6 +28,15 @@ Install the development version of skijumpdesign::
 Updating the References
 =======================
 
+This Zotero collection is being used to generated the bib file:
+
+https://www.zotero.org/groups/966974/mechmotum/collections/D3MHJZ2G
+
+The Better BibTex Zotero plugin is used to generate the bib file and the
+citation keys using [Auth][Year]:
+
+https://github.com/retorquere/zotero-better-bibtex
+
 Setup
 -----
 
@@ -86,15 +95,3 @@ Run the Python script to generate the figures::
 Build the paper::
 
    (ski-analysis-paper)$ make
-
-References
-==========
-
-This Zotero collection is being used to generated the bib file:
-
-https://www.zotero.org/groups/966974/mechmotum/collections/D3MHJZ2G
-
-The Better BibTex Zotero plugin is used to generate the bib file and the
-citation keys using [Auth][Year]:
-
-https://github.com/retorquere/zotero-better-bibtex
