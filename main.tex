@@ -31,23 +31,29 @@
 
 \title{Analysis and Ethical Design of Terrain Park Jumps for Snow Sports}
 
-\author{Jason K. Moore      \and
-        Bryn Cloud          \and
-        Mont Hubbard        \and
-        Christopher Brown
+\author{
+  Jason~K. Moore \and
+  Bryn Cloud \and
+  Mont Hubbard \and
+  Christopher Brown
 }
 
 %\authorrunning{Short form of author list} % if too long for running head
-
-\institute{J.K. Moore \and
+\institute{
+  J.K. Moore \at
   Delft University of Technology\\
   Mekelweg 2, NL 2628 CD Delft, The Netherlands\\
-  Tel.: +123-45-678910\\
-  \email{j.k.moore@tudelft.nl}           %  \\
-%             \emph{Present address:} of F. Author  %  if needed
-           \and
-           S. Author \at
-              second address
+  \email{j.k.moore@tudelft.nl}
+  \and
+  B. Cloud \& M. Hubbard \at
+  University of California, Davis\\
+  One Shields Av., Davis, CA, USA\\
+  \email{becloud@ucdavis.edu,mhubbard@ucdavis.edu}
+  \and
+  C. Brown \at
+  Worcester Polytechnic Institute\\
+  Worcester, Massachusetts, USA\\
+  \email{brown@wpi.edu}
 }
 
 \date{Received: date / Accepted: date}
@@ -115,9 +121,9 @@ occur[red] in terrain parks
 \cite{Bridges2003,Goulet2007,Moffat2009,Greve2009,Brooks2010,Ruedl2013}''.
 Incredibly, at the first Winter Youth Olympic Games more than a third of all
 snowboard half-pipe and slope-style competitors were injured~\cite{Ruedl2012}.
-Epidemiological research~\cite{Carus2016,Audet2018,Hosaka2020} continues to
+Epidemiological research~\cite{Carus2016,Audet2020,Hosaka2020} continues to
 show that injuries on terrain park jumps are more likely and more severe than
-on normal slopes. Audet et.~al~\cite{Audet2018} provides evidence that skiing
+on normal slopes. Audet et.~al~\cite{Audet2020} provides evidence that skiing
 or snowboarding in a terrain park is a risk factor for head, neck, back, and
 severe injuries. Hosaka et. al~\cite{Hosaka2020} concludes that jumping is a
 main cause for serious spinal injuries, regardless of skill level, and suggests
@@ -132,34 +138,33 @@ decade~\cite{Hubbard2009,Swedberg2012,McNeil2012,McNeil2012a,Hubbard2015,Levy201
 %
 \emph{EFH}, a common proxy measure for impact danger in industrial safety
 standards, is the weight-specific kinetic energy that must be dissipated on
-impacts from a height $h$, is ~\cite{Hubbard2012}.  Potential energy is given
-by  $mgh$ and transformed to kinetic energy available to injure on impact in
-non-rotating falls. Injure potential can be reduced by controlling impact
+impacts from a height $h$, is ~\cite{Hubbard2012}.  Initial potential energy given
+by $mgh$ is transformed to kinetic energy available to injure on impact in
+non-rotating falls. Injury potential can be reduced by controlling impact
 circumstances, e.g.  impact cushioning, and body orientation, configuration,
 and motion; however this energy must still be dissipated. Larger EFHs require
-more elaborate measures to reduce injury, reducing EFH does not.
+more elaborate measures to reduce injury; reducing EFH does not.
 
 EFH can be interpreted by the general public. People have an intuitive danger
-sense when faced with potential falls from large heights and they have strong
-experiential common sense for relating fall height to likelihoods of injuries.
-People sense increasing danger associated with falling from highers floors.
-Ground floor falls are about 2.6~\si{\meter}, second 5.1~\si{\meter}, third
-8.8~\si{\meter}, etc. ~\cite{Vish2005}. The US Occupational Safety and Health
+sense when faced with potential falls from large heights and a strong
+experiential common sense for relating fall height to likelihood of injury.
+People sense increasing danger associated with falling from larger heights.
+Ground, second and third floor falls are about 2.6, 5.1,
+8.8~\si{\meter}, respectively ~\cite{Vish2005}. The US Occupational Safety and Health
 Administration, OSHA, requires protection for heights greater than
 1.2~\si{\meter} for general workplace safety~\cite{OSHA2021}.  Chalmers et
 al.~\cite{Chalmers1996} argues for 1.5~\si{\meter} maximum fall heights for
 playground equipment. The Swiss Council for Accident Prevention makes specific
 recommendations for EFHs to be below 1.5~\si{\meter} for jumps requiring basic
-skills~\cite{Heer2019}. There are no standards in Olympic Nordic ski jumps,
-``equivalent landing height`` is ~\cite{Gasser2018} is about 0.5~\si{\meter}.
+skills~\cite{Heer2019}. Even with no standards in Olympic Nordic ski jumps, typical 
+``equivalent landing height``  ~\cite{Gasser2018} is about 0.5~\si{\meter}.
 
 EFHs $h$ of objects is formally defined as
 %
 \begin{equation} h = \frac{v^2}{2g} \label{eq:efh_general} \end{equation}
 %
-where $v$ is impact velocity of  and $g$ is gravitational acceleration.
-Kinetic energies of an object moving at velocities $v$ at impact is equated
-with potential energies at heights $h$, indisputable, fundamental physics.
+where $v$ is impact velocity and $g$ is gravitational acceleration.
+Kinetic energies of objects moving at  velocities $v$ at  is transformed from potential energies at heights $h$, indisputable, fundamental physics.
 
 From equation~\ref{eq:efh_general} equivalent fall heights $h$ can be
 determined for any surface, i.e., landing hill profile or shape, after jumping
@@ -443,6 +448,10 @@ jump designs with limited EFHs, specifying verification, inspection, and
 maintenance during use. Certification programs are needed for jump building,
 inspecting, and maintenance.
 
+Around 1980 ASTM F27 developed standards on ski binding adjustments. Proponents were led by orthopedic surgeons and academic researchers. Industry argued that release value measurement is impossible for ski shops. Industry is making similar arguments on jumps. There are now certifications and inspection standards for bindings, and far fewer lower extremity equipment related injuries. 
+
+ASTM F27 is dominated by industry now. No medical professionals and almost no academics remain. Balance between consumers and industry is gone.  People self-classify general interest or users, yet testify for industry or do other industry related jobs and should be producers. 
+
 Assessing and reshaping existing jumps for dangerous EFH should be an easy way
 for ski resorts to reduce the danger of their terrain park jumps. Accurate
 enough measurements of an existing slope can be taken with simple tools, e.g. a
@@ -543,12 +552,9 @@ MH served as a plaintiff's expert witness in the two case studies discussed abov
 
 % BibTeX users please use one of
 %\bibliographystyle{spbasic}      % basic style, author-year citations
-%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+\bibliographystyle{spmpsci}      % mathematics and physical sciences
 %\bibliographystyle{spphys}       % APS-like style for physics
-%\bibliography{}   % name your BibTeX data base
-
-\bibliographystyle{spphys}
-\bibliography{references}
+\bibliography{references}   % name your BibTeX data base
 
 \appendix
 
