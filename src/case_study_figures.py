@@ -44,10 +44,15 @@ def compare_measured_to_designed(measured_surface, equiv_fall_height,
                               init_vel=tuple(design_speed*vel_vec))
 
     # create the figure
+    fig_width_pt = 338.0  # width of springer \documentclass[smallextended]{svjour3}
+    inches_per_pt = 1.0/72.27
+    fig_width = fig_width_pt*inches_per_pt  # width in inches
+    fig_height = fig_width       # height in inches
+    fig_size = [fig_width,fig_height]
     fig, (prof_ax, efh_ax) = plt.subplots(nrows=2,
                                           ncols=1,
                                           sharex=True,
-                                          figsize=(5.25, 4.25),
+                                          figsize=fig_size,
                                           constrained_layout=True,
                                           gridspec_kw={'height_ratios':
                                                        [1, 0.75]},
