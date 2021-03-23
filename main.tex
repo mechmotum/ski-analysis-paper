@@ -571,7 +571,7 @@ should be held paramount.
 %
 The closed form equation~\ref{eq:efh} is useful for understanding the
 fundamental relationship of equivalent fall height to the landing surface and
-well predict these values for small jumps but other factors may be useful to
+will predict these values for small jumps but other factors may be useful to
 include in the model. For example, jumpers are subject to aerodynamic drag and
 this is not negligible for larger jumps. If drag is included there is no closed
 form solution for the equivalent fall height, but the equivalent fall height
@@ -580,21 +580,20 @@ flight path is found by integrating the flight equations of motion at various
 takeoff velocities and computing the misalignment in jumper landing angle and
 the slope angle to then find the equivalent fall height. This more general
 simulation method is implemented in the software described herein and the
-results reflect the inclusion of gravitational and drag forces. The simulations
-require measurements of the landing surface cross-sectional profile coordinates
-$(x,y)$ relative to the takeoff point and a measurement of the takeoff angle.
-
-Listing~\ref{lis:example-efh-calc} demonstrates creating a surface from some
-measured data points and then calculating the equivalent fall height at
-0.2\si{\meter} increments.
+results reflect the inclusion of both gravitational and drag forces. Even with
+drag incorporated, the calculating EFH still only require measurements of the
+landing surface cross-sectional profile coordinates $(x,y)$ relative to the
+takeoff point and a measurement of the takeoff angle.
+Listing~\ref{lis:example-efh-calc} demonstrates the new software library
+features of creating a surface from some measured data points and then
+calculating the equivalent fall height at 0.2\si{\meter} increments.
 %
 \begin{listing*}
   \begin{minted}{pycon}
-
 >>> import numpy as np
->>> from skijumpdesign import Surface, Skier
+>>> from skijumpdesign import Surface, Skier, plot_efh
 >>> takeoff_ang = 10  # degrees
->>> takeoff_point = (0, 0)  # meters
+>>> takeoff_point = (0, 0)  # (x, y) in meters
 >>> x_ft = np.array([-232.3,-203.7,-175.0,-146.3,-117.0,-107.4,
 ...    -97.7,-88.0,-78.2,-68.5,-58.8,-49.1,-39.4,-34.5,-29.7,
 ...    ...
@@ -610,10 +609,10 @@ measured data points and then calculating the equivalent fall height at
 >>> y_mt = y_ft*0.3048 # convert to meters
 >>> # create a surface from the data
 >>> measured_surf = Surface(x_mt, y_mt)
->>> # use the default skier properties for simulations
->>> skier = Skier()
+>>> # create a skier
+>>> skier = Skier(mass=75.0, area=0.34, drag_coeff=0.821)
 >>> # calculate the equivalent fall height
->>> x, efh = measured_surf.calculate_efh(
+>>> x, efh, v = measured_surf.calculate_efh(
 ...     np.deg2rad(takeoff_ang), takeoff_point, skier, increment=0.2)
 ...
 >>> x  # display the x coordinates
@@ -628,6 +627,15 @@ array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
        ...
        3.93910556, 3.97387212, 4.00891899, 4.04424779, 4.07984952,
        4.11573359, 4.68049185, 5.53413479, 6.45253722, 7.42628019])
+
+>>> v  # display takeoff speeds to reach x positions
+array([0.07373847, 0.13081777, 0.1878382 , 0.2447865 , 0.30166299,
+       0.35851949, 0.41537661, 0.47221055, 0.52897197, 0.58564902,
+       ...
+       6.71699974, 6.76760188, 6.81816819, 6.86869777, 6.9191902 ,
+       6.96962124, 7.02001551, 7.07037288, 7.1206941 ])
+>>> # calculate and plot the efh curve
+>>> plot_efh(measured_surf, takeoff_ang, takeoff_point, increment=0.2)
   \end{minted}
   \caption{Python interpreter session showing how one could compute the
   equivalent fall height of a measured jump.}
@@ -641,11 +649,11 @@ Calculating equivalent fall height requires the Cartesian coordinates and slope
 of the landing surface along the path of the jumper. There are a number of
 possible measurement techniques for collecting data adequate for the equivalent
 fall height calculation but the simplest method only requires a digital level
-\footnote{smartphone level measurement applications are likely sufficient and
-readily available}, a flexible tape measure, and less than an hour's time from
-one person per jump. A tenth of a degree accuracy from the level and down to 25
-centimeter accuracy from the tape measure should be sufficient for typical snow
-sport jumps.
+\footnote{Smartphone digital level measurement applications are likely
+sufficient and readily available.}, a flexible tape measure, and less than an
+hour's time from one person per jump. A tenth of a degree accuracy from the
+level and down to 25~\si{\centi\meter} accuracy from the tape measure should be
+more than sufficient for typical snow sport jumps.
 
 To measure the jump, the takeoff point should be identified and the tape
 measure should then be draped over the contour of the landing surface along the
@@ -661,20 +669,22 @@ should include the distance along the surface from the takeoff point, $d_i$,
 and the associated surface angle, $\theta_i$, at each distance measurement for
 $n$ measurements. Assuming $\theta_i$ is in radians, the Cartesian coordinates
 can be computed using the average angle to find the adjacent coordinates. The
-following equations show provide the necessary data for the calculation of
-equivalent fall height:
+following equations show the necessary calculation of the Cartesian
+coordinates from these two measures.
 %
 \begin{align}
-  \frac{dy}{dx}_{i} & = \arctan{\theta_i} \\
+  \frac{dy_i}{dx_i} & = \arctan{\theta_i} \quad \text{for } i=1\ldots n \\
   x_{i + 1} & =
   \begin{cases}
     0 & \text{for } i=0 \\
-    x_i + (d_{i+1} - d_i)\cos{(\theta_{i+1} + \theta_i)/2} &  \text{for } i=1\ldots n
+    x_i + (d_{i+1} - d_i)\cos{\frac{\theta_{i+1} + \theta_i}{2}} &  \text{for }
+    i=1\ldots n-1
   \end{cases} \\
   y_{i + 1} & =
   \begin{cases}
     0 & \text{for } i=0 \\
-    y_i + (d_{i+1} - d_i)\sin{(\theta_{i+1} + \theta_i)/2} &  \text{for } i=1\ldots n
+    y_i + (d_{i+1} - d_i)\sin{\frac{\theta_{i+1} + \theta_i}{2}} &  \text{for }
+    i=1\ldots n-1
   \end{cases}
 \end{align}
 
@@ -684,8 +694,9 @@ with the method described above.
 %
 \begin{listing*}
   \begin{minted}{pycon}
->>> from skijump.functions import cartesian_from_measurements
->>> dis = [14.5, 15.0, 15.5, 16.0, 16.5, 17.0]  # meters
+>>> import numpy as np
+>>> from skijumpdesign import cartesian_from_measurements
+>>> dis = np.array([14.5, 15.0, 15.5, 16.0, 16.5, 17.0])  # meters
 >>> ang = np.deg2rad([4.6, -7.4, -16.5, -9.7, -11, -6.9])  # radians
 >>> x, y, to_point, to_angle = cartesian_from_measurements(dis, ang)
 >>> print(x)  # meters
