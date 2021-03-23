@@ -49,7 +49,7 @@
   \and
   C. Brown \at
   Worcester Polytechnic Institute\\
-  Worcester, MA 01609 USA\\
+  100 Institute Rd., Worcester, MA 01609 USA\\
   \email{brown@wpi.edu}
 }
 
@@ -169,12 +169,13 @@ From equation~\ref{eq:efh_general} equivalent fall heights $h$ can be
 determined for any surface, i.e., sloped landing profile or shape, after
 jumping~\cite{Petrone2017}. The result, neglecting air drag, is
 %
-\begin{equation}
-  h = \left[\frac{x^2}{4(x\tan\theta_T - y)\cos^{2}\theta_T} -
-    y\right]\sin^{2}\left[\tan^{-1}\left(\frac{2y}{x}- \tan\theta_T\right) -
+\begin{align}
+  h = \left[\frac{x^2}{4(x\tan\theta_T - y)\cos^{2}\theta_T} - y\right]
+    \sin^{2}
+    \left[\tan^{-1}\left(\frac{2y}{x} - \tan\theta_T\right) -
     \tan^{-1}\frac{dy}{dx}\right]
   \label{eq:efh}
-\end{equation}
+\end{align}
 %
 a function only of takeoff angle $\theta_T$,  impact coordinates $(x,y)$ relative 
 to takeoff and landing surface slope $\frac{dy}{dx}$, but
@@ -430,13 +431,13 @@ jump building, inspecting, and maintenance.
 
 Around 1980 ASTM Committee F27 began to develop ski binding standards. Proponents
 were led by orthopedic surgeons and academic researchers~\cite{Bahniuk1996}.
-Industry argued then that release value measurement is impossible for ski
-shops.\todo{I don't know what this sentence means or is supposed to mean. --
-JM} Industry is making similar arguments on jumps now. Nevertheless
+Industry argued that standards were impossible because release value measurement 
+was impossible by ski
+shops (industry now makes similar arguments about jumps). Nevertheless
 certifications and inspection standards for bindings were developed, and now
 there are far fewer lower-extremity equipment-related injuries.
 
-ASTM F27 is now dominated by industry. No medical professionals and almost no
+ASTM F27 is presently dominated by industry. No medical professionals and almost no
 academics remain. Balance between consumers and industry has disappeared. People
 self-classify as general interest or users, yet they testify for industry and
 do other industry related work and seem like producers.
@@ -448,18 +449,18 @@ do other industry related work and seem like producers.
   two offers anything either, could be removed.-- JM}
 
 In parallel to standards development, assessing and reshaping existing jumps
-for dangerous EFH should be an easy route for ski resorts to proactively reduce
-the danger of their terrain park jumps. Accurate enough measurements of
-existing slopes can occur with simple tools, e.g. a tape measure and digital
-level, with only little time per jump, see
+eliminating dangerous EFH should be an easy route for ski resorts to increase proactively
+terrain park safety. Accurate enough measurements of
+existing slopes can occur with simple tools, e.g. tape measure and digital
+level, consuming relatively little time per jump, see
 Appendix~\ref{sec:jump-shape-measurement}. Calculation and visualization of
 EFHs from these measurements can take some time without a program for
-calculating EFHs from hill profiles. We have made a user friendly web
-application available that is freely accessible online which makes the
-calculation and visualization step almost instantaneous for jump builders. With
+calculating EFHs from hill profiles. We have made a user-friendly, freely-accessible 
+online web application available with the
+calculation and visualization steps almost instantaneous for jump builders. With
 the tool described in the next section, jump builders can easily add this
 safety assessment to their toolbox, even using it from a smartphone on hills.
-There is no reason that this basic assessment should not be part of jump
+We see no reason that this basic assessment should not be part of jump
 construction processes. The only ethical decision is to adopt these methods;
 saving even one person from a life of paralysis, or even death, must be worth
 the relatively minor inconvenience of shaping jumps using the methods in
@@ -673,7 +674,7 @@ following equations show the necessary calculation of the Cartesian
 coordinates from these two measures.
 %
 \begin{align}
-  \frac{dy_i}{dx_i} & = \arctan{\theta_i} \quad \text{for } i=1\ldots n \\
+  \frac{dy_i}{dx_i} & = \tan^{-1}{\theta_i} \quad \text{for } i=1\ldots n \\
   x_{i + 1} & =
   \begin{cases}
     0 & \text{for } i=0 \\
