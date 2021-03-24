@@ -331,7 +331,7 @@ practice, strategic responses of industries have been to ``emphasize the
 controversy among scientists and the need for continued
 research''~\cite{Oreskes2010}.
 
-This same strategy is used by snowsport defense experts. To counter solid,
+This same strategy is used by the snowsport industry and its defense experts. To counter solid,
 fundamental, scientific concepts of landing hill design limiting EFH, defense
 experts introduce confounding factors to cloud and confuse basic issues.
 Consider three papers \cite{Shealy2010,Shealy2015,Scher2015} co-authored by
@@ -361,20 +361,20 @@ Although NSAA releases yearly the total of resort-related fatalities and
 catastrophic injuries, the raw data on which \cite{Shealy2015} was based is not
 publicly available.
 
-In a third study~\cite{Scher2015} specifically designed to evaluate injury
-mitigation potential of surfaces limiting EFH, Scher et al. clearly show that
-body orientation, i.e. falling directly on one's head, can cause dangerous
-cervical spine loads~\cite{Scher2015}, even at low fall heights. They report on
+In a third experimental study (N=13) specifically designed "to evaluate injury
+mitigation potential of surfaces limiting EFH"~\cite{Scher2015}, Scher et al. clearly show that
+body orientation, i.e. falling directly on one's head(in all trials) , can cause dangerous
+cervical spine compression loads~\cite{Scher2015}, even at low fall heights. They report on
 effects of EFH but only test heights from \SIrange{0.23}{1.52}{\meter},
-committing a similar fault as \cite{Shealy2010}, restricting ranges of their
+committing a similar fault as in \cite{Shealy2010}, restricting ranges of their
 independent variables, and ignoring fall heights known to have caused severe
-injuries regardless of body orientation. Yet purporting EFH has no appreciable
+injuries regardless of body orientation. Yet they purport that EFH has no appreciable
 effect on injuries. The title, ``Terrain Park Jump Design: Would Limiting
 Equivalent Fall Height Reduce Spinal Injuries?'' implies that they appear to
 believe that falling from greater heights might \emph{not} cause greater
 injuries. Why propose such mechanically flawed hypotheses?
 
-Poorly executed experiments, no matter how expensive the instrumentation,
+Poorly executed, limited experiments, no matter how expensive the instrumentation,
 cannot disprove the fundamental laws of mechanics. If statistics or
 experimental results seem to conflict with predictions from classical
 mechanics, the problems must be with the statistical or experimental design or
@@ -389,14 +389,14 @@ understanding it''~\cite{Sinclair1994}.
 None of these papers was written to reduce injuries. No suggestions
 are made how their findings can be used to promote public safety. Instead they
 attempt to obscure the mechanically irrefutable fact that impacting surfaces at
-lower velocities is safer. Introducing bogus science is as well known in American
-litigation, as in defending tobacco~\cite{Oreskes2010}.
+lower velocities is safer. Introducing bogus science is as prevalent in American
+skiing litigation defense, as it was in defending tobacco~\cite{Oreskes2010}.
 
 American legal, healthcare and insurance systems corrupt technical literature
 for legal defense of unsafe practices. Peer-reviewed technical literature is
 used to support testimony in lawsuits. Both plaintiffs and defendants hire
 experts, authors of technical papers, to testify.  When supporting the
-defense, thgis can result in denying compensation for injuries and prolong unsafe
+defense, this can result in denying compensation for injuries and prolong unsafe
 practices. American healthcare systems can leave families of paralysis victims
  destitute with little recourse but to sue snowsport resorts. American
 health insurance companies also sue resorts to recover their losses in injury
@@ -418,9 +418,7 @@ and engineering.
 %
 Societal needs should be addressed. Preventable injuries on terrain park jumps
 should cease. Injured people require appropriate care that should not depend on
-prolonged adversarial litigation clouded by bogus\todo{What do you think of
-  ``spurious'' or ``deceptive'' instead of ``bogus''? I feel ``bogus'' is a bit
-more below the belt that the others. -- JM} engineering. Papers helping to
+prolonged adversarial litigation clouded by deceptive engineering. Papers helping to
 perpetuate dangerous practices do not belong in engineering journals or
 conferences.
 
@@ -572,22 +570,22 @@ should be held paramount.
 \label{sec:example}
 %
 The closed form equation~\ref{eq:efh} is useful for understanding the
-fundamental relationship of equivalent fall height to the landing surface and
-will predict these values for small jumps but other factors may be useful to
+fundamental relationship of equivalent fall height to the landing surface shape. It
+will predict EFH for small jumps but other factors may be useful to
 include in the model. For example, jumpers are subject to aerodynamic drag and
 this is not negligible for larger jumps. If drag is included there is no closed
 form solution for the equivalent fall height, but the equivalent fall height
 can be computed through iterative simulation~\cite{Levy2015}. The jumper's
 flight path is found by integrating the flight equations of motion at various
-takeoff velocities and computing the misalignment in jumper landing angle and
-the slope angle to then find the equivalent fall height. This more general
+takeoff velocities and computing the misalignment of jumper landing and slope 
+angles to then compute the equivalent fall height. This more general
 simulation method is implemented in the software described herein and the
 results reflect the inclusion of both gravitational and drag forces. Even with
 drag incorporated, the calculating EFH still only require measurements of the
 landing surface cross-sectional profile coordinates $(x,y)$ relative to the
 takeoff point and a measurement of the takeoff angle.
 Listing~\ref{lis:example-efh-calc} demonstrates the new software library
-features of creating a surface from some measured data points and then
+features creating a surface from some measured data points and then
 calculating the equivalent fall height at 0.2\si{\meter} increments.
 %
 \begin{listing*}
@@ -639,7 +637,7 @@ array([0.07373847, 0.13081777, 0.1878382 , 0.2447865 , 0.30166299,
 >>> # calculate and plot the efh curve
 >>> plot_efh(measured_surf, takeoff_ang, takeoff_point, increment=0.2)
   \end{minted}
-  \caption{Python interpreter session showing how one could compute the
+  \caption{Python interpreter session illustrating how one could compute the
   equivalent fall height of a measured jump.}
   \label{lis:example-efh-calc}
 \end{listing*}
@@ -650,12 +648,12 @@ array([0.07373847, 0.13081777, 0.1878382 , 0.2447865 , 0.30166299,
 Calculating equivalent fall height requires the Cartesian coordinates and slope
 of the landing surface along the path of the jumper. There are a number of
 possible measurement techniques for collecting data adequate for the equivalent
-fall height calculation but the simplest method only requires a digital level
+fall height calculation but the simplest method requires only a digital level
 \footnote{Smartphone digital level measurement applications are likely
 sufficient and readily available.}, a flexible tape measure, and less than an
 hour's time from one person per jump. A tenth of a degree accuracy from the
 level and down to 25~\si{\centi\meter} accuracy from the tape measure should be
-more than sufficient for typical snow sport jumps.
+more than sufficient for typical snowsport jumps.
 
 To measure the jump, the takeoff point should be identified and the tape
 measure should then be draped over the contour of the landing surface along the
