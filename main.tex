@@ -1,4 +1,4 @@
-%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentcrass{svjour3}                     % onecolumn (standard format)
 %\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
 \documentclass[smallextended]{svjour3}       % onecolumn (second format)
 %\documentclass[twocolumn]{svjour3}          % twocolumn
@@ -159,7 +159,10 @@ landing height``~\cite{Gasser2018} is only about 0.5~\si{\meter}.
 
 EFH $h$ of objects is formally defined as
 %
-\begin{equation} h = \frac{v^2}{2g} \label{eq:efh_general} \end{equation}
+\begin{equation}
+  h = \frac{v^2}{2g}
+  \label{eq:efh_general}
+\end{equation}
 %
 where $v$ is impact velocity and $g$ gravitational acceleration.  Kinetic
 energy of objects moving at  velocity $v$  is transformed from potential energy
@@ -177,14 +180,13 @@ jumping~\cite{Petrone2017}. The result, neglecting air drag, is
   \label{eq:efh}
 \end{align}
 %
-a function only of takeoff angle $\theta_T$,  impact coordinates $(x,y)$ relative 
-to takeoff and landing surface slope $\frac{dy}{dx}$, but
-not a function of takeoff speed~\cite{Petrone2017}. 
-To analyze jumps, one measures Cartesian coordinates of landing surfaces along
-jumpers' flight paths and takeoff angles. Slopes $\frac{dy}{dx}$ are computed
-from measured coordinates $(x,y)$. Curvature for the last several meters before
-takeoffs must be near zero to avoid unintentional inversion, although this does
-not influence EFHs.
+a function only of takeoff angle $\theta_T$, impact coordinates $(x,y)$
+relative to takeoff and landing surface slope $\frac{dy}{dx}$, but not a
+function of takeoff speed~\cite{Petrone2017}. To analyze jumps, one measures
+Cartesian coordinates of landing surfaces along jumpers' flight paths and
+takeoff angles. Slopes $\frac{dy}{dx}$ are computed from measured coordinates
+$(x,y)$. Curvature for the last several meters before takeoffs must be near
+zero to avoid unintentional inversion, although this does not influence EFHs.
 
 \section{Case Studies}
 \label{sec:case}
@@ -428,26 +430,31 @@ are needed for jump designs with limited EFHs, specifying verification,
 inspection, and maintenance during use. Certification programs are needed for
 jump building, inspecting, and maintenance.
 
-Around 1980 ASTM Committee F27 began to develop ski binding standards. Proponents
-were led by orthopedic surgeons and academic researchers~\cite{Bahniuk1996}.
-Industry argued that standards were impossible because release value measurement 
-was impossible by ski shops (industry now makes similar arguments about jumps). Nevertheless certifications and inspection standards for bindings were developed, and now there are far fewer lower-extremity equipment-related injuries. Now in F27, no medical professionals and almost no academics remain.
+Around 1980 ASTM Committee F27 began to develop ski binding standards.
+Proponents were led by orthopedic surgeons and academic
+researchers~\cite{Bahniuk1996}.  Industry argued that standards were impossible
+because release value measurement was impossible by ski shops (industry now
+makes similar arguments about jumps). Nevertheless certifications and
+inspection standards for bindings were developed, and now there are far fewer
+lower-extremity equipment-related injuries. Now in F27, no medical
+professionals and almost no academics remain.
 
 In parallel to standards development, assessing and reshaping existing jumps
-eliminating dangerous EFH should be an easy route for ski resorts to increase proactively terrain park safety. Accurate enough measurements of
-existing slopes can occur with simple tools, e.g. tape measure and digital
-level, consuming relatively little time per jump, see
+eliminating dangerous EFH should be an easy route for ski resorts to increase
+proactively terrain park safety. Accurate enough measurements of existing
+slopes can occur with simple tools, e.g. tape measure and digital level,
+consuming relatively little time per jump, see
 Appendix~\ref{sec:jump-shape-measurement}. Calculation and visualization of
 EFHs from these measurements can take some time without a program for
-calculating EFHs from hill profiles. We have made a user-friendly, freely-accessible 
-online web application available with the
-calculation and visualization steps almost instantaneous for jump builders. With
-the tool described in the next section, jump builders can easily add this
-safety assessment to their toolbox, even using it from a smartphone on hills.
-We see no reason that this basic assessment should not be part of jump
-construction processes. The only ethical decision is to adopt these methods;
-saving even one person from a life of paralysis, or even death, must be worth
-the relatively minor inconvenience of shaping jumps using the methods in reference
+calculating EFHs from hill profiles. We have made a user-friendly,
+freely-accessible online web application available with the calculation and
+visualization steps almost instantaneous for jump builders. With the tool
+described in the next section, jump builders can easily add this safety
+assessment to their toolbox, even using it from a smartphone on hills.  We see
+no reason that this basic assessment should not be part of jump construction
+processes. The only ethical decision is to adopt these methods; saving even one
+person from a life of paralysis, or even death, must be worth the relatively
+minor inconvenience of shaping jumps using the methods in reference
 \cite{Levy2015}.
 
 \subsection{Software and Online Access}
@@ -553,23 +560,23 @@ should be held paramount.
 \label{sec:example}
 %
 The closed form equation~\ref{eq:efh} is useful for understanding the
-fundamental relationship of equivalent fall height to the landing surface shape. It
-will predict EFH for small jumps but other factors may be useful to
+fundamental relationship of equivalent fall height to the landing surface
+shape. It will predict EFH for small jumps but other factors may be useful to
 include in the model. For example, jumpers are subject to aerodynamic drag and
 this is not negligible for larger jumps. If drag is included there is no closed
 form solution for the equivalent fall height, but the equivalent fall height
 can be computed through iterative simulation~\cite{Levy2015}. The jumper's
 flight path is found by integrating the flight equations of motion at various
-takeoff velocities and computing the misalignment of jumper landing and slope 
-angles to then compute the equivalent fall height. This more general
-simulation method is implemented in the software described herein and the
-results reflect the inclusion of both gravitational and drag forces. Even with
-drag incorporated, the calculating EFH still only require measurements of the
+takeoff velocities and computing the misalignment of jumper landing and slope
+angles to then compute the equivalent fall height. This more general simulation
+method is implemented in the software described herein and the results reflect
+the inclusion of both gravitational and drag forces. Even with drag
+incorporated, the calculating EFH still only require measurements of the
 landing surface cross-sectional profile coordinates $(x,y)$ relative to the
 takeoff point and a measurement of the takeoff angle.
 Listing~\ref{lis:example-efh-calc} demonstrates the new software library
-features creating a surface from some measured data points and then
-calculating the equivalent fall height at 0.2\si{\meter} increments.
+features creating a surface from some measured data points and then calculating
+the equivalent fall height at 0.2\si{\meter} increments.
 %
 \begin{listing*}
   \begin{minted}{pycon}
