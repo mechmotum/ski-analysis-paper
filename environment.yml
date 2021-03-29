@@ -2,14 +2,13 @@ name: ski-analysis-paper
 channels:
   - conda-forge
 dependencies:
-  - cython
-  - dash
-  - dash-table
-  - ipython
-  - matplotlib
-  - numpy >=0.13.0  # requires new options in gradient()
-  - pandas
-  - python >=3.8
-  - scipy >=1.0  # requires solve_ivp()
-  - sympy
-  - xlrd
+  - cython ==0.29.21
+  - dash ==1.18.1
+  - matplotlib ==3.3.3
+  - numpy ==1.19.5
+  - pandas ==1.2.0
+  - python ==3.9.1
+  - scipy ==1.6.0
+  - skijumpdesign ==1.4.0
+  - sympy ==1.7.1
+  - xlrd ==2.0.1
