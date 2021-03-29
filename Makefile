@@ -1,3 +1,4 @@
+pdf: main.pdf
 main.pdf: main.tex references.bib figures/salvini-v-snoqualmie.pdf figures/vine-v-bear-valley.pdf
 	pdflatex -shell-escape main.tex
 	bibtex main.aux
