@@ -6,6 +6,8 @@ This repository houses the LaTeX and Python source files to build the paper:
    Jason K. Moore, Bryn Cloud, Mont Hubbard, and Christopher A. Brown,
    "Analysis and Ethical Design of Terrain Park Jumps for Snow Sports", 2021
 
+Preprint available at https://doi.org/10.31224/osf.io/sq7u9
+
 The contents of this repository, other than the Springer LaTeX template files,
 are licensed under the Creative Commons Attribution 4.0 license. See
 ``LICENSE``.
