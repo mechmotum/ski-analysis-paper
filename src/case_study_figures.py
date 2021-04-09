@@ -188,6 +188,7 @@ profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
                                                   med_speed=10.0)
 fig = profile_ax.figure
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'vine-v-bear-valley.pdf'))
+fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'vine-v-bear-valley.png'), dpi=150)
 
 # Salvini v Snoqualmie
 landing_surface_data = np.loadtxt(os.path.join(PROJECT_ROOT, 'data',
@@ -211,3 +212,4 @@ profile_ax, efh_ax = compare_measured_to_designed(landing_surface, fall_height,
 
 fig = profile_ax.figure
 fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'salvini-v-snoqualmie.pdf'))
+fig.savefig(os.path.join(PROJECT_ROOT, 'figures', 'salvini-v-snoqualmie.png'), dpi=150)
