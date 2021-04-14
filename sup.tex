@@ -1,0 +1,194 @@
+\documentclass[]{article}
+
+% insert here the call for the packages your document requires
+\usepackage[utf8]{inputenc}
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref,hyperref}
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+% useful for consistent display and control of units of measurement
+\usepackage{siunitx}
+% figures!
+\usepackage{graphicx}
+% for including TODO notes
+\usepackage{todonotes}
+% syntax highlighting for code
+\usepackage{minted}
+% Uncomment next two lines to add line numbers.
+\usepackage{lineno}
+\linenumbers
+
+\begin{document}
+
+\title{Supplementary Materials for Analysis and Ethical Design of Terrain Park Jumps for Snow Sports}
+
+\author{
+  Jason~K. Moore \and
+  Bryn Cloud \and
+  Mont Hubbard \and
+  Christopher~A. Brown
+}
+
+\maketitle
+
+\section{Example Software Library Use}
+\label{sec:example}
+%
+The closed form equation
+%
+\begin{align}
+  h = \left[\frac{x^2}{4(x\tan\theta_T - y)\cos^{2}\theta_T} - y\right]
+    \sin^{2}
+    \left[\tan^{-1}\left(\frac{2y}{x} - \tan\theta_T\right) -
+    \tan^{-1}\frac{dy}{dx}\right]
+  \label{eq:efh}
+\end{align}
+
+is useful for understanding the
+fundamental relationship of equivalent fall height to the landing surface
+shape. It will predict EFH for small jumps but other factors may be useful to
+include in the model. For example, jumpers are subject to aerodynamic drag and
+this is not negligible for larger jumps. If drag is included there is no closed
+form solution for the equivalent fall height, but the equivalent fall height
+can be computed through iterative simulation~\cite{Levy2015}. The jumper's
+flight path is found by integrating the flight equations of motion at various
+takeoff velocities and computing the misalignment of jumper landing and slope
+angles to then compute the equivalent fall height. This more general simulation
+method is implemented in the software described herein and the results reflect
+the inclusion of both gravitational and drag forces. Even with drag
+incorporated, the calculating EFH still only require measurements of the
+landing surface cross-sectional profile coordinates $(x,y)$ relative to the
+takeoff point and a measurement of the takeoff angle.
+Listing~\ref{lis:example-efh-calc} demonstrates the new software library
+features creating a surface from some measured data points and then calculating
+the equivalent fall height at 0.2\si{\meter} increments.
+%
+\begin{listing*}
+  \begin{minted}{pycon}
+>>> import numpy as np
+>>> from skijumpdesign import Surface, Skier, plot_efh
+>>> takeoff_ang = 10  # degrees
+>>> takeoff_point = (0, 0)  # (x, y) in meters
+>>> x_ft = np.array([-232.3,-203.7,-175.0,-146.3,-117.0,-107.4,
+...    -97.7,-88.0,-78.2,-68.5,-58.8,-49.1,-39.4,-34.5,-29.7,
+...    ...
+...    38.8,43.3,47.8,52.3,56.8,61.5,66.2,70.9,75.7,80.6,85.5,
+...    88.4,88.4])
+...
+>>> y_ft = np.array([55.5,46.4,37.7,29.1,22.2,19.7,17.2,14.8,
+...    12.5,10.2,7.7,5.2,2.9,1.8,0.7,-0.2,-1.0,-1.2,-1.4,-1.6,
+...    ...
+...    -16.2,-18.1,-19.8,-21.4,-22.9,-24.0,-25.0,-25.6,-25.6])
+...
+>>> x_mt = x_ft*0.3048 # convert to meters
+>>> y_mt = y_ft*0.3048 # convert to meters
+>>> # create a surface from the data
+>>> measured_surf = Surface(x_mt, y_mt)
+>>> # create a skier
+>>> skier = Skier(mass=75.0, area=0.34, drag_coeff=0.821)
+>>> # calculate the equivalent fall height
+>>> x, efh, v = measured_surf.calculate_efh(
+...     np.deg2rad(takeoff_ang), takeoff_point, skier, increment=0.2)
+...
+>>> x  # display the x coordinates
+array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
+        2.2,  2.4,  2.6,  2.8,  3. ,  3.2,  3.4,  3.6,  3.8,  4. ,  4.2,
+       ...
+       24.2, 24.4, 24.6, 24.8, 25. , 25.2, 25.4, 25.6, 25.8, 26. , 26.2,
+       26.4, 26.6, 26.8])
+>>> efh  # display the equivalent fall height for each x coordinate
+array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
+       0.09096091, 0.12358184, 0.13702364, 0.15202999, 0.17018343,
+       ...
+       3.93910556, 3.97387212, 4.00891899, 4.04424779, 4.07984952,
+       4.11573359, 4.68049185, 5.53413479, 6.45253722, 7.42628019])
+
+>>> v  # display takeoff speeds to reach x positions
+array([0.07373847, 0.13081777, 0.1878382 , 0.2447865 , 0.30166299,
+       0.35851949, 0.41537661, 0.47221055, 0.52897197, 0.58564902,
+       ...
+       6.71699974, 6.76760188, 6.81816819, 6.86869777, 6.9191902 ,
+       6.96962124, 7.02001551, 7.07037288, 7.1206941 ])
+>>> # calculate and plot the efh curve
+>>> plot_efh(measured_surf, takeoff_ang, takeoff_point, increment=0.2)
+  \end{minted}
+  \caption{Python interpreter session illustrating how one could compute the
+  equivalent fall height of a measured jump.}
+  \label{lis:example-efh-calc}
+\end{listing*}
+
+\section{Jump Shape Measurement}
+\label{sec:jump-shape-measurement}
+%
+Calculating equivalent fall height requires the Cartesian coordinates and slope
+of the landing surface along the path of the jumper. There are a number of
+possible measurement techniques for collecting data adequate for the equivalent
+fall height calculation but the simplest method requires only a digital level
+\footnote{Smartphone digital level measurement applications are likely
+sufficient and readily available.}, a flexible tape measure, and less than an
+hour's time from one person per jump. A tenth of a degree accuracy from the
+level and down to 25~\si{\centi\meter} accuracy from the tape measure should be
+more than sufficient for typical snowsport jumps.
+
+To measure the jump, the takeoff point should be identified and the tape
+measure should then be draped over the contour of the landing surface along the
+projection of the expected flight path onto the landing surface. The origin of
+the tape measure should be aligned with the takeoff point. Starting with the
+takeoff point, the digital level should be used to record the absolute angle at
+regular increments along the tape. The increment can be varied between
+25~\si{\centi\meter} and 100~\si{\centi\meter}, with the former used for steep
+slope changes and the later for less steep; 50~\si{\centi\meter} increments are
+appropriate for average jump shapes. Positive angles should be recorded for
+positive slope and negative angles for negative slope. The tabulated data
+should include the distance along the surface from the takeoff point, $d_i$,
+and the associated surface angle, $\theta_i$, at each distance measurement for
+$n$ measurements. Assuming $\theta_i$ is in radians, the Cartesian coordinates
+can be computed using the average angle to find the adjacent coordinates. The
+following equations show the calculation of the Cartesian coordinates from
+these two measures used in the software.
+%
+\begin{align}
+  \frac{dy_i}{dx_i} & = \tan^{-1}{\theta_i} \quad \text{for } i=1\ldots n \\
+  x_{i + 1} & =
+  \begin{cases}
+    0 & \text{for } i=0 \\
+    x_i + (d_{i+1} - d_i)\cos{\frac{\theta_{i+1} + \theta_i}{2}} &  \text{for }
+    i=1\ldots n-1
+  \end{cases} \\
+  y_{i + 1} & =
+  \begin{cases}
+    0 & \text{for } i=0 \\
+    y_i + (d_{i+1} - d_i)\sin{\frac{\theta_{i+1} + \theta_i}{2}} &  \text{for }
+    i=1\ldots n-1
+  \end{cases}
+\end{align}
+
+Listing~\ref{lis:example-meas-calc} demonstrates calculating the landing
+surface's Cartesian coordinates from measured distance and angle data collected
+with the method described above.
+%
+\begin{listing*}
+  \begin{minted}{pycon}
+>>> import numpy as np
+>>> from skijumpdesign import cartesian_from_measurements
+>>> dis = np.array([14.5, 15.0, 15.5, 16.0, 16.5, 17.0])  # meters
+>>> ang = np.deg2rad([4.6, -7.4, -16.5, -9.7, -11, -6.9])  # radians
+>>> x, y, to_point, to_angle = cartesian_from_measurements(dis, ang)
+>>> print(x)  # meters
+[0.         0.49985074 0.98901508 1.47600306 1.96786738 2.46177962]
+>>> print(y)  # meters
+[ 0.         -0.01221609 -0.1157451  -0.22907075 -0.31890113 -0.39668737]
+>>> print(to_point)  # takeoff point in meters
+(0.0, 0.0)
+>>> print(to_angle)  # takeoff angle in radians
+0.08028514559173916
+  \end{minted}
+  \caption{Python interpreter session showing how one could compute the
+  Cartesian coordinates from equivalent fall height of a measured jump.}
+  \label{lis:example-meas-calc}
+\end{listing*}
+
+\bibliographystyle{ieeetr}
+\bibliography{references}   % name your BibTeX data base
+
+\end{document}
