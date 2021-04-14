@@ -191,18 +191,67 @@ Cartesian coordinates of landing surfaces along jumpers' flight paths and
 takeoff angles. Slopes $\frac{dy}{dx}$ are computed from measured coordinates
 $(x,y)$. Curvature for the last several meters before takeoffs must be near
 zero to avoid unintentional inversion, although this does not influence EFHs.
+
+\subsection{Software and Online Access}
+\label{sec:software}
+%
+We presented the first version of software for designing ski jumps with a
+specified EFH in \cite{Moore2018}. It comprises a general-purpose, extensible,
+object-oriented software library with tools for 2D skiing simulation. Using
+this code, a web application was developed for interactive jump design. The web
+application is designed for a non-technical end-user and operable on any
+desktop, tablet, or mobile device supporting a web browser.
+
+We have extended the capabilities of the software in version 1.4.0 to assist
+the work described in this paper. New library features automate calculation of
+EFH for jump profiles described by a set of Cartesian coordinates.
+Additionally, a new ``analysis'' page allows users to upload measured jump
+profile coordinates in either a .CSV or Microsoft Excel spreadsheet file. The
+jump is then analyzed and the equivalent fall height is displayed graphically
+for interactive user manipulation and viewing.
+Figure~\ref{fig:web-app-screenshot} shows the web application with one of the
+case study jumps loaded for analysis and explains its primary features.
+%
+\begin{figure}
+  \centering
+  \includegraphics[width=\columnwidth]{figures/web-app-screenshot.png}
+  \caption{\textbf{Screenshot of the ski jump design and analysis web app} To
+    use the analysis portion of the app, a user selects ``Ski Jump Analysis''
+    from the primary menu [1], uploads a .CSV or .XLS file by dragging it onto
+    the screen [3], inspects the input data for accuracy in the table [4], sets
+    the takeoff angle [5], runs the analysis by pressing the ``Run Analysis''
+    button [6], views the results in the interactive plot [2], and downloads
+    the results by pressing the ``Download EFH'' button [7].}
+  \label{fig:web-app-screenshot}
+\end{figure}
+
+The software is written in Python and directly depends on popular packages
+including Cython~\cite{Behnel2011}, matplotlib~\cite{Hunter2007},
+NumPy~\cite{Oliphant2006}, pandas~\cite{McKinney2020}, Plotly \&
+Dash~\cite{Plotly2015}, pycvodes~\cite{Dahlgren2018},
+SciPy~\cite{Virtanen2020}, SymPy~\cite{Meurer2017}, and xlrd. The software is
+open source and licensed under the MIT redistribution license. The source code
+is distributed on PyPi (\url{https://pypi.org/project/skijumpdesign}. Users can
+submit bug reports, feature requests, code improvements, and additions at the
+Gitlab repository (\url{https://gitlab.com/moorepants/skijumpdesign}). The
+software library is documented at \url{https://skijumpdesign.readthedocs.io}.
+Basic examples of using the library are provided in the documentation and this
+paper's supplementary materials. The web app is hosted for free use at
+\url{http://www.skijumpdesign.info}.
+
+We make use of this software and the methods defined within for the calculations and visualizations presented in the following section.
+
 \section{Results}
-\subsection{Case Studies}
 \label{sec:case}
 %
-In these American lawsuits juries ruled for injured plaintiffs. Negligent jump
+In these case studies of American lawsuits, juries ruled for injured plaintiffs. Negligent jump
 design and construction contributed significantly to
 injuries~\cite{SuperiorCourtSanFranciscoCounty2002,KingCountySuperiorCourt2008}.
 Simulations below use methods in \cite{Levy2015}, assuming skier mass, frontal
 area, and drag coefficient of 75~\si{\kg}, 0.34~\si{\meter\squared}, and 0.821,
 respectively.
 
-\subsubsection{Vine v. Bear Valley Ski Company}
+\subsection{Vine v. Bear Valley Ski Company}
 \label{sec:vine}
 %
 In April 2000, Ms.~Vine's lower spine was injured when she landed badly skiing
@@ -257,7 +306,7 @@ alternative jump design would have lowered impact forces for landings at all
 locations. In 2002, the jury ruled in favor of Ms.~Vine, agreeing that Bear
 Valley was responsible for not designing safer jumps.
 
-\subsubsection{Salvini v. Ski Lifts Inc.}
+\subsection{Salvini v. Ski Lifts Inc.}
 \label{sec:salvini}
 %
 In 2004, Mr.~Salvini attempted a table-top jump on skis in the terrain park of
@@ -349,7 +398,7 @@ insurance companies.
 
 Shealy et.~al~\cite{Shealy2010} conducted an experimental study attempting to
 test the hypothesis that takeoff speed is a predictor of the distance from a
-jump take-off to landing. They reached the mechanically preposterous
+jump take-off to landing. They reached the mechanically impossible
 conclusions both that there is ``no statistically significant relationship
 between takeoff speed and the distance traveled'' and that ``takeoff speed is
 not a dominant or controlling factor (in how far a jumper
@@ -396,19 +445,12 @@ defense work. As Upton Sinclair wrote ``it is difficult to get a man to
 understand something when his salary depends on his not understanding
 it''~\cite{Sinclair1994}.
 
-None of these papers was written to reduce injuries. No suggestions are made
-how their findings can be used to promote public safety. Instead they attempt
-to obscure the mechanically irrefutable fact that impacting surfaces at lower
-velocities is safer. Introducing bogus science is as prevalent in American
-skiing litigation defense, as it was in defending tobacco~\cite{Oreskes2010}.
-
-It is not evident that these papers ``hold paramount the safety ... of the
+It is not evident that these papers ``hold paramount the safety, health and welfare of the
 public''. They are silent on how their findings can be used to reduce injuries.
 They obscure a fundamentally scientific, mechanically irrefutable fact that
 impacting surfaces at lower velocities is safer. They ``create the appearance
-that the claims being promoted were scientific''~\cite{Oreskes2010} (page 244).
-Fundamental laws make mechanics a science. These laws cannot be refuted and
-hold that findings are scientific. Review processes accepting such articles are
+that the claims being promoted were scientific''~\cite[page 244]{Oreskes2010}.
+Fundamental laws make mechanics a science and cannot be refuted. Findings that contradict such fundamental laws should be carefully scrutinized. Review processes accepting such articles are
 questionable.
 
 American legal, healthcare and insurance systems corrupt technical literature
@@ -430,7 +472,7 @@ problems that cause injuries, holding paramount the public's safety, health and
 welfare. The other attempts to defend practices that might have contributed to
 the injury, to limit financial losses of insurance companies. The idiom ``two
 sides to every question'', is not appropriate in science and
-engineering~\cite{Oreskes2010} (page 268).
+engineering~\cite[page 268]{Oreskes2010}.
 
 \subsection{What Can Be Done?}
 \label{sec:action}
@@ -439,7 +481,7 @@ Societal needs should be addressed. Preventable injuries on terrain park jumps
 should cease. Injured people require appropriate care that should not depend on
 prolonged adversarial litigation clouded by deceptive engineering. Papers
 helping to perpetuate dangerous practices do not belong in engineering journals
-or conferences.
+or conference proceedings.
 
 Everything possible should be done to eliminate dangerous jumps. Ski area
 operators and their grooming staff must be educated and given tools. Standards
@@ -449,7 +491,7 @@ jump building, inspecting, and maintenance.
 
 As an example of a successful certification program, around 1980 ASTM Committee
 F27 began to develop ski binding standards.  Proponents were led by orthopedic
-surgeons and academic researchers~\cite{Bahniuk1996}.  Industry argued that
+surgeons and academic researchers~\cite{Bahniuk1996}. Industry argued that
 standards were impossible because release value measurement was impossible by
 ski shops (industry now makes similar arguments about jumps). Nevertheless
 certifications and inspection standards for bindings were developed, and now
@@ -459,9 +501,9 @@ medical professionals and almost no academics remain.
 Every jumper and parent of young jumpers should be able to confirm that a jump
 is safe before trying it. Standards need to be developed in collaboration
 between industry and research engineers to design, build, inspect, maintain,
-and post safe jumps. Postings should include EFHs, the certified inspectors
-name, when last inspected. Inspections should be frequent enough to assure that
-jumps are safe, particularly takeoffs and starting points so as not to cause
+and post safer jumps. Postings should include EFHs, the certified inspectors
+name, and when last inspected. Inspections should be frequent enough to assure that
+jumps meet the standards, particularly regarding takeoffs and starting points to prevent
 inadvertent inversions.
 
 In parallel to standards development, assessing and reshaping existing jumps
@@ -473,60 +515,13 @@ details. Calculation and visualization of EFHs from these measurements can take
 some time without a program for calculating EFHs from hill profiles. We have
 made a user-friendly, freely-accessible online web application available with
 the calculation and visualization steps almost instantaneous for jump builders.
-With the tool described in the next section, jump builders can easily add this
+With the tool described in the Methods section, jump builders can easily add this
 safety assessment to their toolbox, even using it from a smartphone on hills.
 We see no reason that this basic assessment should not be part of jump
 construction processes. The only ethical decision is to adopt these methods;
 saving even one person from a life of paralysis, or even death, must be worth
 the relatively minor inconvenience of shaping jumps using the methods in
 reference~\cite{Levy2015}.
-
-\subsection{Software and Online Access}
-\label{sec:software}
-%
-We presented the first version of software for designing ski jumps with a
-specified EFH in \cite{Moore2018}. It comprises a general-purpose, extensible,
-object-oriented software library with tools for 2D skiing simulation. Using
-this code, a web application was developed for interactive jump design. The web
-application is designed for a non-technical end-user and operable on any
-desktop, tablet, or mobile device supporting a web browser.
-
-We have extended the capabilities of the software in version 1.4.0 to assist
-the work described in this paper. New library features automate calculation of
-EFH for jump profiles described by a set of Cartesian coordinates.
-Additionally, a new ``analysis'' page allows users to upload measured jump
-profile coordinates in either a .CSV or Microsoft Excel spreadsheet file. The
-jump is then analyzed and the equivalent fall height is displayed graphically
-for interactive user manipulation and viewing.
-Figure~\ref{fig:web-app-screenshot} shows the web application with one of the
-case study jumps loaded for analysis and explains its primary features.
-%
-\begin{figure}
-  \centering
-  \includegraphics[width=\columnwidth]{figures/web-app-screenshot.png}
-  \caption{\textbf{Screenshot of the ski jump design and analysis web app} To
-    use the analysis portion of the app, a user selects ``Ski Jump Analysis''
-    from the primary menu [1], uploads a .CSV or .XLS file by dragging it onto
-    the screen [3], inspects the input data for accuracy in the table [4], sets
-    the takeoff angle [5], runs the analysis by pressing the ``Run Analysis''
-    button [6], views the results in the interactive plot [2], and downloads
-    the results by pressing the ``Download EFH'' button [7].}
-  \label{fig:web-app-screenshot}
-\end{figure}
-
-The software is written in Python and directly depends on popular packages
-including Cython~\cite{Behnel2011}, matplotlib~\cite{Hunter2007},
-NumPy~\cite{Oliphant2006}, pandas~\cite{McKinney2020}, Plotly \&
-Dash~\cite{Plotly2015}, pycvodes~\cite{Dahlgren2018},
-SciPy~\cite{Virtanen2020}, SymPy~\cite{Meurer2017}, and xlrd. The software is
-open source and licensed under the MIT redistribution license. The source code
-is distributed on PyPi (\url{https://pypi.org/project/skijumpdesign}. Users can
-submit bug reports, feature requests, code improvements, and additions at the
-Gitlab repository (\url{https://gitlab.com/moorepants/skijumpdesign}). The
-software library is documented at \url{https://skijumpdesign.readthedocs.io}.
-Basic examples of using the library are provided in the documentation and this
-paper's supplementary materials. The web app is hosted for free use at
-\url{http://www.skijumpdesign.info}.
 
 \section{Conclusion}
 \label{sec:conc}
@@ -542,6 +537,12 @@ that must fall would surely choose to do so from the lowest height.
 Constructors of jumps that are not designed with these facts in mind are
 negligent. The safety, health, and welfare of the public involved in this sport
 should be held paramount.
+
+\todo[inline]{Mont will take Chris's text (below) and also cite his prior paper that deals with all the limitations and make this final paragraph}
+A limitation to reducing injuries, especially paralysis, on terrain park jumps is that it cannot be accomplished just by publishing papers on scientific design methods and providing software. Industry must adapt ethical procedures for designing, building, inspecting, and maintaining safe terrain park jumps. Just like rules, enforced by states and insurance companies, to keep people from falling from aerial ski lifts, they are needed for terrain park jumps. Current jumps have EFHs like falling from chair lifts. Public safety must be held paramount to short-term return-on-investment. Journal editors need to recognize papers primarily intending to cast doubt on good science and engineering for what they are, tools of insurance companies for defending civil suits, and reject them.  Engineers, whose work unethically ignores their first canon of ethics, in favor of merchanting doubt, should not edit engineering journals or organize engineering conferences, because these journals' and conferences' reputation is at risk. 
+
+Should they be allowed to testify?
+How can someone who ignores the first canon claim to be an engineer?
 
 \begin{acknowledgements}
   We thank Rado Dukalski for feedback on the web application and both Yumiko
