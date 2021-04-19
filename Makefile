@@ -17,10 +17,10 @@ trackchanges:
 	git checkout master
 	latexdiff $(FIRST_DIFF_TAG).tex main.tex > diff-master_$(FIRST_DIFF_TAG).tex
 	rm $(FIRST_DIFF_TAG).tex
-	pdflatex -shell-escape diff-master_$(FIRST_DIFF_TAG).tex
+	pdflatex -shell-escape -interaction nonstopmode -halt-on-error -file-line-error diff-master_$(FIRST_DIFF_TAG).tex
 	bibtex diff-master_$(FIRST_DIFF_TAG).aux
-	pdflatex -shell-escape diff-master_$(FIRST_DIFF_TAG).tex
-	pdflatex -shell-escape diff-master_$(FIRST_DIFF_TAG).tex
+	pdflatex -shell-escape -interaction nonstopmode -halt-on-error -file-line-error diff-master_$(FIRST_DIFF_TAG).tex
+	pdflatex -shell-escape -interaction nonstopmode -halt-on-error -file-line-error diff-master_$(FIRST_DIFF_TAG).tex
 figures/salvini-v-snoqualmie.pdf figures/vine-v-bear-valley.pdf: data/california-2002-surface.csv data/washington-2004-surface.csv src/case_study_figures.py
 	python src/case_study_figures.py
 clean:
