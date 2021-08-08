@@ -27,7 +27,7 @@
 
 \begin{document}
 
-\title{Analysis and Ethical Design of Terrain Park Jumps for Snow Sports}
+\title{Snow Sport Terrain Park Jump Engineering and Ethics}
 
 \author{
   Jason~K. Moore \and
@@ -66,11 +66,11 @@
   heights (EFHs), which are proportional to dissipated landing impact energy. No evidence
   refutes making terrain park jumps safer in this way. We discuss case studies
   illustrating that large EFHs are significant factors in traumatic injuries on
-  terrain park jumps. We make the case that it is the ethical responsibility of
+  terrain park jumps. We argue that it is the ethical responsibility of
   engineers to ensure the safety, health, and welfare of the public when
   performing and presenting research on snowsport safety. Developing standards
-  and adopting design tools for builders can make jumps safer. We introduce a
-  tool that can evaluate existing jumps as well as design jump profiles with
+  and adopting design tools for builders can make jumps safer. We introduce an
+  online tool that can evaluate existing jumps as well as design jump profiles with
   safer equivalent EFHs to reduce injuries as an example proactive practice.
 \end{abstract}
 
@@ -84,7 +84,7 @@ familiar measure of impact danger used in safety standards worldwide, from
 construction~\cite{OSHA2021} to children's playground
 equipment~\cite{Chalmers1996}. EFHs of terrain park jumps can be calculated
 using techniques in \cite{Levy2015} from Cartesian coordinates of jump
-profiles. These must include starting points, takeoff ramps, and landing hills,
+profiles. These must include starting points, takeoff ramps, and landing hills, all
 along jumpers' paths. Limiting energy dissipation in human bodies, hence EFH on
 jumps, is ethical engineering because it reduces the likelihood and severity of
 injuries. EFH should be a primary attribute of jump design. It must be
@@ -154,11 +154,11 @@ experiential common sense for relating fall height to likelihood of injury.
 People sense increasing danger associated with falling from larger heights because injury severity increases with increasing fall height~\cite{Nau2021}.
 Ground, second, and third floor falls are about 2.6, 5.1, 8.8~\si{\meter},
 respectively~\cite{Vish2005}. The German Society for Trauma Surgery's threshold for trauma team activation is a fall height 3~\si{\meter} \cite{PolytraumaGuidelineUpdateGroup2018}. The US Occupational Safety and Health
-Administration requires protection for heights greater than 1.2~\si{\meter} for
+Administration has for decades required protection for heights greater than 1.2~\si{\meter} for
 general workplace safety~\cite{OSHA2021}.  Chalmers et al.~\cite{Chalmers1996}
 argues for 1.5~\si{\meter} maximum fall heights for playground equipment. The
 Swiss Council for Accident Prevention makes specific recommendations for EFHs
-to be below 1.5~\si{\meter} for jumps requiring basic skills~\cite{Heer2019}.
+below 1.5~\si{\meter} for jumps requiring basic skills~\cite{Heer2019}.
 Even with no standards in Olympic Nordic ski jumps, typical ``equivalent
 landing height``~\cite{Gasser2018} is only about 0.5~\si{\meter}.
 
@@ -240,8 +240,7 @@ Basic examples of using the library are provided in the documentation and this
 paper's supplementary materials. The web app is hosted for free use at
 \url{http://www.skijumpdesign.info}.
 
-We make use of this software and the methods defined within for the
-calculations and visualizations presented in the following section.
+We do not view the software as the definitive ski jump design and analysis tool, but rather as a foundation. The tool has been released as open-source so that refinements and modifications are easy and encouraged. The software was carefully designed with extensibility and modularity in mind. New surface shapes such as different takeoff ramps are easily added by building upon the basic surface object using object-oriented programming principles. Similarly, new skier models can be added that incorporate more complex biomechanical features and actions. We make use of this flexible software design for the web application and for the calculations and visualizations presented in the following section.
 
 \section{Results}
 \label{sec:case}
@@ -264,7 +263,7 @@ near a ``sweet spot''.  The upper panel of Fig.~\ref{fig:vine-v-bear-valley}
 shows the  measured jump surface from accident investigation. Vine landed short
 of the knuckle (end of the table-top). This table-top, typically flat and
 horizontal, was instead concave, compounding dangers of short landings. At the
-11~\si{\meter} measured landing horizontal distance from  takeoff, the surface
+11~\si{\meter} landing horizontal distance measured from  takeoff, the surface
 sloped upwards approximately 5\si{\degree}. The concave shape emphasizes
 detrimental effects of not aligning surface tangents closer to jumper flight
 paths at impact.
@@ -315,7 +314,7 @@ In 2004, Mr.~Salvini attempted a table-top jump on skis in the terrain park of
 The Summit at Snoqualmie Ski Resort, in Washington state. Salvini overshot the
 intended landing location while traveling at typical skiing speeds, rotated
 backward during flight and landed on his back, ultimately suffering
-quadriplegia. At his landing location of 30~\si{\meter} the EFH was over 10
+quadriplegia. At his landing location of 30~\si{\meter} the EFH exceeded 10
 meters, approximately a 3-story fall.  Figure~\ref{fig:salvini-v-snoqualmie}
 shows the measured jump surface from the accident investigation.  For takeoff
 speeds greater than 13~\si{\meter\per\second}, the lower panel shows that the
@@ -370,11 +369,9 @@ not a matter of opinion and should not be optional. It is the foundation for
 engineering. The first canon compels engineers to use their technical expertise
 to protect snowsport participants from injuries. No one can rationally argue
 that reducing EFH increases likelihood of injury. Building well designed, safer
-jumps is no more laborious than building poorly designed, unsafe jumps. There
-is no reason not to control EFHs with good design methods. Nonetheless skiing
+jumps is no more laborious than building poorly designed, unsafe jumps. We see no reason not to control EFHs with good design methods. Nonetheless skiing
 industries and their insurance companies are reluctant to adopt and endorse
-such design methods. There is an ethical choice skiing industries make between spend money and energy on litigation defense instead of spending it on technology for constructing safer jumps. They hire expert witness engineers to sow doubt on simple,
-basic physics, while ignoring the first canon. Why?
+such design methods, choosing instead to spend money and energy on litigation defense rather than on technology for constructing safer jumps. They hire expert witness engineers to sow doubt on simple, basic physics, while ignoring the first canon. What is their excuse for inaction?
 
 In their book ``Merchants of Doubt''~\cite{Oreskes2010}, Oreskes and Conway
 have studied this problem more generally. They show that in numerous industries
@@ -396,7 +393,7 @@ hill design limiting EFH, defense experts introduce confounding factors to
 cloud and confuse basic issues. Consider as evidence three papers
 \cite{Shealy2010,Shealy2015,Scher2015} co-authored by well-known skiing
 industry defense experts who have testified for the snowsport resorts and their
-insurance companies. We do not fundamentally question their empirical findings but we do reject their interpretation of the findings, namely their conclusion that greater fall height is not a causation of greater injury.
+insurance companies. We do not fundamentally question their empirical findings but we do reject their interpretation of the findings, namely their conclusion that greater fall height is not a cause of greater injury.
 
 Shealy et.~al~\cite{Shealy2010} conducted an experimental study attempting to
 test the hypothesis that takeoff speed is a predictor of the distance from a
@@ -434,10 +431,7 @@ Reduce Spinal Injuries?'' implies that they appear to believe that falling from
 greater heights might \emph{not} cause greater injuries. Why propose such
 mechanically flawed hypotheses?
 
-Fundamental laws cannot be disproved by these kinds of jumping experiments. If
-statistical or experimental results seem in conflict with predictions from
-classical mechanics, the problems are most certainly with the statistical or experimental design or their interpretations, but not fundamental laws of mechanics. Defending practices that lead to injuries helps prolong these dangerous practices, which leads to further injuries, clearly contradictory to ethical
-engineering. Ski industry defense engineering experts are complicit in the continued societal damage. As Upton Sinclair wrote ``it is difficult to get a man to understand something when his salary depends on his not understanding it''~\cite{Sinclair1994}.
+Extending the scope of the findings in these ways are common statistical mistakes, but ones that should not be made by professional engineers. Fundamental laws cannot be disproved by these kinds of jumping experiments. If statistical or experimental results seem in conflict with predictions from classical mechanics, the problems are most certainly with the statistical or experimental design or their interpretations, but not fundamental laws of mechanics. Defending practices that lead to injuries helps prolong these dangerous practices, which leads to further injuries, clearly contradictory to ethical engineering. Ski industry defense engineering experts are complicit in the continued societal damage. As Upton Sinclair wrote ``it is difficult to get a man to understand something when his salary depends on his not understanding it''~\cite{Sinclair1994}.
 
 It is not evident that these papers ``hold paramount the safety, health and
 welfare of the public''. They are silent on how their findings can be used to
@@ -451,7 +445,7 @@ questioned.
 
 Organizations also merchandise doubt. A decade ago, NSAA argued~\cite{NSAA2008}
 that, because of rider and snow variability, terrain park jump ``standards are
-impossible.'' While it is true that the ``virtually \ldots infinite number of
+essentially impossible.'' While it is true that the ``virtually \ldots infinite number of
 ways that a given feature may be used by an individual \ldots varying speed,
 pop, body movement, takeoff stance, angles of approach, the attempting of
 different kinds of maneuvers, landing stance, and the type of equipment used
@@ -471,18 +465,7 @@ limited EFH surfaces is prevented by the complexity of the problem and by the
 large number and types of parameter variations away from nominal is false; in
 fact the allegation is just more merchandised doubt.
 
-American legal, healthcare and insurance systems also corrupt technical literature for legal defense of unsafe practices. Peer-reviewed technical literature is
-used to support testimony in lawsuits. Both plaintiffs and defendants hire
-experts, authors of technical papers, to testify. When supporting the defense,
-this can result in denying compensation for injuries and prolonging unsafe
-practices. American healthcare systems can leave families of paralysis victims
-destitute with little recourse but to sue snowsport resorts. American health
-insurance companies also sue resorts to recover their losses in injury cases.
-Financial support for publications gets routed through consulting companies
-providing plausible deniability of actual conflicts. This defense support
-appears to present a conflict of interest which should be declared in papers
-and presentations, when organizing and chairing meetings, and when editing
-publications.
+%American legal, healthcare and insurance systems also corrupt technical literature for legal defense of unsafe practices. Peer-reviewed technical literature is used to support testimony in lawsuits. Both plaintiffs and defendants hire experts, authors of technical papers, to testify. When supporting the defense, this can result in denying compensation for injuries and prolonging unsafe practices. American healthcare systems can leave families of paralysis victims destitute with little recourse but to sue snowsport resorts. American health insurance companies also sue resorts to recover their losses in injury cases. Financial support for publications gets routed through consulting companies providing plausible deniability of actual conflicts. This defense support appears to present a conflict of interest which should be declared in papers and presentations, when organizing and chairing meetings, and when editing publications.
 
 In injury cases, testifying for injured plaintiffs and testifying defending
 corporations are not ethically equivalent. The former attempts to address
@@ -498,57 +481,51 @@ engineering~\cite[page 268]{Oreskes2010}.
 
 \subsection{What Can Still be Done?}
 \label{sec:action}
-Absolutely, the most important change will be to to incorporate rigorous, rational  processes and scientific principles into designing freestyle jumps. At present a large fraction of, if not most, jumps in the USA are created in a formulaic way using two straight lines, a horizontal deck (tabletop) and nearly constant-slope landing region, linked by a curved knuckle. There is literally no consideration of jump safety from the point of view of EFH beyond seat-of-the-pants "experience" of the so-called designer. Although such jumps are simple and thus "easy" to design, previous research has shown that, as a class, jumps with bi-linear geometry have generally poor EFH behavior~\cite{Swedberg2012}. The skiing industry resists scientifically-based rational approaches to design, in spite of the fact that computer aided design (and even automated fabrication) of snow park jumps (see Figure~\ref{fig:prinoth}) has been available from snow groomer manufacturers for more than 5 years.  ~\cite{Muigg2121,Prinoth2121}. 
+Absolutely, the most important change will be to to incorporate rigorous, rational  processes and scientific principles into designing freestyle jumps. At present a large fraction of, if not most, jumps in the USA are created in a formulaic way using two straight lines, a horizontal deck (tabletop) and nearly constant-slope landing region, linked by a curved knuckle. There is literally no quantitative consideration of jump safety (e.g. from the point of view of EFH) beyond seat-of-the-pants experience of the designer. Although such jumps are simple and thus easy to design, previous research has shown that, as a class, jumps with bi-linear geometry have generally poor EFH behavior~\cite{Swedberg2012}. The skiing industry resists scientifically-based rational approaches to design, in spite of the fact that computer aided design (and even automated computer-controlled fabrication) of snow park jumps (see Figure~\ref{fig:prinoth}) has been available from snow groomer manufacturers for more than 5 years~\cite{Muigg2121,Prinoth2121}.
 
 % personal citation of Andreas and Prinoth website
 %
 \begin{figure}
   \centering
   \includegraphics[width=\columnwidth]{figures/prinoth.png}
-  \caption{\textbf{Commercial availability of computer-aided design and control of fabrication of snow park surfaces began before 2016.} The right panel shows a computer generated 3-D jump landing surface with a family of simulated jumper paths, even ones outside the central bisecting plane, with the landing surface colored corresponding to the EFH incurred by the jumper at that landing point. The left panel shows a computer-controlled snow groomer fitted with two GNSS receivers that allow real time measurement of their position to an accuracy of about 2 cm, calculation of the yaw and roll of the groomer blade, and precise closed loop control of the snow addition and removal process. 
+  \caption{\textbf{Commercial availability of computer-aided design and computer-controlled fabrication of snow park surfaces began as early as 2016.} The right panel shows a computer generated 3-D jump landing surface with a family of simulated jumper paths, even ones outside the central vertical bisecting plane, with the landing surface colored corresponding to the EFH incurred by the jumper at that landing point. The left panel shows a computer-controlled snow groomer fitted with two GNSS receivers that allow real time measurement of their position to an accuracy of about 2~\si{\centi\meter}, calculation of the yaw and roll of the groomer blade, and precise closed loop control of the snow addition and removal process. 
   Images courtesy of Prinoth, official supplier of snow groomers for the winter Olympics in China 2022.}
   \label{fig:prinoth}
 \end{figure}
 
-Once the jump surface has been designed, the next most important change is to base jump fabrication on scientific principles rather than just pushing snow until it "looks good". Presently a dominant fraction of jumps are simply fabricated by groomer operators and based on perhaps a few measurements of slopes (takeoff angle, landing region angle, etc.) during the process but the design concepts are overly simple. The introduction of computer controlled grooming, similar to computer controlled (CNC) machining, will facilitate construction of more complex shapes such as constant EFH surfaces. First year engineering students are able to machine components in two or three lab sessions using CNC that previously were only within reach of aspiring machinists after several weeks of their apprenticeship (WPI ME1800).
+Once the jump surface has been designed, the next most important change is to precisely build what was designed, rather than just pushing snow until the groomer thinks it looks good. Presently a dominant fraction of jumps are simply fabricated by groomer operators, based on perhaps a few measurements of distances and slopes (deck length, takeoff angle, landing region angle, etc.) during the process. But the design concepts are overly simple and do not incorporate or address quantitative indicators of safety such as EFH. The introduction of computer controlled grooming, similar to computer controlled (CNC) machining, will facilitate precise construction of more complex designed shapes. These would include the non-trivial constant EFH surfaces provided by our online ski jump design software that limit landing impulses to acceptable levels. 
+%First year engineering students are able to machine components in two or three lab sessions using CNC that previously were only within reach of aspiring machinists after several weeks of their apprenticeship (WPI ME1800).
 
-Appropriate inspection, evaluation, and correction of existing jumps, and the design and construction of safe new jumps should be promoted. Ski area
-operators and their grooming staff must be educated and given tools. An example
-of first steps in this area is a terrain park safety guide by the Swiss Council for Accident Prevention~\cite{Heer2019}. Standards are needed for jump
-designs with limited EFHs, specifying verification, inspection, and maintenance
-during use. Certification programs are needed for jump building, inspection,
-and maintenance.
+Every jumper (and parent of young jumpers) should be able to confirm that a jump
+is safe before trying it. Appropriate inspection, evaluation, and correction of existing jumps, and the design and construction of safer new jumps should be promoted.  Postings should include EFHs, the certified inspectors name, and when last inspected.  Inspections should be frequent enough to ensure that jumps meet the standards, particularly regarding takeoffs and starting
+points to prevent inadvertent inversions. Standards need to be developed that limit EFHs in collaboration between industry and research engineers to design, build, inspect, maintain,
+and post safer jumps. An example of first steps in this area is a terrain park safety guide by the Swiss Council for Accident Prevention~\cite{Heer2019}.
+%Standards are needed for jump designs with limited EFHs, specifying verification, inspection, and maintenance during use. 
 
-As an example of a successful certification program, around 1980 ASTM Committee
+To complement standards, certification programs are needed for jump building, inspection, and maintenance. As an example of a successful certification program, around 1980 ASTM Committee
 F27 began to develop ski binding standards. Proponents were led by orthopedic
 surgeons and academic researchers~\cite{Bahniuk1996}. Industry argued that
 standards were impossible because release value measurement was impossible by
 ski shops (industry now makes similar arguments about jumps). Nevertheless
 certifications and inspection standards for bindings were developed, and now
-there are far fewer lower-extremity equipment-related injuries. But now in F27,
-no medical professionals and almost no academics remain. Efforts to make standards on terrain park ski jumps started a decade ago~\cite{SAM2011}, yet standards on equivalent fall heights have yet to issued,
+there are far fewer lower-extremity equipment-related injuries. But now
+no medical professionals and almost no academics remain in F27. Efforts to create similar standards for terrain park ski jumps began in F27 more than a decade ago~\cite{SAM2011}, yet no standards have yet been developed! The skiing industry aided by the NSAA has been successful in slow-walking the process to prevent standards.
 % ASTM F27 COMMITTEE COULD BROADEN SCOPE TO INCLUDE PARK JUMPS SOON (2011) Ski Area Management https://www.saminfo.com/news/sam-headline-news/7425-5957-881-astm-f27-committee-could-broaden-scope-to-include-park-jumps-soon
-
-Every jumper (and parent of young jumpers) should be able to confirm that a jump
-is safe before trying it. Standards need to be developed in collaboration
-between industry and research engineers to design, build, inspect, maintain,
-and post safer jumps. Postings should include EFHs, the certified inspectors
-name, and when last inspected. Inspections should be frequent enough to assure
-that jumps meet the standards, particularly regarding takeoffs and starting
-points to prevent inadvertent inversions.
 
 In parallel with standards development, assessing and possibly reshaping existing jumps
 to eliminate dangerous EFHs should be an straightforward route for ski resorts to
 proactively increase terrain park safety. Accurate enough measurements of
-existing surfaces can even occur with simple tools, e.g. tape measure and digital
-level, and consume relatively little time per jump (see supplementary
+existing surfaces can occur even with simple tools, e.g. tape measure and digital
+level, and consume relatively little time and effort per jump (see supplementary
 materials for details). Calculation and visualization of EFHs from these
 measurements can take some time without a computational program for calculating
-EFHs from hill profiles. We have made a user-friendly, freely-accessible
-open-source online web application tool available for jump designers and
-builders with almost instantaneous calculation and visualization steps.  With
-the tool, described in the Methods section, jump builders can easily add safety
-assessment to their toolbox, even accessing it from a smartphone on hills.  We
+EFHs from hill profiles. The user-friendly, freely-accessible
+open-source online web application tool does this. We have made available for jump designers and
+builders with almost instantaneous calculation and visualization steps.  
+
+With
+this tool, described in the Methods section, jump builders can easily add safety
+assessment to their toolbox, even accessing it from a smartphone or tablet on hills.  We
 see no reason that this basic assessment should not be part of jump
 construction processes. The only ethical decision is to adopt these methods;
 saving even one person from a life of paralysis, or even death, must be worth
@@ -559,38 +536,36 @@ reference~\cite{Levy2015}.
 \label{sec:conc}
 %
 There are, of course, more factors than jump takeoff and landing surface shapes that
-contribute to injuries on terrain park jumps. Yet impact velocity can be easily
+contribute to injuries on terrain park jumps. Yet normal impact velocity can be easily
 controlled with a properly designed and fabricated landing surface shape. There is no evidence that
 decreasing designed EFH increases injuries in falls; injuries only decrease.  Thus
 we see no reason not to adopt constant low values of EFH for public-use jump
-designs. Common sense is really all that is needed to believe that falling from
-lower heights will decrease injuries, other factors held constant.  
+designs. In fact, safety research ~\cite{Smith} tells us that designing forgiving environments (i.e. limiting EFH at all possible landing locations) is more effective than forcing behavioral change (i.e. requiring the jumper to regulate their speed to ensure a landing only in a small safe region).
+%Common sense is really all that is needed to believe that falling from
+%lower heights will decrease injuries, other factors held constant.  
 %Any person that must fall would surely choose to do so from the lowest height.
-Constructors of jumps that are not designed with these facts in mind are
+Fabricators of jumps that are not designed with these principles in mind are
 negligent. The safety, health, and welfare of the public involved in this sport
-should be held paramount.
+must be held paramount.
 
 A real limitation to reducing injuries, especially paralysis, on terrain park
 jumps is that it cannot be accomplished just by publishing papers on scientific
-design methods and providing software. Industry must adopt ethical, user focused procedures
-for designing, building, inspecting, and maintaining safe terrain park jumps.
-Just like rules, enforced by states and insurance companies, to prevent people
-from falling from aerial ski lifts, similar standards are needed for terrain park
-jumps. As shown in the case studies above, current jumps can have EFHs comparable to falling from lifts. Public safety
+design methods and providing software. Industry must adopt ethical, user-focused procedures
+for designing, building, inspecting, and maintaining safer terrain park jumps.
+Just like rules enforced by states and insurance companies to prevent people
+ falling from aerial ski lifts, similar standards are needed for terrain park
+jumps. As shown in the case studies above, jumps can have EFHs comparable to falling from lifts. Public safety
 must be held paramount to short-term return-on-investment.
-Should we remove the following paragraph
-Journal editors need to recognize papers primarily intending to cast doubt on
-good science and engineering for what they are, tools of insurance companies
-for defending civil suits, and reject them. Engineers, whose scholarly work
-ignores engineering's first canon of ethics in favor of merchandising doubt,
-can diminish the scientific integrity of engineering journals and
-engineering conferences.
 
-Societal needs should be addressed. Preventable injuries on terrain park jumps
-should not occur. Injured people require appropriate care that should not depend on
-prolonged adversarial litigation clouded by deceptive engineering. Papers
+%Should we remove this following paragraph??
+Engineers whose scholarly work ignores engineering's first canon of ethics in favor of merchandising doubt can diminish the scientific integrity of engineering journals and
+engineering conferences. Journal editors should recognize papers primarily intending to cast doubt on good science and engineering for what they are, tools of insurance companies for defending civil suits, and reject them. Papers
 helping to perpetuate dangerous practices do not belong in engineering journals
 or conference proceedings.
+
+The methods and software we have illustrated in this paper provide a starting point for realizing EFH-conscious designs in terrain parks. We hope to see the design and analysis adopted by commercial grooming equipment manufacturers so that safety is integral to jump design. The software can grow and evolve through contributions from other researchers to incorporate many other nuances of injury prevention. We also see the methods providing a structure for standards development. And minimally, we see the software as an immediately usable tool for jump fabricators in the field.
+
+%Societal needs should be addressed. Preventable injuries on terrain park jumps should no longer occur. Injured people require appropriate care that should not depend on prolonged adversarial litigation clouded by deceptive engineering. 
 
 
 \begin{acknowledgements}
@@ -603,11 +578,11 @@ or conference proceedings.
   \item[Funding] Not applicable
   \item[Conflict of interest] MH served as a plaintiff's expert witness in the
     two case studies discussed above and in numerous other similar cases since.
-    CB testifies occasionally on the side of plaintiffs in ski and snowboard
-    injury cases, has collaborated with Shealy, and C.~D. Mote, Jr., Sher's
+    CB testifies occasionally on behalf of plaintiffs in ski and snowboard
+    injury cases. He has collaborated with Shealy and C.~D. Mote, Jr., Sher's
     doctoral advisor, on ski safety research, has participated in ASTM F27
     since the 1980s on standards for bindings, boots, and skis, and holds
-    patents on ski and snow board binding designs, intended to reduce injuries.
+    patents on ski and snowboard binding designs intended to reduce injuries.
   \item[Availability of data and material] All data is available at
     \url{https://gitlab.com/moorepants/skijumpdesign} and
     \url{https://gitlab.com/mechmotum/ski-jump-analysis-paper}.
@@ -619,7 +594,7 @@ or conference proceedings.
   \item[Author's contributions] JM and MH contributed to the study conception
     and design. Material preparation, data collection and analysis were
     performed by JM and MH. The first draft of the manuscript was written by
-    JM, BC, MH, and CB. MH and CB were each primarily responsible for drafting
+    JM, BC, MH, and CB. MH and CB were primarily responsible for drafting
     the parts on merchandising doubt and ethics, respectively. All authors read
     and approved the final manuscript. BC and JM wrote the accompanying
     software.
