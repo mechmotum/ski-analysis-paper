@@ -1,4 +1,4 @@
-FIRST_DIFF_TAG = before-tech-note
+FIRST_DIFF_TAG = second-submission-sports-engineering
 
 pdf: main.pdf sup.pdf
 main.pdf: main.tex references.bib figures/salvini-v-snoqualmie.pdf figures/vine-v-bear-valley.pdf
