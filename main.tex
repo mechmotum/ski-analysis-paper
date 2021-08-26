@@ -63,16 +63,16 @@
   Most American snowsport resorts now have terrain parks and decades-long
   epidemiological evidence correlates terrain park use with injuries.
   Engineering design of jumps could reduce injuries by limiting equivalent fall
-  heights (EFHs), which are proportional to dissipated landing impact energy.
-  No evidence refutes making terrain park jumps safer in this way. We discuss
-  case studies illustrating that large EFHs are significant factors in
-  traumatic injuries on terrain park jumps. We argue that it is the ethical
-  responsibility of engineers to ensure the safety, health, and welfare of the
-  public when performing and presenting research on snowsport safety.
+  heights, which are proportional to dissipated landing impact energy.  No
+  evidence refutes making terrain park jumps safer in this way. We discuss case
+  studies illustrating that large equivalent fall heights are significant
+  factors in traumatic injuries on terrain park jumps. We argue that it is the
+  ethical responsibility of engineers to ensure the safety, health, and welfare
+  of the public when performing and presenting research on snowsport safety.
   Developing standards and adopting design tools for builders can make jumps
   safer. We introduce an online tool that can evaluate existing jumps as well
-  as design jump profiles with safer equivalent EFHs to reduce injuries as an
-  example proactive practice.
+  as design jump profiles with safer equivalent fall heights to
+  reduce injuries as an example proactive practice.
 \end{abstract}
 
 \section{Introduction}
@@ -87,10 +87,9 @@ equipment~\cite{Chalmers1996}. EFHs of terrain park jumps can be calculated
 using techniques in \cite{Levy2015} from Cartesian coordinates of jump
 profiles. These must include starting points, takeoff ramps, and landing hills,
 all along jumpers' paths. Limiting energy dissipation in human bodies, hence
-EFH on jumps, is ethical engineering because it reduces the likelihood and
-severity of injuries. EFH should be a primary attribute of jump design. It must
-be considered because it is clearly connected to injury risk and can be used to
-design and construct safer jumps.
+EFH on jumps, reduces the likelihood and severity of injuries. EFH should be a
+primary attribute of jump design. It must be considered because it is clearly
+connected to injury risk and can be used to design and construct safer jumps.
 
 Societal costs of jump injuries are discussed here with case studies that
 illustrate dangers if EFH is not limited appropriately. We also discuss papers
@@ -119,7 +118,7 @@ determined that by 2004 snow skiing replaced football as the second leading
 cause of serious head and spinal cord injuries in America.
 
 These early increasing injury assessments persisted. According to
-\cite{Russell2014}, ``between 5\% and 27\% of skiing and snowboarding injuries
+\cite{Russell2014}, ``between 5 and 27\% of skiing and snowboarding injuries
 occur[red] in terrain parks
 \cite{Bridges2003,Goulet2007,Moffat2009,Greve2009,Brooks2010,Ruedl2013}''.
 Incredibly, at the first Winter Youth Olympic Games more than a third of all
@@ -162,9 +161,9 @@ Health Administration has for decades required protection for heights greater
 than 1.2~\si{\meter} for general workplace safety~\cite{OSHA2021}.  Chalmers et
 al.~\cite{Chalmers1996} argues for 1.5~\si{\meter} maximum fall heights for
 playground equipment. The Swiss Council for Accident Prevention makes specific
-recommendations for EFHs below 1.5~\si{\meter} for jumps requiring basic
-skills~\cite{Heer2019}.  Even with no standards in Olympic Nordic ski jumps,
-typical ``equivalent landing height``~\cite{Gasser2018} is only about
+recommendations for EFHs below 1.5~\si{\meter} for terrain park jumps requiring
+basic skills~\cite{Heer2019}.  Even with no standards in Olympic Nordic ski
+jumps, typical ``equivalent landing height``~\cite{Gasser2018} is only about
 0.5~\si{\meter}.
 
 EFH $h$ of objects is formally defined as
@@ -208,15 +207,16 @@ this code, a web application was developed for interactive jump design. The web
 application is designed for a non-technical end-user and operable on any
 desktop, tablet, or mobile device supporting a web browser.
 
-We have extended the capabilities of the software in version 1.4.0 to assist
-the work described in this paper. New library features automate calculation of
-EFH for jump profiles described by a set of Cartesian coordinates.
-Additionally, a new ``analysis'' page allows users to upload measured jump
-profile coordinates in either a .CSV or Microsoft Excel spreadsheet file. The
-jump is then analyzed and the equivalent fall height is displayed graphically
-for interactive user manipulation and viewing.
+We have extended the capabilities of the software in version 1.4.0 (March 25,
+2021) to assist the work described in this paper. New library features automate
+calculation of EFH for jump profiles described by a set of Cartesian
+coordinates.  Additionally, a new ``analysis'' page allows users to upload
+measured jump profile coordinates in either a .CSV or Microsoft Excel
+spreadsheet file. The jump is then analyzed and the equivalent fall height is
+displayed graphically for interactive user manipulation and viewing.
 Figure~\ref{fig:web-app-screenshot} shows the web application with one of the
-case study jumps loaded for analysis and explains its primary features.
+case study jumps (Salvini v. Ski Lifts Inc.) loaded for analysis and explains
+its primary features.
 %
 \begin{figure}
   \centering
@@ -237,12 +237,14 @@ NumPy~\cite{Oliphant2006}, pandas~\cite{McKinney2020}, Plotly \&
 Dash~\cite{Plotly2015}, pycvodes~\cite{Dahlgren2018},
 SciPy~\cite{Virtanen2020}, SymPy~\cite{Meurer2017}, and xlrd. The software is
 open source and licensed under the MIT redistribution license. The source code
-is distributed on PyPi (\url{https://pypi.org/project/skijumpdesign}). Users
-can submit bug reports, feature requests, code improvements, and additions at
-the Gitlab repository (\url{https://gitlab.com/moorepants/skijumpdesign}). The
-software library is documented at \url{https://skijumpdesign.readthedocs.io}.
-Basic examples of using the library are provided in the documentation and this
-paper's supplementary materials. The web app is hosted for free use at
+is distributed on PyPi~\footnote{\url{https://pypi.org/project/skijumpdesign}}.
+Users can submit bug reports, feature requests, code improvements, and
+additions at the Gitlab
+repository~\footnote{\url{https://gitlab.com/moorepants/skijumpdesign}}. The
+software library's documentation is hosted through Read The
+Docs~\footnote{\url{https://skijumpdesign.readthedocs.io}}.  Basic examples of
+using the library are provided in the documentation and this paper's
+supplementary materials. The web app is hosted for free use at
 \url{http://www.skijumpdesign.info}.
 
 We do not view the software as the definitive ski jump design and analysis
@@ -262,9 +264,9 @@ following section.
 In these case studies of American lawsuits, juries ruled for injured
 plaintiffs. Negligent jump design and construction contributed significantly to
 injuries~\cite{SuperiorCourtSanFranciscoCounty2002,KingCountySuperiorCourt2008}.
-Simulations below use methods in \cite{Levy2015}, assuming skier mass, frontal
-area, and drag coefficient of 75~\si{\kg}, 0.34~\si{\meter\squared}, and 0.821,
-respectively.
+Simulations below use methods in \cite{Levy2015}, assuming the same skier mass,
+frontal area, and drag coefficient of 75~\si{\kg}, 0.34~\si{\meter\squared},
+and 0.821, respectively.
 
 \subsection{Vine v. Bear Valley Ski Company}
 \label{sec:vine}
@@ -343,7 +345,7 @@ landing body orientation loads the spine, as in this case.
   Top: Measured landing surface (solid black) and jumper flight paths
   (intermittent black) for measured 25\si{\degree} takeoff angle. The
   16~\si{\meter\per\second} takeoff speed is used as the design speed for a
-  comparison jump (solid green) with constant equivalent fall height of
+  comparison jump (solid green) with constant EFH of
   1~\si{\meter}.
   Bottom: Equivalent fall height for both jumps in corresponding colors at
   2~\si{\meter} intervals. Numbers above bars indicate takeoff speed required
@@ -357,7 +359,7 @@ landing body orientation loads the spine, as in this case.
 \end{figure}
 
 The upper panel also shows a jump profile (green) designed to have a
-1~\si{\meter} equivalent fall height for all speeds below
+1~\si{\meter} EFH for all speeds below
 16~\si{\meter\per\second}. This profile requires significantly more snow than
 the measured jump but alleviates dangerous impacts.
 
@@ -435,8 +437,8 @@ contradictory research documenting the unique dangers posed by terrain park
 jumps in tens of other studies cited both herein and in
 \cite{Hubbard2009,Swedberg2012,McNeil2012,McNeil2012a,Hubbard2015,Levy2015,Petrone2017,Moore2018}.
 Although NSAA releases yearly the total of resort-related fatalities and
-catastrophic injuries, the raw data on which \cite{Shealy2015} was based is not
-even publicly available!
+catastrophic injuries, the selected raw data on which \cite{Shealy2015} was
+based is not even publicly available to other researchers!
 
 In a third experimental study (N=13) specifically designed ``to evaluate injury
 mitigation potential of surfaces limiting EFH''~\cite{Scher2015}, Scher et al.
@@ -465,14 +467,15 @@ the continued societal damage. As Upton Sinclair wrote ``it is difficult to get
 a man to understand something when his salary depends on his not understanding
 it''~\cite{Sinclair1994}.
 
-It is not evident that these papers ``hold paramount the safety, health and
-welfare of the public''. They are silent on how their findings can be used to
-reduce injuries. They obscure a scientifically fundamental, mechanically
-irrefutable fact that impacting surfaces at lower normal velocities is safer. They
-``create the appearance that the claims being promoted were
-scientific''~\cite[page 244]{Oreskes2010}. Fundamental laws have made mechanics
-a science. Findings that contradict such fundamental laws should be carefully
-scrutinized and review processes accepting such articles should be questioned.
+It is not evident that these papers (\cite{Shealy2010,Shealy2015,Scher2015})
+``hold paramount the safety, health and welfare of the public''. They are
+silent on how their findings can be used to reduce injuries. They obscure a
+scientifically fundamental, mechanically irrefutable fact that impacting
+surfaces at lower normal velocities is safer. They ``create the appearance that
+the claims being promoted were scientific''~\cite[page 244]{Oreskes2010}.
+Fundamental laws have made mechanics a science. Findings that contradict such
+fundamental laws should be carefully scrutinized and review processes accepting
+such articles should be questioned.
 
 Organizations also merchandise doubt. A decade ago, NSAA argued~\cite{NSAA2008}
 that, because of rider and snow variability, terrain park jump ``standards are
@@ -529,16 +532,16 @@ for more than 5 years~\cite{Muigg2019}. The 2015 NSAA reference in~\cite{NSAA201
   \includegraphics[width=\columnwidth]{figures/prinoth.png}
   \caption{\textbf{Commercial availability of computer-aided design and
     computer-controlled fabrication of snow park surfaces began as early as
-    2016.} The right panel shows a computer generated 3-D jump landing surface
-    with a family of simulated jumper paths, even ones outside the central
-    vertical bisecting plane, with the landing surface colored corresponding to
-    the EFH incurred by the jumper at that landing point. The left panel shows
-    a computer-controlled snow groomer fitted with two GNSS receivers that
-    allow real time measurement of their position to an accuracy of about
-    2~\si{\centi\meter}, calculation of the yaw and roll of the groomer blade,
-    and precise closed loop control of the snow addition and removal process.
-    Images courtesy of Prinoth, supplier of snow groomers for the winter
-    Olympics in China 2022.}
+    2016.} The right panel shows Prinoth's computer generated 3-D jump landing
+    surface with a family of simulated jumper paths, even ones outside the
+    central vertical bisecting plane, with the landing surface colored
+    corresponding to the EFH incurred by the jumper at that landing point. The
+    left panel shows a computer-controlled snow groomer fitted with two GNSS
+    receivers that allow real time measurement of their position to an accuracy
+    of about 2~\si{\centi\meter}, calculation of the yaw and roll of the
+    groomer blade, and precise closed loop control of the snow addition and
+    removal process.  Images courtesy of Prinoth, supplier of snow groomers for
+  the winter Olympics in China 2022.}
   \label{fig:prinoth}
 \end{figure}
 
