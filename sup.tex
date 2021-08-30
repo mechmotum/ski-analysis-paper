@@ -20,7 +20,7 @@
 
 \begin{document}
 
-\title{Supplementary Materials for Analysis and Ethical Design of Terrain Park Jumps for Snow Sports}
+\title{Supplementary Materials for Online Software Allows Ethical Safety-Conscious Design of Terrain Park Jumps}
 
 \author{
   Jason~K. Moore \and
@@ -44,24 +44,22 @@ The closed form equation
   \label{eq:efh}
 \end{align}
 
-is useful for understanding the
-fundamental relationship of equivalent fall height to the landing surface
-shape. It will predict EFH for small jumps but other factors may be useful to
-include in the model. For example, jumpers are subject to aerodynamic drag and
-this is not negligible for larger jumps. If drag is included there is no closed
-form solution for the equivalent fall height, but the equivalent fall height
-can be computed through iterative simulation~\cite{Levy2015}. The jumper's
-flight path is found by integrating the flight equations of motion at various
-takeoff velocities and computing the misalignment of jumper landing and slope
-angles to then compute the equivalent fall height. This more general simulation
-method is implemented in the software described herein and the results reflect
-the inclusion of both gravitational and drag forces. Even with drag
-incorporated, the calculating EFH still only require measurements of the
-landing surface cross-sectional profile coordinates $(x,y)$ relative to the
-takeoff point and a measurement of the takeoff angle.
-Listing~\ref{lis:example-efh-calc} demonstrates the new software library
-features creating a surface from some measured data points and then calculating
-the equivalent fall height at 0.2\si{\meter} increments.
+is useful for understanding the fundamental relationship of equivalent fall
+height (EFH) to the landing surface shape. It will predict EFH for small jumps
+but other factors may be useful to include in the model. For example, jumpers
+are subject to aerodynamic drag and this is not negligible for larger jumps. If
+drag is included there is no closed form solution for the EFH, but the EFH can
+be computed through iterative simulation~\cite{Levy2015}. The jumper's flight
+path is found by integrating the flight equations of motion at various takeoff
+velocities and computing the misalignment of jumper landing and slope angles to
+then compute the EFH. This more general simulation method is implemented in the
+software described herein and the results reflect the inclusion of both
+gravitational and drag forces. Even with drag incorporated, the calculating EFH
+still only require measurements of the landing surface cross-sectional profile
+coordinates $(x,y)$ relative to the takeoff point and a measurement of the
+takeoff angle.  Listing~\ref{lis:example-efh-calc} demonstrates the new
+software library features creating a surface from some measured data points and
+then calculating the EFH at 0.2\si{\meter} increments.
 %
 \begin{listing*}
   \begin{minted}{pycon}
@@ -86,7 +84,7 @@ the equivalent fall height at 0.2\si{\meter} increments.
 >>> measured_surf = Surface(x_mt, y_mt)
 >>> # create a skier
 >>> skier = Skier(mass=75.0, area=0.34, drag_coeff=0.821)
->>> # calculate the equivalent fall height
+>>> # calculate the EFH
 >>> x, efh, v = measured_surf.calculate_efh(
 ...     np.deg2rad(takeoff_ang), takeoff_point, skier, increment=0.2)
 ...
@@ -96,7 +94,7 @@ array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8,  2. ,
        ...
        24.2, 24.4, 24.6, 24.8, 25. , 25.2, 25.4, 25.6, 25.8, 26. , 26.2,
        26.4, 26.6, 26.8])
->>> efh  # display the equivalent fall height for each x coordinate
+>>> efh  # display the EFH for each x coordinate
 array([0.        , 0.02541035, 0.03479384, 0.03264587, 0.05956476,
        0.09096091, 0.12358184, 0.13702364, 0.15202999, 0.17018343,
        ...
@@ -113,22 +111,22 @@ array([0.07373847, 0.13081777, 0.1878382 , 0.2447865 , 0.30166299,
 >>> plot_efh(measured_surf, takeoff_ang, takeoff_point, increment=0.2)
   \end{minted}
   \caption{Python interpreter session illustrating how one could compute the
-  equivalent fall height of a measured jump.}
+  EFH of a measured jump.}
   \label{lis:example-efh-calc}
 \end{listing*}
 
 \section{Jump Shape Measurement}
 \label{sec:jump-shape-measurement}
 %
-Calculating equivalent fall height requires the Cartesian coordinates and slope
-of the landing surface along the path of the jumper. There are a number of
-possible measurement techniques for collecting data adequate for the equivalent
-fall height calculation but the simplest method requires only a digital level
-\footnote{Smartphone digital level measurement applications are likely
-sufficient and readily available.}, a flexible tape measure, and less than an
-hour's time from one person per jump. A tenth of a degree accuracy from the
-level and down to 25~\si{\centi\meter} accuracy from the tape measure should be
-more than sufficient for typical snowsport jumps.
+Calculating EFH requires the Cartesian coordinates and slope of the landing
+surface along the path of the jumper. There are a number of possible
+measurement techniques for collecting data adequate for the EFH calculation but
+the simplest method requires only a digital level \footnote{Smartphone digital
+level measurement applications are likely sufficient and readily available.}, a
+flexible tape measure, and less than an hour's time from one person per jump. A
+tenth of a degree accuracy from the level and down to 25~\si{\centi\meter}
+accuracy from the tape measure should be more than sufficient for typical
+snowsport jumps.
 
 To measure the jump, the takeoff point should be identified and the tape
 measure should then be draped over the contour of the landing surface along the
@@ -184,7 +182,7 @@ with the method described above.
 0.08028514559173916
   \end{minted}
   \caption{Python interpreter session showing how one could compute the
-  Cartesian coordinates from equivalent fall height of a measured jump.}
+  Cartesian coordinates from EFH of a measured jump.}
   \label{lis:example-meas-calc}
 \end{listing*}
 
