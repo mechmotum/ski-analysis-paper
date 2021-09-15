@@ -1,13 +1,5 @@
-%\documentcrass{svjour3}                     % onecolumn (standard format)
-%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
-\documentclass[smallextended]{svjour3}       % onecolumn (second format)
-%\documentclass[twocolumn]{svjour3}          % twocolumn
+\documentclass{article}
 
-\smartqed  % flush right qed marks, e.g. at end of proof
-
-% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
-
-% insert here the call for the packages your document requires
 \usepackage[utf8]{inputenc}
 % Use nameref to cite supporting information files (see Supporting Information section for more info)
 \usepackage{nameref,hyperref}
@@ -23,8 +15,6 @@
 \usepackage{lineno}
 \linenumbers
 
-\journalname{Sports Engineering}
-
 \begin{document}
 
 \title{Online Software Allows Ethical Safety-Conscious Design of Terrain Park Jumps}
@@ -33,29 +23,22 @@
   Jason~K. Moore \and
   Bryn Cloud \and
   Mont Hubbard \and
-  Christopher~A. Brown
-}
-
-%\authorrunning{Short form of author list} % if too long for running head
-\institute{
-  J.~K. Moore \at
+  Christopher~A. Brown \\\\
+  J.~K. Moore
   Delft University of Technology\\
   Mekelweg 2, 2628 CD Delft, The Netherlands\\
-  \email{j.k.moore@tudelft.nl}
+  j.k.moore@tudelft.nl
   \and
-  B. Cloud \& M. Hubbard \at
+  B. Cloud \& M. Hubbard
   University of California, Davis\\
   One Shields Ave., Davis, CA 95616 USA\\
-  \email{becloud@ucdavis.edu,mhubbard@ucdavis.edu}
+  becloud@ucdavis.edu,mhubbard@ucdavis.edu
   \and
-  C.~A. Brown \at
+  C.~A. Brown
   Worcester Polytechnic Institute\\
   100 Institute Rd., Worcester, MA 01609 USA\\
-  \email{brown@wpi.edu}
+  brown@wpi.edu
 }
-
-\date{Received: date / Accepted: date}
-% The correct dates will be entered by the editor
 
 \maketitle
 
@@ -653,10 +636,9 @@ the methods providing a structure for standards development. And minimally, we
 see the software as an immediately usable tool for jump fabricators in the
 field.
 
-\begin{acknowledgements}
-  We thank Rado Dukalski for feedback on the web application and both Yumiko
-  Henneberry and Lyn Taylor for feedback on the manuscript.
-\end{acknowledgements}
+\section*{Acknowledgements}
+We thank Rado Dukalski for feedback on the web application and both Yumiko
+Henneberry and Lyn Taylor for feedback on the manuscript.
 
 \section*{Declarations}
 \begin{description}
