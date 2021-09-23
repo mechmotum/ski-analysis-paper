@@ -10,7 +10,7 @@
 % figures!
 \usepackage{graphicx}
 % for including TODO notes
-%\usepackage{todonotes}
+\usepackage{todonotes}
 % Uncomment next two lines to add line numbers.
 \usepackage{lineno}
 \linenumbers
@@ -211,7 +211,7 @@ its primary features.
   \label{fig:web-app-screenshot}
 \end{figure}
 
-The software is written in Python and depends on popular packages
+The software is written in Python and directly depends on popular packages
 including Cython~\cite{Behnel2011}, matplotlib~\cite{Hunter2007},
 NumPy~\cite{Oliphant2006}, pandas~\cite{McKinney2020}, Plotly \&
 Dash~\cite{Plotly2015}, pycvodes~\cite{Dahlgren2018},
@@ -229,7 +229,7 @@ free use online.~\footnote{ \url{http://www.skijumpdesign.info}}
 
 We do not view the software as the definitive ski jump design and analysis
 tool, but rather as a foundation. The tool has been released as open-source so
-that refinements and modifications are easy and encouraged. The software incorporates extensibility and modularity. New surface
+that refinements and modifications are easy and encouraged. The software was designed to be extensible and modular. New surface
 shapes such as different takeoff ramps are easily added by building upon the
 basic surface object using object-oriented programming principles. Similarly,
 new skier models can be added that incorporate more complex biomechanical
@@ -344,9 +344,9 @@ orientation loads the spine, as in this case.
 The upper panel also shows a jump profile (green) designed to have a
 1~\si{\meter} EFH for all speeds below 16~\si{\meter\per\second}. This profile
 requires significantly more snow than the measured jump but limits EFH to 1 m. This jump highlights how extreme EFHs can become if jumps
-are not properly designed.  Few recreational skiers will jump out three story
+are not properly designed.  Few recreational skiers will jump out of three story
 windows, snow or not, as injuries are clearly likely. Our internal altimeter tells
-us so, but it's not easy to discern when visually assessing a jump's safety.
+us so, but it's not easy to discern when visually assessing a jump's safety.~\todo{I learned that fear of falling is one of two innate fears humans have. See \url{https://en.wikipedia.org/wiki/Fear_of_falling}. I could add a citation here if it is warranted - Jason}
 
 These two case studies demonstrate that deficient jump landing shapes
 have devastating consequences and that engineering analysis and design, based
@@ -627,8 +627,8 @@ see the software as an immediately usable tool for jump fabricators in the
 field.
 
 \section*{Acknowledgements}
-We thank Rado Dukalski for feedback on the web application and both Yumiko
-Henneberry and Lyn Taylor for feedback on the manuscript.
+We thank Rado Dukalski for feedback on the web application and Yumiko
+Henneberry, Lyn Taylor, Andy Ruina, and Ton van den Bogert for feedback on the manuscript.
 
 \section*{Declarations}
 \begin{description}
