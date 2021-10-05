@@ -1,4 +1,4 @@
-FIRST_DIFF_TAG = third-submission-sports-engineering
+FIRST_DIFF_TAG = jason-blue
 
 pdf: main.pdf sup.pdf
 main.pdf: main.tex references.bib figures/salvini-v-snoqualmie.pdf figures/vine-v-bear-valley.pdf
