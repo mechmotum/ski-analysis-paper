@@ -23,5 +23,7 @@ trackchanges:
 	pdflatex -shell-escape -interaction nonstopmode diff-master_$(FIRST_DIFF_TAG).tex
 figures/salvini-v-snoqualmie.pdf figures/vine-v-bear-valley.pdf: data/california-2002-surface.csv data/washington-2004-surface.csv src/case_study_figures.py
 	python src/case_study_figures.py
+clearpdf:
+	rm main.pdf sup.pdf
 clean:
 	(rm -rf *.ps *.log *.dvi *.aux *.*% *.lof *.lop *.lot *.toc *.idx *.ilg *.ind *.bbl *.blg *.cpt *.out)
