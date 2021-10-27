@@ -1,45 +1,29 @@
-\documentclass{article}
+\documentclass[fleqn,10pt,lineno]{wlpeerj}
 
-\usepackage[utf8]{inputenc}
-% Use nameref to cite supporting information files (see Supporting Information section for more info)
-\usepackage{nameref,hyperref}
-% amsmath and amssymb packages, useful for mathematical formulas and symbols
+% for \url{} command
+\usepackage[hidelinks]{hyperref}
+% useful for mathematical formulas and symbols
 \usepackage{amsmath,amssymb}
 % useful for consistent display and control of units of measurement
 \usepackage{siunitx}
 % figures!
 \usepackage{graphicx}
-% for including TODO notes
-\usepackage{todonotes}
-% Uncomment next two lines to add line numbers.
-\usepackage{lineno}
-\linenumbers
 
-\begin{document}
 \title{Online Software and Ethical Issues for Safety-Conscious Design of Terrain Park Jumps}
 
-\author{
-  Jason~K. Moore \and
-  Bryn Cloud \and
-  Mont Hubbard \and
-  Christopher~A. Brown \\\\
-  J.~K. Moore
-  Delft University of Technology\\
-  Mekelweg 2, 2628 CD Delft, The Netherlands\\
-  j.k.moore@tudelft.nl
-  \and
-  B. Cloud \& M. Hubbard
-  University of California, Davis\\
-  One Shields Ave., Davis, CA 95616 USA\\
-  becloud@ucdavis.edu,mhubbard@ucdavis.edu
-  \and
-  C.~A. Brown
-  Worcester Polytechnic Institute\\
-  100 Institute Rd., Worcester, MA 01609 USA\\
-  brown@wpi.edu
-}
+\author[1]{Jason~K. Moore}
+\author[2]{Bryn Cloud}
+\author[2]{Mont Hubbard}
+\author[3]{Christopher~A. Brown}
 
-\maketitle
+\affil[1]{Delft University of Technology\\Mekelweg 2, 2628 CD Delft, The Netherlands}
+\affil[2]{University of California, Davis\\One Shields Ave., Davis, CA 95616 USA}
+\affil[3]{Worcester Polytechnic Institute\\100 Institute Rd., Worcester, MA 01609 USA}
+
+\corrauthor[1]{Jason~K. Moore}{j.k.moore@tudelft.nl}
+
+% the template doesn't seem to support this command
+%\keywords{skiing, snowboarding, safety, ethics}
 
 \begin{abstract}
   Many snowsport resorts now have terrain parks and decades-long
@@ -57,11 +41,13 @@
   heights.
 \end{abstract}
 
-\section*{Keywords}
+\begin{document}
 
-skiing; snowboarding; safety; ethics
+\flushbottom
+\maketitle
+\thispagestyle{empty}
 
-\section{Introduction}
+\section*{Introduction}
 \label{intro}
 %
 Impacts with fixed surfaces can cause injury. Greater velocities, perpendicular
@@ -88,7 +74,7 @@ testimony defending the ski industry in personal injury lawsuits. We present a
 web application that can facilitate jumping injury reduction by calculating EFH
 on current and future jumps.
 
-\subsection{History}
+\subsection*{History}
 \label{sec:hist}
 %
 Gradual introduction of terrain parks in the 1980's was accompanied by
@@ -123,8 +109,8 @@ serious spinal injuries. Similar jump design suggestions have appeared in
 peer-reviewed literature for more than a
 decade~\cite{Hubbard2009,Swedberg2012,Hubbard2012,McNeil2012,McNeil2012a,Hubbard2015,Levy2015,Petrone2017,Moore2018}.
 
-\section{Methods}
-\subsection{Equivalent Fall Height}
+\section*{Methods}
+\subsection*{Equivalent Fall Height}
 \label{sec:efh}
 %
 \emph{EFH}, a common proxy measure for impact danger in industrial safety
@@ -186,7 +172,7 @@ curvatures (concavity) in takeoff ramps tend to cause skiers to rotate
 rearwards, inverting them in flight, so they might land in more dangerous body
 orientations \cite{Scher2015}, although ramp curvature does not influence EFHs.
 
-\subsection{Software and Online Access}
+\subsection*{Software and Online Access}
 \label{sec:software}
 %
 We presented the first version of software for designing ski jumps with a
@@ -234,7 +220,7 @@ software library's documentation is hosted via Read the
 Docs~\footnote{\url{https://skijumpdesign.readthedocs.io}}.  Basic examples of
 using the library are provided in the documentation and this paper's
 supplementary materials. We have also made the web application available for
-free use online.~\footnote{ \url{http://www.skijumpdesign.info}}
+free use online.~\footnote{\url{http://www.skijumpdesign.info}}
 
 We do not view the software as the definitive ski jump design and analysis
 tool, but rather as a foundation. The tool has been released as open-source so
@@ -246,7 +232,7 @@ added that incorporate more complex biomechanical features and actions. We make
 use of this flexibility for the web application and for calculations and
 visualizations presented in the following section.
 
-\section{Results}
+\section*{Results}
 \label{sec:case}
 %
 In these case studies of American lawsuits, juries ruled for injured
@@ -256,7 +242,7 @@ Simulations below use methods in \cite{Levy2015}, assuming the same skier mass,
 frontal area, and drag coefficient of 75~\si{\kg}, 0.34~\si{\meter\squared},
 and 0.821, respectively.
 
-\subsection{Vine v. Bear Valley Ski Company}
+\subsection*{Vine v. Bear Valley Ski Company}
 \label{sec:vine}
 %
 In April 2000, Ms.~Vine's lower spine was injured when she landed badly while
@@ -311,7 +297,7 @@ This alternative jump design would have lowered impact forces for landings at
 all locations. In 2002, the jury ruled in favor of Ms.~Vine, agreeing that Bear
 Valley was responsible for providing unsafe jumps.
 
-\subsection{Salvini v. Ski Lifts Inc.}
+\subsection*{Salvini v. Ski Lifts Inc.}
 \label{sec:salvini}
 %
 In 2004, Mr.~Salvini attempted a table-top jump on skis in the terrain park of
@@ -367,8 +353,8 @@ fundamental to physics and engineering education. Designing jumps to limit EFHs
 unquestionably reduces injury risk by reducing impact energies and associated
 forces.
 
-\section{Discussion}
-\subsection{Moral Imperative}
+\section*{Discussion}
+\subsection*{Moral Imperative}
 \label{sec:moral}
 %
 ``Hold paramount the safety, health and welfare of the
@@ -518,7 +504,7 @@ dangerous practices for the short-term financial benefit of industry and which
 apparently do nothing for the safety, health, and welfare of the public, are
 unethical and do not belong in engineering journals or conference proceedings.
 
-\subsection{What Can Be Done?}
+\subsection*{What Can Be Done?}
 \label{sec:action}
 %
 Absolutely, the most important change will be to incorporate rigorous, rational
@@ -628,7 +614,7 @@ The only ethical decision is to adopt these methods; saving even one person
 from a life of paralysis, or even death, must be worth the relatively minor
 inconvenience of shaping jumps using the methods in reference~\cite{Levy2015}.
 
-\section{Conclusion}
+\section*{Conclusion}
 \label{sec:conc}
 %
 There are, of course, more factors than jump takeoff and landing profiles that
@@ -683,7 +669,7 @@ manuscript.
   \item[Consent for publication] JM, BC, MH, and CB consent for publication.
 \end{description}
 
-\bibliographystyle{ieeetr}
+%\bibliographystyle{ieeetr}
 \bibliography{references}   % name your BibTeX data base
 
 \end{document}
