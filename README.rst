@@ -3,9 +3,9 @@ Information
 
 This repository houses the LaTeX and Python source files to build the paper:
 
-   Jason K. Moore, Bryn Cloud, Mont Hubbard, and Christopher A. Brown, "Online
-   Software and Ethical Issues for Safety-Conscious Design of Terrain Park
-   Jumps", 2021
+   Jason K. Moore, Bryn Cloud, Mont Hubbard, and Christopher A. Brown,
+   "Safety-Conscious Design of Terrain Park Jumps: Ethical Issues and Online
+   Software", 2021
 
 Preprint available at https://doi.org/10.31224/osf.io/sq7u9
 
