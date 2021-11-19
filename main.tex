@@ -1,16 +1,17 @@
-\documentclass[Afour,sagev,times]{sagej}
+%\documentclass[Afour,sagev,times]{sagej}
+\documentclass[]{article}
 
 % sage template things
-\usepackage{moreverb,url}
-\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
-\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
-T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-\def\volumeyear{2016}
+%\usepackage{moreverb,url}
+%\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+%\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
+%T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\def\volumeyear{2016}
 
 % additional packages
 % for \url{} command
 % commented out because the sage template uses this
-%\usepackage[hidelinks]{hyperref}
+\usepackage[hidelinks]{hyperref}
 % useful for mathematical formulas and symbols
 \usepackage{amsmath,amssymb}
 % useful for consistent display and control of units of measurement
@@ -20,33 +21,55 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-\runninghead{Moore~et~al.}
+%\runninghead{Moore~et~al.}
 
-\title{Safety-Conscious Design of Terrain Park Jumps: Ethical Issues and Online
-Software}
+\title{Preprint Version 7\\Safety-Conscious Design of Terrain Park Jumps: Ethical
+Issues and Online Software}
+
+%\author{
+  %Jason~K. Moore\affilnum{1} and
+  %Bryn Cloud\affilnum{2} and
+  %Mont Hubbard\affilnum{2} and
+  %Christopher~A. Brown\affilnum{3}
+%}
+%
+%\affiliation{
+  %\affilnum{1}Delft University of Technology\\Mekelweg 2, 2628 CD Delft, The
+  %Netherlands\\
+  %\affilnum{2}University of California, Davis\\One Shields Ave., Davis, CA
+  %95616 USA\\
+  %\affilnum{3}Worcester Polytechnic Institute\\100 Institute Rd., Worcester, MA
+  %01609 USA
+%}
+%
+%\corrauth{Jason~K. Moore,
+  %Delft University of Technology,
+  %Mekelweg 2, 2628 CD Delft,
+  %The Netherlands}
+%
+%\email{j.k.moore@tudelft.nl}
 
 \author{
-  Jason~K. Moore\affilnum{1} and
-  Bryn Cloud\affilnum{2} and
-  Mont Hubbard\affilnum{2} and
-  Christopher~A. Brown\affilnum{3}
-}
+Jason~K. Moore \and
+Bryn Cloud \and
+Mont Hubbard \and
+Christopher~A. Brown \\\\
+J.~K. Moore
+Delft University of Technology\\
+Mekelweg 2, 2628 CD Delft, The Netherlands\\
+j.k.moore@tudelft.nl
+\and
+B. Cloud \& M. Hubbard
+University of California, Davis\\
+One Shields Ave., Davis, CA 95616 USA\\
+becloud@ucdavis.edu,mhubbard@ucdavis.edu
+\and
+C.~A. Brown
+Worcester Polytechnic Institute\\
+100 Institute Rd., Worcester, MA 01609 USA\\
+brown@wpi.edu }
 
-\affiliation{
-  \affilnum{1}Delft University of Technology\\Mekelweg 2, 2628 CD Delft, The
-  Netherlands\\
-  \affilnum{2}University of California, Davis\\One Shields Ave., Davis, CA
-  95616 USA\\
-  \affilnum{3}Worcester Polytechnic Institute\\100 Institute Rd., Worcester, MA
-  01609 USA
-}
-
-\corrauth{Jason~K. Moore,
-  Delft University of Technology,
-  Mekelweg 2, 2628 CD Delft,
-  The Netherlands}
-
-\email{j.k.moore@tudelft.nl}
+\maketitle
 
 \begin{abstract}
   Many snowsport resorts now have terrain parks and decades-long
@@ -64,9 +87,8 @@ Software}
   heights.
 \end{abstract}
 
-\keywords{skiing, snowboarding, safety, ethics}
+%\keywords{skiing, snowboarding, safety, ethics}
 
-\maketitle
 
 \section*{Introduction}
 \label{intro}
@@ -215,7 +237,8 @@ its primary features.
 %
 \begin{figure*}
   \centering
-  \includegraphics[width=6in]{figures/web-app-screenshot.png}
+  %\includegraphics[width=6in]{figures/web-app-screenshot.png}
+  \includegraphics[width=\columnwidth]{figures/web-app-screenshot.png}
   \caption{\textbf{Screenshot of the ski jump design and analysis web app} To
     use the analysis portion of the app, a user selects ``Ski Jump Analysis''
     from the primary menu [1], uploads a .CSV or .XLS file by dragging it onto
@@ -559,7 +582,8 @@ essentially impossible~\ldots''.
 %
 \begin{figure*}
   \centering
-  \includegraphics[width=6in]{figures/prinoth.png}
+  %\includegraphics[width=6in]{figures/prinoth.png}
+  \includegraphics[width=\columnwidth]{figures/prinoth.png}
   \caption{\textbf{Commercial availability of computer-aided design and
     computer-controlled fabrication of snow park surfaces began as early as
     2016.} The right panel shows Prinoth's computer generated 3-D jump landing
@@ -661,12 +685,14 @@ the methods providing a structure for standards development. And minimally, we
 see the software as an immediately usable tool for jump fabricators in the
 field.
 
-\begin{acks}
+\section*{Acknowledgements}
+%\begin{acks}
   We thank Rado Dukalski for feedback on the web application and Yumiko
   Henneberry, Lyn Taylor, and Andy Ruina for feedback on the manuscript.
-\end{acks}
+%\end{acks}
 
-\begin{dci}
+\section*{Declarations}
+%\begin{dci}
   MH served as a plaintiff's expert witness in the two case studies discussed
   above and in numerous other similar cases since.  CB testifies occasionally
   on behalf of plaintiffs in ski and snowboard injury cases. He has
@@ -674,11 +700,12 @@ field.
   safety research, has participated in ASTM F27 since the 1980s on standards
   for bindings, boots, and skis, and holds patents on ski and snowboard binding
   designs intended to reduce injuries.
-\end{dci}
+%\end{dci}
 
-\begin{funding}
+\section*{Funding}
+%\begin{funding}
   Not applicable
-\end{funding}
+%\end{funding}
 
 \section*{Other Declarations}
 \begin{description}
@@ -700,7 +727,8 @@ field.
   \item[Consent for publication] JM, BC, MH, and CB consent for publication.
 \end{description}
 
-\bibliographystyle{SageV}
+%\bibliographystyle{SageV}
+\bibliographystyle{ieeetr}
 \bibliography{references}   % name your BibTeX data base
 
 \end{document}
